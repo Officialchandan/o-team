@@ -1,0 +1,90 @@
+name: ondoprationapp
+description: A new Flutter application.
+# The following line prevents the package from being accidentally published to
+# pub.dev using `pub publish`. This is preferred for private packages.
+publish_to: 'none'
+
+# Remove this line if you wish to publish to pub.dev
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+
+version: 1.0.0+1
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  http:
+  dio:
+  toast:
+  cupertino_icons: ^1.0.4
+  shared_preferences:
+  custom_progress_dialog:
+  connectivity:
+  flutter_barcode_scanner:
+  intl:
+  device_info:
+  datetime_picker_formfield:
+  rxdart:
+  auth_provider:
+  permission_handler: 8.3.0
+  sqflite:
+  path_provider:
+  google_maps_flutter:
+  get_version:
+  image_picker: ^0.6.0+17
+  geolocator:
+  #  google_maps_place_picker: ^1.0.1
+  place_picker: ^0.9.19
+  flutter_rating_bar:
+  autocomplete_textfield:
+  photo_view:
+  uuid:
+  cached_network_image:
+  flutter_native_image:
+  object_mapper:
+  fluttertoast:
+  flutter_easyloading:
+  flutter_dialogs:
+  package_info:
+  url_launcher:
+  flutter_background:
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+# The following section is specific to Flutter.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+
+  assets:
+    - assets/
+    - drawable/
+
+
+
+  fonts:
+    - family: Poppins-SemiBold
+      fonts:
+        - asset: fonts/Poppins-SemiBold.ttf
+
+

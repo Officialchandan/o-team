@@ -1,0 +1,684 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:1:1-75:12
+INJECTED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:1:1-75:12
+INJECTED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:1:1-75:12
+INJECTED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:1:1-75:12
+MERGED from [:auth_provider] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/auth_provider/intermediates/library_manifest/release/AndroidManifest.xml:2:1-7:12
+MERGED from [:sign_in_with_apple] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/sign_in_with_apple/intermediates/library_manifest/release/AndroidManifest.xml:2:1-7:12
+MERGED from [:firebase_auth] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/firebase_auth/intermediates/library_manifest/release/AndroidManifest.xml:2:1-15:12
+MERGED from [:firebase_core] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/firebase_core/intermediates/library_manifest/release/AndroidManifest.xml:2:1-15:12
+MERGED from [:geolocator_android] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/geolocator_android/intermediates/library_manifest/release/AndroidManifest.xml:2:1-17:12
+MERGED from [:google_maps_flutter] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/google_maps_flutter/intermediates/library_manifest/release/AndroidManifest.xml:2:1-7:12
+MERGED from [:flutter_barcode_scanner] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/flutter_barcode_scanner/intermediates/library_manifest/release/AndroidManifest.xml:2:1-21:12
+MERGED from [:flutter_plugin_android_lifecycle] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/flutter_plugin_android_lifecycle/intermediates/library_manifest/release/AndroidManifest.xml:2:1-7:12
+MERGED from [:sqflite] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/sqflite/intermediates/library_manifest/release/AndroidManifest.xml:2:1-7:12
+MERGED from [:image_picker] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:2:1-22:12
+MERGED from [:url_launcher_android] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/url_launcher_android/intermediates/library_manifest/release/AndroidManifest.xml:2:1-14:12
+MERGED from [:path_provider_android] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/path_provider_android/intermediates/library_manifest/release/AndroidManifest.xml:2:1-7:12
+MERGED from [:get_version] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/get_version/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:flutter_native_image] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/flutter_native_image/intermediates/library_manifest/release/AndroidManifest.xml:2:1-7:12
+MERGED from [:shared_preferences_android] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/shared_preferences_android/intermediates/library_manifest/release/AndroidManifest.xml:2:1-7:12
+MERGED from [:flutter_background] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/flutter_background/intermediates/library_manifest/release/AndroidManifest.xml:2:1-20:12
+MERGED from [:device_info] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/device_info/intermediates/library_manifest/release/AndroidManifest.xml:2:1-7:12
+MERGED from [:connectivity] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/connectivity/intermediates/library_manifest/release/AndroidManifest.xml:2:1-9:12
+MERGED from [:fluttertoast] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/fluttertoast/intermediates/library_manifest/release/AndroidManifest.xml:2:1-7:12
+MERGED from [:location] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/location/intermediates/library_manifest/release/AndroidManifest.xml:2:1-10:12
+MERGED from [:permission_handler] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/permission_handler/intermediates/library_manifest/release/AndroidManifest.xml:2:1-7:12
+MERGED from [:google_sign_in] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/google_sign_in/intermediates/library_manifest/release/AndroidManifest.xml:2:1-9:12
+MERGED from [:package_info] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/package_info/intermediates/library_manifest/release/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:17:1-83:12
+MERGED from [androidx.browser:browser:1.2.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/fdaa7b46fe0b3682afc79ec26855ae18/browser-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/aee5a28c0852d97e9ad1af648de48ef2/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:2:1-10:12
+MERGED from [com.google.firebase:firebase-common:20.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/40bbf436a7f643549fdd4842744d1f65/jetified-firebase-common-20.0.0/AndroidManifest.xml:15:1-40:12
+MERGED from [com.google.android.material:material:1.3.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/759630e4672f2183bc3380ac0a34546d/material-1.3.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/4d5a291bf66f233c9c34d6084bdd32ad/constraintlayout-2.0.1/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.appcompat:appcompat:1.2.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/7b548240c63e99169b58b3202fe150a8/appcompat-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/47ecc98bb2c0f69743dda7c4d30caee5/jetified-play-services-maps-17.0.0/AndroidManifest.xml:17:1-38:12
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/092400e215ed09deef871d5660a3f28d/legacy-support-v4-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.gms:play-services-auth:20.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/d7b100f79411e76e158781251b72f8de/jetified-play-services-auth-20.0.1/AndroidManifest.xml:17:1-40:12
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/b3bfe8565be9e9cef9b83063da338856/jetified-viewpager2-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-location:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/fe545284e4690c3bc16bf30f54cb1300/jetified-play-services-location-17.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-vision:20.1.3] /Users/mac/.gradle/caches/transforms-2/files-2.1/03b0392cb1a81fd4484b9213947a17e0/jetified-play-services-vision-20.1.3/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-vision-common:19.1.3] /Users/mac/.gradle/caches/transforms-2/files-2.1/a8036b43643c49b6f61df220a0e1c647/jetified-play-services-vision-common-19.1.3/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/40b37bd8cff18c5c827969224e8445ac/jetified-play-services-auth-api-phone-18.0.1/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-auth-base:18.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/1667f74a5ed7ffd059babc26731ee810/jetified-play-services-auth-base-18.0.1/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/107a9f561afadc75e4b85e1715359c0e/jetified-play-services-safetynet-17.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-clearcut:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/4b3e51523a0d1c514e3e2dbb3110238e/jetified-play-services-clearcut-17.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-flags:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/1ed5f3c3f8078f0e67758952954bac47/jetified-play-services-flags-17.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.gms:play-services-phenotype:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/da82821c30e67067fca31e55e8087326/jetified-play-services-phenotype-17.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/53bcbd050fa0c8e56cb749bd3de993f5/jetified-play-services-base-18.0.1/AndroidManifest.xml:16:1-24:12
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/020a226982ab8722edfdb3521930d0d2/jetified-play-services-places-placereport-17.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/e6c31d0f90a2440f79a174c39cd814c5/jetified-play-services-tasks-18.0.1/AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/3044337a3f24746fe570fb88956a0694/jetified-play-services-basement-18.0.0/AndroidManifest.xml:16:1-26:12
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/ab285a53cfb44142c67f761db34050aa/fragment-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/83499ebaf1118f42ac76c9fa1d10e5c1/jetified-appcompat-resources-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/6e7425f7d840c9d1615bb7f03f178d5a/legacy-support-core-ui-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/651fae681d612f946ba633b4054a3431/coordinatorlayout-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/288f85b2e3a23fb0a20247fa182d2a5b/dynamicanimation-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.transition:transition:1.2.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/f20a1d198a32f4841147014e9475cbbb/transition-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/5e27641f5efbb87ec7cf970102848731/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/a8e38c7f27379c849e2be3b6cfc3e9ca/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.media:media:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/ea04720e0b4081dd8f6de857b9c8529e/media-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/46bc9ab0f0037082aa6ac9c17d80598b/drawerlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/ae249e60ba5ed8f411c39ac541002f51/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/e35f2572b62e15e58a7b87256ef5d90d/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/0c73f77a0fcc398fc7a25329f90a2a2f/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/c54a0c9f8fefd38470f84f157a8e2a61/jetified-activity-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/a55da1b30fb1d6f1483dc9c69398e78f/slidingpanelayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/380e8b4627808f336e73376b93cf64dd/recyclerview-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.customview:customview:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/e5cce30b4b16bf2ebd10cbe5d0166bb0/customview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/4f43c49c672119db1abbb66fcaa7ae6e/swiperefreshlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/3c382bf184577bb9d14e0ae1ee993a49/asynclayoutinflater-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.3.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/36be725fde34aed112cc01aeed82d65c/core-1.3.1/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/5b354365db9f41fc891cd8e3e12ffdd4/versionedparcelable-1.1.0/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/d50852f951d4af2e924fd823f4c32efe/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/550853b0c9e4b42013fc735cfcade70b/lifecycle-runtime-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/0eb331a55c4e25b448d741706ad6a804/jetified-savedstate-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/2d799776f8079b6790c8ec4675465112/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/adaa37f245ea29030b0b65554e5d97c1/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/774685d525d2c608661e3523bbae3285/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/0442ff76a09b741cd56acc7b47da8351/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/43450387c913fba9937ec47fae74af65/core-runtime-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/616dab86b51f48ecac7309e822f5dd60/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/06dffba93119699bb8be130217bc13ee/jetified-firebase-components-17.0.0/AndroidManifest.xml:15:1-23:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/1a34b0d7df866944ef29fd9280102d81/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/eff941c696c91d1a4a1b999e17c8d9f5/print-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/7b896e029d5b1dac2f05f3cd20db6a81/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/7abc322ea44e88b7cb72a185c078ff73/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:17:1-24:12
+INJECTED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:1:1-75:12
+INJECTED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:1:1-75:12
+INJECTED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:1:1-75:12
+	package
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:2:5-40
+		INJECTED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:1:1-75:12
+		INJECTED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:1:1-75:12
+		INJECTED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:1:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:10:5-67
+MERGED from [:google_sign_in] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/google_sign_in/intermediates/library_manifest/release/AndroidManifest.xml:7:5-67
+MERGED from [:google_sign_in] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/google_sign_in/intermediates/library_manifest/release/AndroidManifest.xml:7:5-67
+MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:23:5-67
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/47ecc98bb2c0f69743dda7c4d30caee5/jetified-play-services-maps-17.0.0/AndroidManifest.xml:24:5-67
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/47ecc98bb2c0f69743dda7c4d30caee5/jetified-play-services-maps-17.0.0/AndroidManifest.xml:24:5-67
+	android:name
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:10:22-64
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:11:5-81
+MERGED from [:image_picker] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:8:5-81
+MERGED from [:image_picker] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:8:5-81
+	android:name
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:11:22-78
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:12:5-75
+	android:name
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:12:22-72
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:13:5-79
+MERGED from [:connectivity] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/connectivity/intermediates/library_manifest/release/AndroidManifest.xml:7:5-79
+MERGED from [:connectivity] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/connectivity/intermediates/library_manifest/release/AndroidManifest.xml:7:5-79
+MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/47ecc98bb2c0f69743dda7c4d30caee5/jetified-play-services-maps-17.0.0/AndroidManifest.xml:23:5-79
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/47ecc98bb2c0f69743dda7c4d30caee5/jetified-play-services-maps-17.0.0/AndroidManifest.xml:23:5-79
+	android:name
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:13:22-76
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:14:5-81
+MERGED from [:location] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/location/intermediates/library_manifest/release/AndroidManifest.xml:7:5-81
+MERGED from [:location] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/location/intermediates/library_manifest/release/AndroidManifest.xml:7:5-81
+	android:name
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:14:22-78
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:15:5-79
+MERGED from [:location] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/location/intermediates/library_manifest/release/AndroidManifest.xml:8:5-79
+MERGED from [:location] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/location/intermediates/library_manifest/release/AndroidManifest.xml:8:5-79
+	android:name
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:15:22-76
+uses-permission#android.permission.CALL_PHONE
+ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:16:5-69
+	android:name
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:16:22-66
+uses-permission#android.permission.CAMERA
+ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:17:5-65
+MERGED from [:flutter_barcode_scanner] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/flutter_barcode_scanner/intermediates/library_manifest/release/AndroidManifest.xml:9:5-65
+MERGED from [:flutter_barcode_scanner] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/flutter_barcode_scanner/intermediates/library_manifest/release/AndroidManifest.xml:9:5-65
+	android:name
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:17:22-62
+uses-feature#0x00030001
+ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:18:5-20:35
+	android:glEsVersion
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:19:9-41
+	android:required
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:20:9-32
+uses-feature#android.hardware.opengles.aep
+ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:21:5-23:35
+	android:required
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:23:9-32
+	android:name
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:22:9-53
+uses-permission#com.ondoor.ondoprationapp.permission.MAPS_RECEIVE
+ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:25:5-89
+	android:name
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:25:22-86
+application
+ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:27:5-74:19
+MERGED from [:firebase_auth] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/firebase_auth/intermediates/library_manifest/release/AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_auth] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/firebase_auth/intermediates/library_manifest/release/AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_core] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/firebase_core/intermediates/library_manifest/release/AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_core] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/firebase_core/intermediates/library_manifest/release/AndroidManifest.xml:7:5-13:19
+MERGED from [:geolocator_android] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/geolocator_android/intermediates/library_manifest/release/AndroidManifest.xml:9:5-15:19
+MERGED from [:geolocator_android] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/geolocator_android/intermediates/library_manifest/release/AndroidManifest.xml:9:5-15:19
+MERGED from [:flutter_barcode_scanner] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/flutter_barcode_scanner/intermediates/library_manifest/release/AndroidManifest.xml:15:5-19:19
+MERGED from [:flutter_barcode_scanner] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/flutter_barcode_scanner/intermediates/library_manifest/release/AndroidManifest.xml:15:5-19:19
+MERGED from [:image_picker] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:10:5-20:19
+MERGED from [:image_picker] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:10:5-20:19
+MERGED from [:url_launcher_android] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/url_launcher_android/intermediates/library_manifest/release/AndroidManifest.xml:7:5-12:19
+MERGED from [:url_launcher_android] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/url_launcher_android/intermediates/library_manifest/release/AndroidManifest.xml:7:5-12:19
+MERGED from [:flutter_background] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/flutter_background/intermediates/library_manifest/release/AndroidManifest.xml:10:5-18:19
+MERGED from [:flutter_background] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/flutter_background/intermediates/library_manifest/release/AndroidManifest.xml:10:5-18:19
+MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:26:5-81:19
+MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:26:5-81:19
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/aee5a28c0852d97e9ad1af648de48ef2/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/aee5a28c0852d97e9ad1af648de48ef2/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.firebase:firebase-common:20.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/40bbf436a7f643549fdd4842744d1f65/jetified-firebase-common-20.0.0/AndroidManifest.xml:25:5-38:19
+MERGED from [com.google.firebase:firebase-common:20.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/40bbf436a7f643549fdd4842744d1f65/jetified-firebase-common-20.0.0/AndroidManifest.xml:25:5-38:19
+MERGED from [com.google.android.material:material:1.3.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/759630e4672f2183bc3380ac0a34546d/material-1.3.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.3.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/759630e4672f2183bc3380ac0a34546d/material-1.3.0/AndroidManifest.xml:22:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/4d5a291bf66f233c9c34d6084bdd32ad/constraintlayout-2.0.1/AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/4d5a291bf66f233c9c34d6084bdd32ad/constraintlayout-2.0.1/AndroidManifest.xml:9:5-20
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/47ecc98bb2c0f69743dda7c4d30caee5/jetified-play-services-maps-17.0.0/AndroidManifest.xml:30:5-36:19
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/47ecc98bb2c0f69743dda7c4d30caee5/jetified-play-services-maps-17.0.0/AndroidManifest.xml:30:5-36:19
+MERGED from [com.google.android.gms:play-services-auth:20.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/d7b100f79411e76e158781251b72f8de/jetified-play-services-auth-20.0.1/AndroidManifest.xml:22:5-38:19
+MERGED from [com.google.android.gms:play-services-auth:20.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/d7b100f79411e76e158781251b72f8de/jetified-play-services-auth-20.0.1/AndroidManifest.xml:22:5-38:19
+MERGED from [com.google.android.gms:play-services-location:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/fe545284e4690c3bc16bf30f54cb1300/jetified-play-services-location-17.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-location:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/fe545284e4690c3bc16bf30f54cb1300/jetified-play-services-location-17.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-vision:20.1.3] /Users/mac/.gradle/caches/transforms-2/files-2.1/03b0392cb1a81fd4484b9213947a17e0/jetified-play-services-vision-20.1.3/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-vision:20.1.3] /Users/mac/.gradle/caches/transforms-2/files-2.1/03b0392cb1a81fd4484b9213947a17e0/jetified-play-services-vision-20.1.3/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-vision-common:19.1.3] /Users/mac/.gradle/caches/transforms-2/files-2.1/a8036b43643c49b6f61df220a0e1c647/jetified-play-services-vision-common-19.1.3/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-vision-common:19.1.3] /Users/mac/.gradle/caches/transforms-2/files-2.1/a8036b43643c49b6f61df220a0e1c647/jetified-play-services-vision-common-19.1.3/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/107a9f561afadc75e4b85e1715359c0e/jetified-play-services-safetynet-17.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/107a9f561afadc75e4b85e1715359c0e/jetified-play-services-safetynet-17.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-clearcut:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/4b3e51523a0d1c514e3e2dbb3110238e/jetified-play-services-clearcut-17.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-clearcut:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/4b3e51523a0d1c514e3e2dbb3110238e/jetified-play-services-clearcut-17.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-phenotype:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/da82821c30e67067fca31e55e8087326/jetified-play-services-phenotype-17.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-phenotype:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/da82821c30e67067fca31e55e8087326/jetified-play-services-phenotype-17.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/53bcbd050fa0c8e56cb749bd3de993f5/jetified-play-services-base-18.0.1/AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/53bcbd050fa0c8e56cb749bd3de993f5/jetified-play-services-base-18.0.1/AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/020a226982ab8722edfdb3521930d0d2/jetified-play-services-places-placereport-17.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/020a226982ab8722edfdb3521930d0d2/jetified-play-services-places-placereport-17.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/e6c31d0f90a2440f79a174c39cd814c5/jetified-play-services-tasks-18.0.1/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/e6c31d0f90a2440f79a174c39cd814c5/jetified-play-services-tasks-18.0.1/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/3044337a3f24746fe570fb88956a0694/jetified-play-services-basement-18.0.0/AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/3044337a3f24746fe570fb88956a0694/jetified-play-services-basement-18.0.0/AndroidManifest.xml:20:5-24:19
+MERGED from [androidx.core:core:1.3.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/36be725fde34aed112cc01aeed82d65c/core-1.3.1/AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.3.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/36be725fde34aed112cc01aeed82d65c/core-1.3.1/AndroidManifest.xml:24:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/5b354365db9f41fc891cd8e3e12ffdd4/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/5b354365db9f41fc891cd8e3e12ffdd4/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.3.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/36be725fde34aed112cc01aeed82d65c/core-1.3.1/AndroidManifest.xml:24:18-86
+	android:label
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:29:9-30
+	android:roundIcon
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:30:3-42
+	android:largeHeap
+		ADDED from [:flutter_barcode_scanner] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/flutter_barcode_scanner/intermediates/library_manifest/release/AndroidManifest.xml:16:9-33
+	android:icon
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:31:9-43
+	android:theme
+		ADDED from [:flutter_barcode_scanner] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/flutter_barcode_scanner/intermediates/library_manifest/release/AndroidManifest.xml:17:9-59
+activity#com.ondoor.ondoprationapp.MainActivity
+ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:39:9-67:20
+	android:launchMode
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:41:13-43
+	android:hardwareAccelerated
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:44:13-47
+	android:windowSoftInputMode
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:45:13-55
+	android:configChanges
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:43:13-163
+	android:theme
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:42:13-47
+	android:name
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:40:13-41
+meta-data#io.flutter.embedding.android.NormalTheme
+ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:50:13-53:17
+	android:resource
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:52:15-52
+	android:name
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:51:15-70
+meta-data#io.flutter.embedding.android.SplashScreenDrawable
+ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:59:13-62:17
+	android:resource
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:61:15-61
+	android:name
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:60:15-79
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:63:13-66:29
+action#android.intent.action.MAIN
+ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:64:17-68
+	android:name
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:64:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:65:17-76
+	android:name
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:65:27-74
+meta-data#com.google.android.geo.API_KEY
+ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:68:3-70:62
+	android:value
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:70:4-59
+	android:name
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:69:4-49
+meta-data#flutterEmbedding
+ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:71:9-73:33
+	android:value
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:73:13-30
+	android:name
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:72:13-44
+uses-sdk
+INJECTED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml
+INJECTED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml
+MERGED from [:auth_provider] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/auth_provider/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:auth_provider] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/auth_provider/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:sign_in_with_apple] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/sign_in_with_apple/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:sign_in_with_apple] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/sign_in_with_apple/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:firebase_auth] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/firebase_auth/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:firebase_auth] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/firebase_auth/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:firebase_core] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/firebase_core/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:firebase_core] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/firebase_core/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:geolocator_android] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/geolocator_android/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:geolocator_android] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/geolocator_android/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:google_maps_flutter] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/google_maps_flutter/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:google_maps_flutter] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/google_maps_flutter/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_barcode_scanner] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/flutter_barcode_scanner/intermediates/library_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:flutter_barcode_scanner] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/flutter_barcode_scanner/intermediates/library_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:flutter_plugin_android_lifecycle] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/flutter_plugin_android_lifecycle/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_plugin_android_lifecycle] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/flutter_plugin_android_lifecycle/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:sqflite] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/sqflite/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:sqflite] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/sqflite/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:image_picker] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:image_picker] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher_android] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/url_launcher_android/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher_android] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/url_launcher_android/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:path_provider_android] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/path_provider_android/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:path_provider_android] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/path_provider_android/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:get_version] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/get_version/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:get_version] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/get_version/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:flutter_native_image] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/flutter_native_image/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_native_image] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/flutter_native_image/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences_android] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/shared_preferences_android/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences_android] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/shared_preferences_android/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_background] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/flutter_background/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_background] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/flutter_background/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:device_info] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/device_info/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:device_info] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/device_info/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:connectivity] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/connectivity/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:connectivity] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/connectivity/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:fluttertoast] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/fluttertoast/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:fluttertoast] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/fluttertoast/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:location] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/location/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:location] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/location/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:permission_handler] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/permission_handler/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:permission_handler] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/permission_handler/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:google_sign_in] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/google_sign_in/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:google_sign_in] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/google_sign_in/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:package_info] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/package_info/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [:package_info] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/package_info/intermediates/library_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:21:5-44
+MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:21:5-44
+MERGED from [androidx.browser:browser:1.2.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/fdaa7b46fe0b3682afc79ec26855ae18/browser-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.browser:browser:1.2.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/fdaa7b46fe0b3682afc79ec26855ae18/browser-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/aee5a28c0852d97e9ad1af648de48ef2/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/aee5a28c0852d97e9ad1af648de48ef2/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-common:20.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/40bbf436a7f643549fdd4842744d1f65/jetified-firebase-common-20.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.firebase:firebase-common:20.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/40bbf436a7f643549fdd4842744d1f65/jetified-firebase-common-20.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.material:material:1.3.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/759630e4672f2183bc3380ac0a34546d/material-1.3.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.3.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/759630e4672f2183bc3380ac0a34546d/material-1.3.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/4d5a291bf66f233c9c34d6084bdd32ad/constraintlayout-2.0.1/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/4d5a291bf66f233c9c34d6084bdd32ad/constraintlayout-2.0.1/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.appcompat:appcompat:1.2.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/7b548240c63e99169b58b3202fe150a8/appcompat-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.2.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/7b548240c63e99169b58b3202fe150a8/appcompat-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/47ecc98bb2c0f69743dda7c4d30caee5/jetified-play-services-maps-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/47ecc98bb2c0f69743dda7c4d30caee5/jetified-play-services-maps-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/092400e215ed09deef871d5660a3f28d/legacy-support-v4-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/092400e215ed09deef871d5660a3f28d/legacy-support-v4-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth:20.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/d7b100f79411e76e158781251b72f8de/jetified-play-services-auth-20.0.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth:20.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/d7b100f79411e76e158781251b72f8de/jetified-play-services-auth-20.0.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/b3bfe8565be9e9cef9b83063da338856/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/b3bfe8565be9e9cef9b83063da338856/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.gms:play-services-location:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/fe545284e4690c3bc16bf30f54cb1300/jetified-play-services-location-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-location:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/fe545284e4690c3bc16bf30f54cb1300/jetified-play-services-location-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-vision:20.1.3] /Users/mac/.gradle/caches/transforms-2/files-2.1/03b0392cb1a81fd4484b9213947a17e0/jetified-play-services-vision-20.1.3/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-vision:20.1.3] /Users/mac/.gradle/caches/transforms-2/files-2.1/03b0392cb1a81fd4484b9213947a17e0/jetified-play-services-vision-20.1.3/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-vision-common:19.1.3] /Users/mac/.gradle/caches/transforms-2/files-2.1/a8036b43643c49b6f61df220a0e1c647/jetified-play-services-vision-common-19.1.3/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-vision-common:19.1.3] /Users/mac/.gradle/caches/transforms-2/files-2.1/a8036b43643c49b6f61df220a0e1c647/jetified-play-services-vision-common-19.1.3/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/40b37bd8cff18c5c827969224e8445ac/jetified-play-services-auth-api-phone-18.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/40b37bd8cff18c5c827969224e8445ac/jetified-play-services-auth-api-phone-18.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:18.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/1667f74a5ed7ffd059babc26731ee810/jetified-play-services-auth-base-18.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:18.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/1667f74a5ed7ffd059babc26731ee810/jetified-play-services-auth-base-18.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/107a9f561afadc75e4b85e1715359c0e/jetified-play-services-safetynet-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/107a9f561afadc75e4b85e1715359c0e/jetified-play-services-safetynet-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-clearcut:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/4b3e51523a0d1c514e3e2dbb3110238e/jetified-play-services-clearcut-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-clearcut:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/4b3e51523a0d1c514e3e2dbb3110238e/jetified-play-services-clearcut-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-flags:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/1ed5f3c3f8078f0e67758952954bac47/jetified-play-services-flags-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-flags:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/1ed5f3c3f8078f0e67758952954bac47/jetified-play-services-flags-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-phenotype:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/da82821c30e67067fca31e55e8087326/jetified-play-services-phenotype-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-phenotype:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/da82821c30e67067fca31e55e8087326/jetified-play-services-phenotype-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/53bcbd050fa0c8e56cb749bd3de993f5/jetified-play-services-base-18.0.1/AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/53bcbd050fa0c8e56cb749bd3de993f5/jetified-play-services-base-18.0.1/AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/020a226982ab8722edfdb3521930d0d2/jetified-play-services-places-placereport-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/020a226982ab8722edfdb3521930d0d2/jetified-play-services-places-placereport-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/e6c31d0f90a2440f79a174c39cd814c5/jetified-play-services-tasks-18.0.1/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/e6c31d0f90a2440f79a174c39cd814c5/jetified-play-services-tasks-18.0.1/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/3044337a3f24746fe570fb88956a0694/jetified-play-services-basement-18.0.0/AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/3044337a3f24746fe570fb88956a0694/jetified-play-services-basement-18.0.0/AndroidManifest.xml:18:5-43
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/ab285a53cfb44142c67f761db34050aa/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/ab285a53cfb44142c67f761db34050aa/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/83499ebaf1118f42ac76c9fa1d10e5c1/jetified-appcompat-resources-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/83499ebaf1118f42ac76c9fa1d10e5c1/jetified-appcompat-resources-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/6e7425f7d840c9d1615bb7f03f178d5a/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/6e7425f7d840c9d1615bb7f03f178d5a/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/651fae681d612f946ba633b4054a3431/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/651fae681d612f946ba633b4054a3431/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/288f85b2e3a23fb0a20247fa182d2a5b/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/288f85b2e3a23fb0a20247fa182d2a5b/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.transition:transition:1.2.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/f20a1d198a32f4841147014e9475cbbb/transition-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.2.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/f20a1d198a32f4841147014e9475cbbb/transition-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/5e27641f5efbb87ec7cf970102848731/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/5e27641f5efbb87ec7cf970102848731/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/a8e38c7f27379c849e2be3b6cfc3e9ca/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/a8e38c7f27379c849e2be3b6cfc3e9ca/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.media:media:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/ea04720e0b4081dd8f6de857b9c8529e/media-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/ea04720e0b4081dd8f6de857b9c8529e/media-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/46bc9ab0f0037082aa6ac9c17d80598b/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/46bc9ab0f0037082aa6ac9c17d80598b/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/ae249e60ba5ed8f411c39ac541002f51/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/ae249e60ba5ed8f411c39ac541002f51/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/e35f2572b62e15e58a7b87256ef5d90d/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/e35f2572b62e15e58a7b87256ef5d90d/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/0c73f77a0fcc398fc7a25329f90a2a2f/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/0c73f77a0fcc398fc7a25329f90a2a2f/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/c54a0c9f8fefd38470f84f157a8e2a61/jetified-activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/c54a0c9f8fefd38470f84f157a8e2a61/jetified-activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/a55da1b30fb1d6f1483dc9c69398e78f/slidingpanelayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/a55da1b30fb1d6f1483dc9c69398e78f/slidingpanelayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/380e8b4627808f336e73376b93cf64dd/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/380e8b4627808f336e73376b93cf64dd/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/e5cce30b4b16bf2ebd10cbe5d0166bb0/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/e5cce30b4b16bf2ebd10cbe5d0166bb0/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/4f43c49c672119db1abbb66fcaa7ae6e/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/4f43c49c672119db1abbb66fcaa7ae6e/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/3c382bf184577bb9d14e0ae1ee993a49/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/3c382bf184577bb9d14e0ae1ee993a49/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.3.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/36be725fde34aed112cc01aeed82d65c/core-1.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.3.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/36be725fde34aed112cc01aeed82d65c/core-1.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/5b354365db9f41fc891cd8e3e12ffdd4/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/5b354365db9f41fc891cd8e3e12ffdd4/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/d50852f951d4af2e924fd823f4c32efe/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/d50852f951d4af2e924fd823f4c32efe/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/550853b0c9e4b42013fc735cfcade70b/lifecycle-runtime-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/550853b0c9e4b42013fc735cfcade70b/lifecycle-runtime-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/0eb331a55c4e25b448d741706ad6a804/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/0eb331a55c4e25b448d741706ad6a804/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/2d799776f8079b6790c8ec4675465112/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/2d799776f8079b6790c8ec4675465112/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/adaa37f245ea29030b0b65554e5d97c1/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/adaa37f245ea29030b0b65554e5d97c1/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/774685d525d2c608661e3523bbae3285/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/774685d525d2c608661e3523bbae3285/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/0442ff76a09b741cd56acc7b47da8351/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/0442ff76a09b741cd56acc7b47da8351/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/43450387c913fba9937ec47fae74af65/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/43450387c913fba9937ec47fae74af65/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/616dab86b51f48ecac7309e822f5dd60/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/616dab86b51f48ecac7309e822f5dd60/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/06dffba93119699bb8be130217bc13ee/jetified-firebase-components-17.0.0/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/06dffba93119699bb8be130217bc13ee/jetified-firebase-components-17.0.0/AndroidManifest.xml:19:5-21:41
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/1a34b0d7df866944ef29fd9280102d81/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/1a34b0d7df866944ef29fd9280102d81/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/eff941c696c91d1a4a1b999e17c8d9f5/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/eff941c696c91d1a4a1b999e17c8d9f5/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/7b896e029d5b1dac2f05f3cd20db6a81/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/7b896e029d5b1dac2f05f3cd20db6a81/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/7abc322ea44e88b7cb72a185c078ff73/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/7abc322ea44e88b7cb72a185c078ff73/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:20:5-22:41
+INJECTED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml
+INJECTED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml
+service#com.google.firebase.components.ComponentDiscoveryService
+ADDED from [:firebase_auth] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/firebase_auth/intermediates/library_manifest/release/AndroidManifest.xml:8:9-12:19
+MERGED from [:firebase_core] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/firebase_core/intermediates/library_manifest/release/AndroidManifest.xml:8:9-12:19
+MERGED from [:firebase_core] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/firebase_core/intermediates/library_manifest/release/AndroidManifest.xml:8:9-12:19
+MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:74:9-80:19
+MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:74:9-80:19
+MERGED from [com.google.firebase:firebase-common:20.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/40bbf436a7f643549fdd4842744d1f65/jetified-firebase-common-20.0.0/AndroidManifest.xml:33:9-37:35
+MERGED from [com.google.firebase:firebase-common:20.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/40bbf436a7f643549fdd4842744d1f65/jetified-firebase-common-20.0.0/AndroidManifest.xml:33:9-37:35
+	android:exported
+		ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:76:13-37
+	tools:targetApi
+		ADDED from [com.google.firebase:firebase-common:20.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/40bbf436a7f643549fdd4842744d1f65/jetified-firebase-common-20.0.0/AndroidManifest.xml:37:13-32
+	android:directBootAware
+		ADDED from [com.google.firebase:firebase-common:20.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/40bbf436a7f643549fdd4842744d1f65/jetified-firebase-common-20.0.0/AndroidManifest.xml:35:13-43
+	android:name
+		ADDED from [:firebase_auth] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/firebase_auth/intermediates/library_manifest/release/AndroidManifest.xml:8:18-89
+meta-data#com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar
+ADDED from [:firebase_auth] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/firebase_auth/intermediates/library_manifest/release/AndroidManifest.xml:9:13-11:85
+	android:value
+		ADDED from [:firebase_auth] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/firebase_auth/intermediates/library_manifest/release/AndroidManifest.xml:11:17-82
+	android:name
+		ADDED from [:firebase_auth] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/firebase_auth/intermediates/library_manifest/release/AndroidManifest.xml:10:17-124
+meta-data#com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar
+ADDED from [:firebase_core] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/firebase_core/intermediates/library_manifest/release/AndroidManifest.xml:9:13-11:85
+	android:value
+		ADDED from [:firebase_core] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/firebase_core/intermediates/library_manifest/release/AndroidManifest.xml:11:17-82
+	android:name
+		ADDED from [:firebase_core] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/firebase_core/intermediates/library_manifest/release/AndroidManifest.xml:10:17-124
+uses-permission#android.permission.FOREGROUND_SERVICE
+ADDED from [:geolocator_android] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/geolocator_android/intermediates/library_manifest/release/AndroidManifest.xml:7:5-77
+MERGED from [:flutter_background] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/flutter_background/intermediates/library_manifest/release/AndroidManifest.xml:8:5-77
+MERGED from [:flutter_background] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/flutter_background/intermediates/library_manifest/release/AndroidManifest.xml:8:5-77
+	android:name
+		ADDED from [:geolocator_android] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/geolocator_android/intermediates/library_manifest/release/AndroidManifest.xml:7:22-74
+service#com.baseflow.geolocator.GeolocatorLocationService
+ADDED from [:geolocator_android] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/geolocator_android/intermediates/library_manifest/release/AndroidManifest.xml:10:9-14:56
+	android:enabled
+		ADDED from [:geolocator_android] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/geolocator_android/intermediates/library_manifest/release/AndroidManifest.xml:12:13-35
+	android:exported
+		ADDED from [:geolocator_android] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/geolocator_android/intermediates/library_manifest/release/AndroidManifest.xml:13:13-37
+	android:foregroundServiceType
+		ADDED from [:geolocator_android] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/geolocator_android/intermediates/library_manifest/release/AndroidManifest.xml:14:13-53
+	android:name
+		ADDED from [:geolocator_android] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/geolocator_android/intermediates/library_manifest/release/AndroidManifest.xml:11:13-77
+uses-feature#android.hardware.camera
+ADDED from [:flutter_barcode_scanner] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/flutter_barcode_scanner/intermediates/library_manifest/release/AndroidManifest.xml:11:5-60
+	android:name
+		ADDED from [:flutter_barcode_scanner] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/flutter_barcode_scanner/intermediates/library_manifest/release/AndroidManifest.xml:11:19-57
+uses-permission#android.permission.FLASHLIGHT
+ADDED from [:flutter_barcode_scanner] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/flutter_barcode_scanner/intermediates/library_manifest/release/AndroidManifest.xml:13:5-69
+	android:name
+		ADDED from [:flutter_barcode_scanner] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/flutter_barcode_scanner/intermediates/library_manifest/release/AndroidManifest.xml:13:22-66
+activity#com.amolg.flutterbarcodescanner.BarcodeCaptureActivity
+ADDED from [:flutter_barcode_scanner] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/flutter_barcode_scanner/intermediates/library_manifest/release/AndroidManifest.xml:18:9-91
+	android:name
+		ADDED from [:flutter_barcode_scanner] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/flutter_barcode_scanner/intermediates/library_manifest/release/AndroidManifest.xml:18:19-88
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from [:image_picker] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:7:5-80
+	android:name
+		ADDED from [:image_picker] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:7:22-77
+provider#io.flutter.plugins.imagepicker.ImagePickerFileProvider
+ADDED from [:image_picker] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:11:9-19:20
+	android:grantUriPermissions
+		ADDED from [:image_picker] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:15:13-47
+	android:authorities
+		ADDED from [:image_picker] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:13:13-74
+	android:exported
+		ADDED from [:image_picker] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:14:13-37
+	android:name
+		ADDED from [:image_picker] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:12:13-82
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [:image_picker] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:16:13-18:75
+	android:resource
+		ADDED from [:image_picker] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:18:17-72
+	android:name
+		ADDED from [:image_picker] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:17:17-67
+activity#io.flutter.plugins.urllauncher.WebViewActivity
+ADDED from [:url_launcher_android] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/url_launcher_android/intermediates/library_manifest/release/AndroidManifest.xml:8:9-11:74
+	android:exported
+		ADDED from [:url_launcher_android] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/url_launcher_android/intermediates/library_manifest/release/AndroidManifest.xml:10:13-37
+	android:theme
+		ADDED from [:url_launcher_android] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/url_launcher_android/intermediates/library_manifest/release/AndroidManifest.xml:11:13-71
+	android:name
+		ADDED from [:url_launcher_android] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/url_launcher_android/intermediates/library_manifest/release/AndroidManifest.xml:9:13-74
+uses-permission#android.permission.WAKE_LOCK
+ADDED from [:flutter_background] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/flutter_background/intermediates/library_manifest/release/AndroidManifest.xml:7:5-68
+	android:name
+		ADDED from [:flutter_background] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/flutter_background/intermediates/library_manifest/release/AndroidManifest.xml:7:22-65
+service#de.julianassmann.flutter_background.IsolateHolderService
+ADDED from [:flutter_background] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/flutter_background/intermediates/library_manifest/release/AndroidManifest.xml:11:9-17:19
+	android:name
+		ADDED from [:flutter_background] /Users/mac/Desktop/pankaj/git/oteam_flutter/build/flutter_background/intermediates/library_manifest/release/AndroidManifest.xml:11:18-89
+activity#com.google.firebase.auth.internal.GenericIdpActivity
+ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:27:9-44:20
+	android:excludeFromRecents
+		ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:29:13-46
+	android:launchMode
+		ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:31:13-44
+	android:exported
+		ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:30:13-36
+	android:theme
+		ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:32:13-72
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:28:13-80
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:firebase.auth+data:path:/+data:scheme:genericidp
+ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:33:13-43:29
+action#android.intent.action.VIEW
+ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:34:17-69
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:34:25-66
+category#android.intent.category.DEFAULT
+ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:36:17-76
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:36:27-73
+category#android.intent.category.BROWSABLE
+ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:37:17-78
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:37:27-75
+data
+ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:39:17-42:51
+	android:path
+		ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:41:21-37
+	android:host
+		ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:40:21-49
+	android:scheme
+		ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:42:21-48
+activity#com.google.firebase.auth.internal.RecaptchaActivity
+ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:45:9-62:20
+	android:excludeFromRecents
+		ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:47:13-46
+	android:launchMode
+		ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:49:13-44
+	android:exported
+		ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:48:13-36
+	android:theme
+		ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:50:13-72
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:46:13-79
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:firebase.auth+data:path:/+data:scheme:recaptcha
+ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:51:13-61:29
+service#com.google.firebase.auth.api.fallback.service.FirebaseAuthFallbackService
+ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:64:9-73:19
+	android:enabled
+		ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:66:13-35
+	android:exported
+		ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:67:13-37
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:65:13-101
+intent-filter#action:name:com.google.firebase.auth.api.gms.service.START+category:name:android.intent.category.DEFAULT
+ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:68:13-72:29
+action#com.google.firebase.auth.api.gms.service.START
+ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:69:17-89
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:69:25-86
+meta-data#com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar
+ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:77:13-79:85
+	android:value
+		ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:79:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:21.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/5586d0fa0a161514cd50161de42584df/jetified-firebase-auth-21.0.1/AndroidManifest.xml:78:17-109
+provider#com.google.firebase.provider.FirebaseInitProvider
+ADDED from [com.google.firebase:firebase-common:20.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/40bbf436a7f643549fdd4842744d1f65/jetified-firebase-common-20.0.0/AndroidManifest.xml:26:9-31:39
+	android:authorities
+		ADDED from [com.google.firebase:firebase-common:20.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/40bbf436a7f643549fdd4842744d1f65/jetified-firebase-common-20.0.0/AndroidManifest.xml:28:13-72
+	android:exported
+		ADDED from [com.google.firebase:firebase-common:20.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/40bbf436a7f643549fdd4842744d1f65/jetified-firebase-common-20.0.0/AndroidManifest.xml:30:13-37
+	android:directBootAware
+		ADDED from [com.google.firebase:firebase-common:20.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/40bbf436a7f643549fdd4842744d1f65/jetified-firebase-common-20.0.0/AndroidManifest.xml:29:13-43
+	android:initOrder
+		ADDED from [com.google.firebase:firebase-common:20.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/40bbf436a7f643549fdd4842744d1f65/jetified-firebase-common-20.0.0/AndroidManifest.xml:31:13-36
+	android:name
+		ADDED from [com.google.firebase:firebase-common:20.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/40bbf436a7f643549fdd4842744d1f65/jetified-firebase-common-20.0.0/AndroidManifest.xml:27:13-77
+uses-feature#0x00020000
+ADDED from [com.google.android.gms:play-services-maps:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/47ecc98bb2c0f69743dda7c4d30caee5/jetified-play-services-maps-17.0.0/AndroidManifest.xml:26:5-28:35
+REJECTED from /Users/mac/Desktop/pankaj/git/oteam_flutter/android/app/src/main/AndroidManifest.xml:26:5-28:35
+	android:glEsVersion
+		ADDED from [com.google.android.gms:play-services-maps:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/47ecc98bb2c0f69743dda7c4d30caee5/jetified-play-services-maps-17.0.0/AndroidManifest.xml:27:9-41
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/47ecc98bb2c0f69743dda7c4d30caee5/jetified-play-services-maps-17.0.0/AndroidManifest.xml:28:9-32
+uses-library#org.apache.http.legacy
+ADDED from [com.google.android.gms:play-services-maps:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/47ecc98bb2c0f69743dda7c4d30caee5/jetified-play-services-maps-17.0.0/AndroidManifest.xml:33:9-35:40
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/47ecc98bb2c0f69743dda7c4d30caee5/jetified-play-services-maps-17.0.0/AndroidManifest.xml:35:13-37
+	android:name
+		ADDED from [com.google.android.gms:play-services-maps:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/47ecc98bb2c0f69743dda7c4d30caee5/jetified-play-services-maps-17.0.0/AndroidManifest.xml:34:13-50
+activity#com.google.android.gms.auth.api.signin.internal.SignInHubActivity
+ADDED from [com.google.android.gms:play-services-auth:20.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/d7b100f79411e76e158781251b72f8de/jetified-play-services-auth-20.0.1/AndroidManifest.xml:23:9-27:75
+	android:excludeFromRecents
+		ADDED from [com.google.android.gms:play-services-auth:20.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/d7b100f79411e76e158781251b72f8de/jetified-play-services-auth-20.0.1/AndroidManifest.xml:25:13-46
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:20.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/d7b100f79411e76e158781251b72f8de/jetified-play-services-auth-20.0.1/AndroidManifest.xml:26:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-auth:20.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/d7b100f79411e76e158781251b72f8de/jetified-play-services-auth-20.0.1/AndroidManifest.xml:27:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:20.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/d7b100f79411e76e158781251b72f8de/jetified-play-services-auth-20.0.1/AndroidManifest.xml:24:13-93
+service#com.google.android.gms.auth.api.signin.RevocationBoundService
+ADDED from [com.google.android.gms:play-services-auth:20.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/d7b100f79411e76e158781251b72f8de/jetified-play-services-auth-20.0.1/AndroidManifest.xml:33:9-37:51
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:20.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/d7b100f79411e76e158781251b72f8de/jetified-play-services-auth-20.0.1/AndroidManifest.xml:35:13-36
+	android:visibleToInstantApps
+		ADDED from [com.google.android.gms:play-services-auth:20.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/d7b100f79411e76e158781251b72f8de/jetified-play-services-auth-20.0.1/AndroidManifest.xml:37:13-48
+	android:permission
+		ADDED from [com.google.android.gms:play-services-auth:20.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/d7b100f79411e76e158781251b72f8de/jetified-play-services-auth-20.0.1/AndroidManifest.xml:36:13-107
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:20.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/d7b100f79411e76e158781251b72f8de/jetified-play-services-auth-20.0.1/AndroidManifest.xml:34:13-89
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:18.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/53bcbd050fa0c8e56cb749bd3de993f5/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:18.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/53bcbd050fa0c8e56cb749bd3de993f5/jetified-play-services-base-18.0.1/AndroidManifest.xml:22:19-43
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:18.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/53bcbd050fa0c8e56cb749bd3de993f5/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:18.0.1] /Users/mac/.gradle/caches/transforms-2/files-2.1/53bcbd050fa0c8e56cb749bd3de993f5/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:18.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/3044337a3f24746fe570fb88956a0694/jetified-play-services-basement-18.0.0/AndroidManifest.xml:21:9-23:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:18.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/3044337a3f24746fe570fb88956a0694/jetified-play-services-basement-18.0.0/AndroidManifest.xml:23:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:18.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/3044337a3f24746fe570fb88956a0694/jetified-play-services-basement-18.0.0/AndroidManifest.xml:22:13-58

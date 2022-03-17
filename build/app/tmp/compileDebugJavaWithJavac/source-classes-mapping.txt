@@ -1,0 +1,6 @@
+io/flutter/plugins/GeneratedPluginRegistrant.java
+ io.flutter.plugins.GeneratedPluginRegistrant
+com/ondoor/ondoprationapp/BuildConfig.java
+ com.ondoor.ondoprationapp.BuildConfig
+com/ondoor/ondoprationapp/MainActivity.java
+ com.ondoor.ondoprationapp.MainActivity

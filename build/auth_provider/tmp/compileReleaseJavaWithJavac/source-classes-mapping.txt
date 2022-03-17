@@ -1,0 +1,4 @@
+com/example/auth_provider/FlutterAuthPlugin.java
+ com.example.auth_provider.FlutterAuthPlugin
+com/example/auth_provider/BuildConfig.java
+ com.example.auth_provider.BuildConfig
