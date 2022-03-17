@@ -1,2 +1,0 @@
-de/julianassmann/flutter_background/BuildConfig.java
- de.julianassmann.flutter_background.BuildConfig

@@ -1,2 +1,0 @@
-com/appleeducate/getversion/BuildConfig.java
- com.appleeducate.getversion.BuildConfig
