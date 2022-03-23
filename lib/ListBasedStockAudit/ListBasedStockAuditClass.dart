@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 import 'package:flutter/cupertino.dart';
@@ -27,21 +28,32 @@ class ListBasedStockAuditActivity extends StatefulWidget {
 }
 
 class StockView extends State<ListBasedStockAuditActivity> {
-  List<RetriveModel> RefreshList_items = new List();
-  List<RetriveModel> DisputeList_items = new List();
-  List<RetriveModel> CloseList_items = new List();
+  List<RetriveModel> RefreshList_items = [];
+  List<RetriveModel> DisputeList_items = [];
+  List<RetriveModel> CloseList_items = [];
 
   final subject = new PublishSubject<String>();
   bool _isLoading = false;
-  List<RetriveModel> duplicateItems_Refresh = List<RetriveModel>();
-  List<RetriveModel> duplicateItems_Despute = List<RetriveModel>();
-  List<RetriveModel> duplicateItems_Close = List<RetriveModel>();
+  List<RetriveModel> duplicateItems_Refresh = [];
+  List<RetriveModel> duplicateItems_Despute = [];
+  List<RetriveModel> duplicateItems_Close = [];
 
   int active = 1;
   int current_index = 0;
   bool TransitAndLgsStatus = false;
 
   TextEditingController controller = new TextEditingController();
+
+  @override
+  void initState() {
+    getRefreshList();
+    getSearchItems();
+    getDisputeList();
+    getCloseList();
+    subject.stream.listen(_textChanged);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -64,7 +76,7 @@ class StockView extends State<ListBasedStockAuditActivity> {
                         onTap: () {
                           setState(() {
                             active = 1;
-                            GetRefreshList();
+                            getRefreshList();
                             setState(() {});
                           });
                         },
@@ -99,7 +111,7 @@ class StockView extends State<ListBasedStockAuditActivity> {
                     Expanded(
                       child: new InkWell(
                         onTap: () {
-                          GetDisputeList();
+                          getDisputeList();
 
                           setState(() {
                             //
@@ -137,7 +149,7 @@ class StockView extends State<ListBasedStockAuditActivity> {
                     Expanded(
                       child: new InkWell(
                         onTap: () {
-                          GetCloseList();
+                          getCloseList();
                           setState(() {
                             active = 3;
                             //getnotfound();
@@ -354,17 +366,8 @@ class StockView extends State<ListBasedStockAuditActivity> {
     );
   }
 
-  @override
-  void initState() {
-    getSearchItems();
-    GetRefreshList();
-    GetDisputeList();
-    GetCloseList();
-    subject.stream.listen(_textChanged);
-  }
-
   Future _textChanged(String text) async {
-    List<RetriveModel> dummySearchList = List<RetriveModel>();
+    List<RetriveModel> dummySearchList = [];
     switch (active) {
       case 1:
         dummySearchList.addAll(duplicateItems_Refresh);
@@ -378,7 +381,7 @@ class StockView extends State<ListBasedStockAuditActivity> {
     }
 
     if (text.isNotEmpty) {
-      List<RetriveModel> dummyListData = List<RetriveModel>();
+      List<RetriveModel> dummyListData = [];
       dummySearchList.forEach((item) {
         if (item.data['ItName']
                 .toString()
@@ -433,8 +436,8 @@ class StockView extends State<ListBasedStockAuditActivity> {
   String InTransit = "";
   String Stock = "";
   bool getstock = false;
-  Future<void> GetRefreshList() async {
-    RefreshList_items = new List();
+  Future<void> getRefreshList() async {
+    RefreshList_items = [];
     String COCO_ID =
         (await Utility.getStringPreference(GlobalConstant.COCO_ID));
     var data = GlobalConstant.GetMapForListBasedStockAudit(COCO_ID, "Fresh");
@@ -466,7 +469,8 @@ class StockView extends State<ListBasedStockAuditActivity> {
         if (data1['status'] == 0) {
           if (data1['ds']['tables'].length > 0) {
             var list = data1['ds']['tables'][0]['rowsList'];
-            SetListInItem(list);
+            log("list-->>>$list");
+            setListInItem(list);
           }
         } else {
           if (data1['msg'].toString() == "Login failed for user") {
@@ -479,23 +483,24 @@ class StockView extends State<ListBasedStockAuditActivity> {
         }
       } catch (e) {
         Dialogs.hideProgressDialog(context);
+        // print("else-->${e.toString()}");
         GlobalWidget.showMyDialog(
             context, "", GlobalConstant.interNetException(e.toString()));
       }
-      apiController
-          .postsNew(GlobalConstant.SignUp, json.encode(map2()))
-          .then((value) {
-        try {} catch (e) {
-          GlobalWidget.showMyDialog(context, "Error", "" + e.toString());
-        }
-      });
+      // apiController
+      //     .postsNew(GlobalConstant.SignUp, json.encode(map2()))
+      //     .then((value) {
+      //   try {} catch (e) {
+      //     GlobalWidget.showMyDialog(context, "Error", "" + e.toString());
+      //   }
+      // });
     } else {
       GlobalWidget.GetToast(context, "No Internet Connection");
     }
   }
 
-  Future<void> GetDisputeList() async {
-    DisputeList_items = new List();
+  Future<void> getDisputeList() async {
+    DisputeList_items = [];
     String COCO_ID =
         (await Utility.getStringPreference(GlobalConstant.COCO_ID));
 
@@ -529,13 +534,15 @@ class StockView extends State<ListBasedStockAuditActivity> {
         if (data1['status'] == 0) {
           if (data1['ds']['tables'].length > 0) {
             var list = data1['ds']['tables'][0]['rowsList'];
-            SetListInItemDispute(list);
+            print("getDisputeList--->else$list");
+            setListInItemDispute(list);
           }
         } else {
           if (data1['msg'].toString() == "Login failed for user") {
             GlobalWidget.showMyDialog(context, "Error",
                 "Invalid id or password.Please enter correct id psw or contact HR/IT");
           } else {
+            print("getDisputeList--->else");
             GlobalWidget.showMyDialog(
                 context, "Error", data1['msg'].toString());
           }
@@ -550,7 +557,7 @@ class StockView extends State<ListBasedStockAuditActivity> {
     }
   }
 
-  Future<void> SubmitItemDetail() async {
+  Future<void> submitItemDetail() async {
     String COCO_ID =
         (await Utility.getStringPreference(GlobalConstant.COCO_ID));
     Map<String, dynamic> map() => {
@@ -562,7 +569,7 @@ class StockView extends State<ListBasedStockAuditActivity> {
     Map<String, dynamic> mapobj() => {
           'cols': dmap,
         };
-    List a1 = new List();
+    List a1 = [];
     a1.add(mapobj());
 
     Map<String, dynamic> map3() => {
@@ -668,8 +675,8 @@ class StockView extends State<ListBasedStockAuditActivity> {
     }
   }
 
-  Future<void> GetCloseList() async {
-    CloseList_items = new List();
+  Future<void> getCloseList() async {
+    CloseList_items = [];
     var data = GlobalConstant.GetMapForListBasedStockAuditClose(SelectedListId);
     String userPass =
         (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
@@ -699,7 +706,7 @@ class StockView extends State<ListBasedStockAuditActivity> {
         if (data1['status'] == 0) {
           if (data1['ds']['tables'].length > 0) {
             var list = data1['ds']['tables'][0]['rowsList'];
-            SetListInItemClose(list);
+            setListInItemClose(list);
           }
         } else {
           if (data1['msg'].toString() == "Login failed for user") {
@@ -720,24 +727,28 @@ class StockView extends State<ListBasedStockAuditActivity> {
     }
   }
 
-  void SetListInItem(list) {
-    duplicateItems_Refresh = new List();
+  void setListInItem(list) {
+    duplicateItems_Refresh = [];
+    RefreshList_items = [];
     RefreshList_Count = 0;
-    SelectedListId = list[0]['cols']['Stbhid'];
+
     for (int i = 0; i < list.length; i++) {
-      int type = 2;
+      int type = 1;
       RefreshList_Count = RefreshList_Count + 1;
       duplicateItems_Refresh.add(new RetriveModel(list[i]['cols'], type));
     }
+
     RefreshList_items.addAll(duplicateItems_Refresh);
+
+    // SelectedListId = list[0]['cols']['Stbhid'];
     setState(() {});
   }
 
   String SelectedListId = "";
 
-  void SetListInItemDispute(list) {
-    duplicateItems_Despute = new List();
-    DisputeList_items = new List();
+  void setListInItemDispute(list) {
+    duplicateItems_Despute = [];
+    DisputeList_items = [];
     DisputeList_Count = 0;
     for (int i = 0; i < list.length; i++) {
       int type = 2;
@@ -745,12 +756,15 @@ class StockView extends State<ListBasedStockAuditActivity> {
       DisputeList_Count = DisputeList_Count + 1;
       duplicateItems_Despute.add(new RetriveModel(list[i]['cols'], type));
     }
+    log("setListInItemDispute-->${list.length}");
+
     DisputeList_items.addAll(duplicateItems_Despute);
+    log("DisputeList_items");
     setState(() {});
   }
 
-  void SetListInItemClose(list) {
-    duplicateItems_Close = new List();
+  void setListInItemClose(list) {
+    duplicateItems_Close = [];
     CloseList_Count = 0;
     for (int i = 0; i < list.length; i++) {
       int type = 3;
@@ -764,7 +778,7 @@ class StockView extends State<ListBasedStockAuditActivity> {
   }
 
   Future<void> _refresh() {
-    GetRefreshList();
+    getRefreshList();
   }
 
   int RefreshList_Count = 0;
@@ -871,7 +885,7 @@ class StockView extends State<ListBasedStockAuditActivity> {
             .toString();
         if (_formKey.currentState.validate()) {
           if (Stock.length > 0) {
-            SubmitItemDetail();
+            submitItemDetail();
           } else {
             GlobalWidget.GetToast(context,
                 "Logical stock is not available for this item.select item again.");
