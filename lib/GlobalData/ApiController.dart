@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:ondoprationapp/main.dart';
 
@@ -33,7 +34,7 @@ class ApiController {
       Uri.parse(url),
       headers: {'request_type': 'application'},
     );
-    print("response.statusCode--> ${response.statusCode}");
+    debugPrint("response.statusCode--> ${response.statusCode}");
     Utility.log("Api Response", "${response.body}");
     return response;
   }
@@ -59,7 +60,7 @@ class ApiController {
       // time out after 30 second
       return json.decode(map3().toString());
     });
-    print("${response.statusCode}");
+    debugPrint("${response.statusCode}");
     Utility.log(tag, "${response.body}");
     return response;
     //return null;
@@ -67,28 +68,32 @@ class ApiController {
 
   Future<Map<String, dynamic>> post({String url, Map input}) async {
     try {
-      Response response = await dio
-          .post(
+      Response response = await dio.post(
         url,
         data: input,
         options: Options(headers: {
           'Content-Type': 'application/json',
           'User-Agent': 'Mozilla/5.0 ( compatible )',
           'Accept': '*/*',
-        }),
-      )
-          .timeout(Duration(seconds: 30000), onTimeout: () {
-        Map<String, dynamic> map = {
-          'pname': 'TimeOut',
-          'value': true,
-        };
-
-        return json.decode(map.toString());
-      });
+        }, maxRedirects: 3, followRedirects: true, receiveTimeout: 60000, sendTimeout: 30000),
+      );
 
       return response.data;
     } catch (exception) {
-      print("exception--->$exception");
+      debugPrint("exception--->$exception");
+      if (exception is DioError) {
+        if (exception.type == DioErrorType.receiveTimeout ||
+            exception.type == DioErrorType.connectTimeout ||
+            exception.type == DioErrorType.sendTimeout) {
+          Map<String, dynamic> map = {
+            'pname': 'TimeOut',
+            'value': true,
+          };
+
+          return map;
+        }
+      }
+
       Map<String, dynamic> map = {
         'pname': 'TimeOut',
         'value': true,

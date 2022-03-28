@@ -9,7 +9,25 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="089e1f58-2f42-4f3b-ab60-b4e03e25c757" name="Default Changelist" comment="" />
+    <list default="true" id="089e1f58-2f42-4f3b-ab60-b4e03e25c757" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_base_16_0_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_base_16_0_1_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_basement_16_0_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_basement_16_0_1_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_location_16_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_location_16_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_tasks_16_0_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_tasks_16_0_1_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/android.app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/android.app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/DashBoard/DashBoard.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/DashBoard/DashBoard.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/DatabaseHelper/DBConstant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/DatabaseHelper/DBConstant.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/DatabaseHelper/DatabaseHelper.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/DatabaseHelper/DatabaseHelper.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/DatabaseHelper/data_sync.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/DatabaseHelper/data_sync.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/GRC_Inward/AddNewGrc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/GRC_Inward/AddNewGrc.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/GlobalData/ApiController.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/GlobalData/ApiController.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/GlobalData/GlobalFile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/GlobalData/GlobalFile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/ui/login/login_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/ui/login/login_screen.dart" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,7 +36,7 @@
   <component name="CompilerWorkspaceConfiguration">
     <option name="PARALLEL_COMPILATION" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[J8AAGF059911G56]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[0558632097001754]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />

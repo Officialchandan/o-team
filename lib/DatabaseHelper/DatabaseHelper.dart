@@ -12,12 +12,15 @@ import 'DBConstant.dart';
 
 class DatabaseHelper {
   DatabaseHelper._();
+
   static final DatabaseHelper db = DatabaseHelper._();
   Database _database;
 
-  Future<Database> get dataBaseInstance async {
-    //if (_database != null) return _database;
-    _database = await initDB();
+  Future<Database> dataBaseInstance() async {
+    if (_database == null) {
+      _database = await initDB();
+    }
+
     return _database;
   }
 
@@ -32,8 +35,9 @@ class DatabaseHelper {
 
   //Clear database
   clearDatabase() async {
+    debugPrint("clearDatabase-->");
     try {
-      final db = await dataBaseInstance;
+      final db = await dataBaseInstance();
       //here we execute a query to drop the table if exists which is called "tableName"
       //and could be given as method's input parameter too
       await db.execute("DROP TABLE IF EXISTS " + DBConstant.TABLE_ALL_PRODUCT);
@@ -44,8 +48,7 @@ class DatabaseHelper {
     }
   }
 
-  //Add product in all table
-
+  //Add product in table
   Future<int> addProductInAllTable(String productId, String barcode, String productData) async {
     print("addProductInAllTable--->");
 
@@ -54,7 +57,7 @@ class DatabaseHelper {
 
     try {
       print("Db-Id");
-      final db = await dataBaseInstance;
+      final db = await dataBaseInstance();
 
       // row to insert
       Map<String, dynamic> row = {
@@ -62,7 +65,7 @@ class DatabaseHelper {
         DBConstant.BAR_CODE: barcode,
         DBConstant.PRODUCT_DATA: productData,
       };
-      print("db.insert ${await db.insert(DBConstant.TABLE_ALL_PRODUCT, row)}");
+      // print("db.insert ${await db.insert(DBConstant.TABLE_ALL_PRODUCT, row)}");
       id = await db.insert(DBConstant.TABLE_ALL_PRODUCT, row);
       // print("Db-id--23> $id");
 
@@ -79,20 +82,15 @@ class DatabaseHelper {
     return id;
   }
 
-  getdbInstance() async {
-    var db = await dataBaseInstance;
-    return db;
-  }
-
   //check product if already exist in pending table
-  Future<bool> checkOrderIfAlreadyExist(String PRODUCT_ID) async {
+  Future<bool> checkOrderIfAlreadyExist(String productId) async {
     bool isExist = false;
     try {
-      final db = await dataBaseInstance;
+      final db = await dataBaseInstance();
 
       //String selectQuery = "SELECT  * FROM " + DBConstant.TABLE_ALL_PRODUCT + " WHERE " + DBConstant.ORDER_ID + " = '" + order_id + "' AND " + DBConstant.CUSTOM_PRODUCT_ID + "='" + custom_product_id + "' AND " + DBConstant.IS_OFFER_PRODUCT + "='" + isOfferProduct + "'";
       String selectQuery =
-          "SELECT  * FROM " + DBConstant.TABLE_ALL_PRODUCT + " WHERE " + DBConstant.PRODUCT_ID + " = '" + PRODUCT_ID + "'";
+          "SELECT  * FROM " + DBConstant.TABLE_ALL_PRODUCT + " WHERE " + DBConstant.PRODUCT_ID + " = '" + productId + "'";
       List<Map> result = await db.rawQuery(selectQuery);
       if (result.length > 0) {
         isExist = true;
@@ -105,14 +103,14 @@ class DatabaseHelper {
   }
 
   //Get Single ItmDetail
-  Future<dynamic> getSingleItemDetail(String PRODUCT_ID) async {
-    Utility.log("DbDAta", PRODUCT_ID);
+  Future<dynamic> getSingleItemDetail(String productId) async {
+    Utility.log("DbDAta", productId);
     var data;
     try {
-      final db = await dataBaseInstance;
+      final db = await dataBaseInstance();
       //String selectQuery = "SELECT  * FROM " + DBConstant.TABLE_ALL_PRODUCT + " WHERE " + DBConstant.ORDER_ID + " = '" + order_id + "' AND " + DBConstant.CUSTOM_PRODUCT_ID + "='" + custom_product_id + "' AND " + DBConstant.IS_OFFER_PRODUCT + "='" + isOfferProduct + "'";
       String selectQuery =
-          "SELECT  * FROM " + DBConstant.TABLE_ALL_PRODUCT + " WHERE " + DBConstant.PRODUCT_ID + " = '" + PRODUCT_ID + "'";
+          "SELECT  * FROM " + DBConstant.TABLE_ALL_PRODUCT + " WHERE " + DBConstant.PRODUCT_ID + " = '" + productId + "'";
       // List<Map> result = await db.rawQuery(selectQuery);
       List<Map> result = await db.rawQuery(selectQuery);
       // looping through all rows and adding to list
@@ -132,14 +130,14 @@ class DatabaseHelper {
   }
 
   //Get Single ItmDetail
-  Future<dynamic> getSingleItemDetailBarCode(String Barcode, BuildContext context) async {
-    Utility.log("DbDAta", Barcode);
+  Future<dynamic> getSingleItemDetailBarCode(String barcode, BuildContext context) async {
+    debugPrint("getSingleItemDetailBarCode--->$barcode");
     var data;
     try {
-      final db = await dataBaseInstance;
+      final db = await dataBaseInstance();
       //String selectQuery = "SELECT  * FROM " + DBConstant.TABLE_ALL_PRODUCT + " WHERE " + DBConstant.ORDER_ID + " = '" + order_id + "' AND " + DBConstant.CUSTOM_PRODUCT_ID + "='" + custom_product_id + "' AND " + DBConstant.IS_OFFER_PRODUCT + "='" + isOfferProduct + "'";
       // String selectQuery = "SELECT  * FROM " + DBConstant.TABLE_ALL_PRODUCT + " WHERE " + DBConstant.BAR_CODE + " LIKE %" + Barcode  + "%";
-      String selectQuery = "SELECT  * FROM All_Product WHERE " + DBConstant.BAR_CODE + " LIKE '%" + Barcode + "%'";
+      String selectQuery = "SELECT  * FROM All_Product WHERE " + DBConstant.BAR_CODE + " LIKE '%" + barcode + "%'";
       // List<Map> result = await db.rawQuery(selectQuery);
       List<Map> result = await db.rawQuery(selectQuery);
       // looping through all rows and adding to list
@@ -152,7 +150,7 @@ class DatabaseHelper {
           return data;
         }
       } else {
-        GlobalWidget.showMyDialog(context, "", "Barcode not read , try again.");
+        GlobalWidget.showMyDialog(context, "", "Product not found ...$barcode");
       }
       // db.close();
     } catch (error) {
@@ -162,13 +160,13 @@ class DatabaseHelper {
   }
 
   //Delete product from pending table
-  Future<int> deleteProductFromAllTabele(String PRODUCT_ID) async {
+  Future<int> deleteProductFromAllTable(String productId) async {
     int deleteId = 0;
     try {
-      final db = await dataBaseInstance;
+      final db = await dataBaseInstance();
 
       //db.close();
-      return await db.delete(DBConstant.TABLE_ALL_PRODUCT, where: DBConstant.PRODUCT_ID + ' = ?', whereArgs: [PRODUCT_ID]);
+      return await db.delete(DBConstant.TABLE_ALL_PRODUCT, where: DBConstant.PRODUCT_ID + ' = ?', whereArgs: [productId]);
     } catch (error) {
       throw Exception('DbBase.deleteProductFromPending: ' + error.toString());
     }
@@ -180,7 +178,7 @@ class DatabaseHelper {
     print("getAllPendingProducts---->");
     List arrayList = new List();
     try {
-      final db = await dataBaseInstance;
+      final db = await dataBaseInstance();
 
       //  String selectQuery = "SELECT  * FROM " + DBConstant.TABLE_ALL_PRODUCT + " Where " + DBConstant.ORDER_ID + "='" + order_id + "' ORDER BY " + DBConstant.CREATED_TIMESTAMP + " DESC";
       String selectQuery = "SELECT  * FROM " + DBConstant.TABLE_ALL_PRODUCT;
@@ -209,7 +207,7 @@ class DatabaseHelper {
   Future getAllPendingProducts1() async {
     List arrayList = [];
     // try {
-    final db = await dataBaseInstance.catchError((onError) {
+    final db = await dataBaseInstance().catchError((onError) {
       print("onError$onError");
     });
 
@@ -222,15 +220,16 @@ class DatabaseHelper {
 
     // looping through all rows and adding to list
     if (result.length > 0) {
+      debugPrint("arrayList-->${result.length}");
       for (int i = 0; i < result.length; i++) {
         arrayList.add(result[i][DBConstant.PRODUCT_DATA]);
         //print(result[i][DBConstant.PRODUCT_DATA]);
         // arrayList.add( result[i]);
-        print("arrayList-->${result.length}");
+
       }
     }
     try {
-      db.close();
+      // db.close();
     } catch (e) {}
     // close db connection
     //db.close();
@@ -241,30 +240,73 @@ class DatabaseHelper {
     return arrayList;
   }
 
-  Future<int> updateData(String item_id, String productData, String barcode) async {
+  Future<int> updateData(String itemId, String productData, String barcode) async {
     try {
-      final db = await dataBaseInstance;
+      final db = await dataBaseInstance();
       Map<String, dynamic> values = {
         DBConstant.PRODUCT_DATA: productData,
         DBConstant.BAR_CODE: barcode,
       };
 
       int updateCount =
-          await db.update(DBConstant.TABLE_ALL_PRODUCT, values, where: DBConstant.PRODUCT_ID + " = ?", whereArgs: [item_id]);
+          await db.update(DBConstant.TABLE_ALL_PRODUCT, values, where: DBConstant.PRODUCT_ID + " = ?", whereArgs: [itemId]);
 
       Utility.log("TAG", "Apiupdatecount " + updateCount.toString());
-      // close db connection
-      /*   db.transaction((txn) async {
-        await txn.rawInsert('''
-    UPDATE ${DBConstant.TABLE_ALL_PRODUCT}
-    SET ${DBConstant.PRODUCT_DATA} = ?
-    WHERE ${DBConstant.PRODUCT_ID} = ?
-    ''',
-            [ProductData, item_id]);
-      });*/
-      //db.close();
+      return updateCount;
     } catch (error) {
       print('DbBase.updateShortQuantityInSRTTable: ' + error.toString());
+      return 0;
     }
+  }
+
+  Future<int> addProduct(String productId, String barcode, String productData) async {
+    debugPrint("addProduct-->");
+    int i = 0;
+
+    try {
+      final db = await dataBaseInstance();
+
+      // Map<String, dynamic> product = await getProductById(productId);
+      Map<String, dynamic> row = {
+        DBConstant.PRODUCT_ID: productId,
+        DBConstant.BAR_CODE: barcode,
+        DBConstant.PRODUCT_DATA: productData,
+      };
+      i = await db.insert(DBConstant.TABLE_ALL_PRODUCT, row);
+      debugPrint("product inserted -->$i");
+      // if (product.isEmpty) {
+      //   i = await db.insert(DBConstant.TABLE_ALL_PRODUCT, row);
+      //   debugPrint("product inserted -->$i");
+      // } else {
+      //   i = await db.update(DBConstant.TABLE_ALL_PRODUCT, row, where: DBConstant.PRODUCT_ID + " = ?", whereArgs: [productId]);
+      //   debugPrint("product updated -->$i");
+      // }
+    } catch (exception) {
+      debugPrint("exception-->$exception");
+    }
+
+    return i;
+  }
+
+  Future<Map<String, dynamic>> getProductById(String pId) async {
+    debugPrint("getProductById-->");
+    Map<String, dynamic> product = {};
+
+    try {
+      final db = await dataBaseInstance();
+
+      List<Map<String, dynamic>> result =
+          await db.query(DBConstant.TABLE_ALL_PRODUCT, where: DBConstant.PRODUCT_ID + " = ?", whereArgs: [pId]);
+
+      debugPrint("result-->$result");
+
+      if (result.isNotEmpty) {
+        product = result.first;
+      }
+    } catch (exception) {
+      debugPrint("exception-->$exception");
+    }
+
+    return product;
   }
 }

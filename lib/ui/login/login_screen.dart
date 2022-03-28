@@ -4,7 +4,7 @@ import 'dart:developer';
 import "package:collection/collection.dart";
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ondoprationapp/DashBoard/DashBoard.dart';
+import 'package:ondoprationapp/DatabaseHelper/data_sync.dart';
 import 'package:ondoprationapp/GlobalData/ApiController.dart';
 import 'package:ondoprationapp/GlobalData/Dialogs.dart';
 import 'package:ondoprationapp/GlobalData/GlobalConstant.dart';
@@ -29,6 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   bool _obscureText1 = true;
   final TAG = "LoginScreen";
+
   // Toggles the password show status
   void _toggle1() {
     setState(() {
@@ -236,8 +237,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   Utility.setStringPreference(GlobalConstant.LAST_TS, "0");
                   Utility.setStringPreference(GlobalConstant.COCO_ID, Id.toString());
                   Utility.setStringPreference(GlobalConstant.COCO_NAME, name.toString());
+                  // Navigator.of(context).pushAndRemoveUntil(
+                  //   MaterialPageRoute(builder: (BuildContext context) => Dashboard()),
+                  //   ModalRoute.withName('/'),
+                  // );
                   Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(builder: (BuildContext context) => Dashboard()),
+                    MaterialPageRoute(builder: (BuildContext context) => DataSync()),
                     ModalRoute.withName('/'),
                   );
                 });

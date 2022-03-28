@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
@@ -88,18 +89,19 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
 
   Future getImage() async {
     try {
-      String qrResult = await FlutterBarcodeScanner.scanBarcode(
-          "#ff6666", "Cancel", false, ScanMode.DEFAULT);
+      String qrResult = await FlutterBarcodeScanner.scanBarcode("#ff6666", "Cancel", false, ScanMode.DEFAULT);
+
+      log("qrResult-->$qrResult");
 
 //      String qrResult = await BarcodeScanner.scan();
       result = qrResult;
-      var itemDetail =
-          await DatabaseHelper.db.getSingleItemDetailBarCode(qrResult, context);
+      var itemDetail = await DatabaseHelper.db.getSingleItemDetailBarCode(qrResult, context);
+
+      log("itemDetail-->$itemDetail");
+
       itemDetail = json.decode(itemDetail);
       SelectedListId = itemDetail["ItId"].toString();
-      Item_name = itemDetail["ItId"].toString() +
-          "  " +
-          itemDetail["ItName"].toString();
+      Item_name = itemDetail["ItId"].toString() + "  " + itemDetail["ItName"].toString();
       for (int i = 0; i < widget.product_qty_list.length; i++) {
         var colm = widget.product_qty_list[i]["cols"];
         if (colm["ItId"].toString() == itemDetail["ItId"].toString()) {
@@ -129,10 +131,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
         Navigator.of(context)
             .push(
           new MaterialPageRoute(
-              builder: (_) => new ItemSchemeActivity(
-                  PrdSch,
-                  itemDetail["ItId"].toString(),
-                  itemDetail["ItName"].toString())),
+              builder: (_) => new ItemSchemeActivity(PrdSch, itemDetail["ItId"].toString(), itemDetail["ItName"].toString())),
         )
             .then((val) {
           if (val != null) {
@@ -194,8 +193,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
       return;
     }
 
-    String COCO_ID =
-        (await Utility.getStringPreference(GlobalConstant.COCO_ID));
+    String COCO_ID = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
     List a1 = new List();
     //a1.add(mapobj());
 
@@ -294,11 +292,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
       if (date_val == 1) {
         if (dropdownValue == "Months") {
           try {
-            var newDate = new DateTime(
-                MfgDate.year,
-                MfgDate.month +
-                    int.parse(InwDayMonthController.text.toString()),
-                MfgDate.day);
+            var newDate = new DateTime(MfgDate.year, MfgDate.month + int.parse(InwDayMonthController.text.toString()), MfgDate.day);
             Utility.log("tag", dateFormat.format(newDate));
             mfdate_val = dateFormat.format(newDate);
           } catch (e) {
@@ -306,8 +300,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
           }
         } else {
           try {
-            var date = MfgDate.add(Duration(
-                days: int.parse(InwDayMonthController.text.toString())));
+            var date = MfgDate.add(Duration(days: int.parse(InwDayMonthController.text.toString())));
             Utility.log("tag", dateFormat.format(date));
             mfdate_val = dateFormat.format(date);
           } catch (e) {}
@@ -477,10 +470,8 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
 
     var data = map1();
 
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
-    String USER_ID =
-        (await Utility.getStringPreference(GlobalConstant.USER_ID));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String USER_ID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
 
     Map<String, dynamic> map2() => {
           'dbPassword': userPass,
@@ -499,8 +490,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
       try {
-        var value = await apiController.postsNew(
-            GlobalConstant.SignUp, json.encode(map2()));
+        var value = await apiController.postsNew(GlobalConstant.SignUp, json.encode(map2()));
         Dialogs.hideProgressDialog(context);
         var data = value;
         var data1 = json.decode(data.body);
@@ -510,17 +500,14 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
           Navigator.pop(context, true);
         } else {
           if (data1['msg'].toString() == "Login failed for user") {
-            GlobalWidget.showMyDialog(context, "Error",
-                "Invalid id or password.Please enter correct id psw or contact HR/IT");
+            GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
           } else {
-            GlobalWidget.showMyDialog(
-                context, "Error", data1['msg'].toString());
+            GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
           }
         }
       } catch (e) {
         Dialogs.hideProgressDialog(context);
-        GlobalWidget.showMyDialog(
-            context, "", GlobalConstant.interNetException(e.toString()));
+        GlobalWidget.showMyDialog(context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
       GlobalWidget.GetToast(context, "No Internet Connection");
@@ -543,8 +530,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
   Future<void> onSelectItem(ModelSearchItem item) async {
     SelectedListId = item.id;
     Item_name = item.id + "  " + item.name;
-    var itemDetail =
-        await DatabaseHelper.db.getSingleItemDetail(SelectedListId);
+    var itemDetail = await DatabaseHelper.db.getSingleItemDetail(SelectedListId);
     Utility.log("tag", item.id + "  " + Item_name);
     Utility.log("tag", itemDetail);
 
@@ -569,8 +555,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
       Schemeflg = true;
       Navigator.of(context)
           .push(new MaterialPageRoute(
-              builder: (_) => new ItemSchemeActivity(PrdSch.toString(),
-                  Datap["ItId"].toString(), Datap["ItName"].toString())))
+              builder: (_) => new ItemSchemeActivity(PrdSch.toString(), Datap["ItId"].toString(), Datap["ItName"].toString())))
           .then((val) {
         if (val != null) {
           var data = val;
@@ -608,8 +593,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
             double price_double = double.parse(price);
             double price_text = double.parse(text);
             if (price_double != price_text) {
-              GlobalWidget.showMyDialog(context, "",
-                  "MRP is different from prevailing MRP. Cross Check.");
+              GlobalWidget.showMyDialog(context, "", "MRP is different from prevailing MRP. Cross Check.");
             }
             GlobalWidget.fieldFocusChange(context, _FMRPFocus, _FQTYFocus);
           });
@@ -669,8 +653,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
           GlobalWidget.fieldFocusChange(context, _FFQTYFocus, _FSRemarkFocus);
         },
         controller: FreeQTYController,
-        decoration: GlobalWidget.TextFeildDecoration2(
-            "Free Quantity", "Free Quantity "),
+        decoration: GlobalWidget.TextFeildDecoration2("Free Quantity", "Free Quantity "),
         validator: (value) {
           /*if (value.isEmpty)
             {
@@ -685,8 +668,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
   ItemNameFeild() {
     return loading
         ? new Container()
-        : searchTextField = GlobalSearchItem.getAutoSelectionField(
-            key, SearchItems, searchTextField, onSelectItem);
+        : searchTextField = GlobalSearchItem.getAutoSelectionField(key, SearchItems, searchTextField, onSelectItem);
   }
 
   var SchemeRemarkController = TextEditingController();
@@ -699,12 +681,10 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
         focusNode: _FSRemarkFocus,
         //textInputAction: TextInputAction.done,
         onFieldSubmitted: (value) {
-          GlobalWidget.fieldFocusChange(
-              context, _FSRemarkFocus, _FGRemarkFocus);
+          GlobalWidget.fieldFocusChange(context, _FSRemarkFocus, _FGRemarkFocus);
         },
         controller: SchemeRemarkController,
-        decoration:
-            GlobalWidget.TextFeildDecoration2("Scheme Remark", "SchemeRemark"),
+        decoration: GlobalWidget.TextFeildDecoration2("Scheme Remark", "SchemeRemark"),
         /* validator: (value)
           {
             if (value.isEmpty)
@@ -731,8 +711,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
           GlobalWidget.fieldFocusChangeOnlyUnfouc(context, _FGRemarkFocus);
         },
         controller: GenralRemarkController,
-        decoration: GlobalWidget.TextFeildDecoration2(
-            "General Remark", "General Remark"),
+        decoration: GlobalWidget.TextFeildDecoration2("General Remark", "General Remark"),
         /*    validator: (value)
           {
             if (value.isEmpty)
@@ -779,17 +758,14 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
               double fqty = double.parse(FreeQTYController.text.toString());
               double qty = double.parse(QTYController.text.toString());
               if (fqty <= 0) {
-                GlobalWidget.GetToast(
-                    context, "Enter valid value for Free Qty");
+                GlobalWidget.GetToast(context, "Enter valid value for Free Qty");
               } else if (fqty + qty <= 0) {
-                GlobalWidget.GetToast(context,
-                    "Qty and Free Qty both can't be 0.Please enter correct Qty.");
+                GlobalWidget.GetToast(context, "Qty and Free Qty both can't be 0.Please enter correct Qty.");
               } else {
                 AddItemDetail();
               }
             } catch (e) {
-              GlobalWidget.GetToast(context,
-                  "Qty and Free Qty both can't be 0.Please enter correct Qty.");
+              GlobalWidget.GetToast(context, "Qty and Free Qty both can't be 0.Please enter correct Qty.");
             }
           } else {
             AddItemDetail();
@@ -943,8 +919,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
         onFieldSubmitted: (value) {
           GlobalWidget.fieldFocusChangeOnlyUnfouc(context, _FDateFocus);
         },
-        decoration: new InputDecoration(
-            hintText: "Select Date", fillColor: Colors.white),
+        decoration: new InputDecoration(hintText: "Select Date", fillColor: Colors.white),
         onShowPicker: (context, currentValue) async {
           return showDatePicker(
             context: context,
@@ -997,9 +972,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
                 },
                 child: new Row(
                   children: [
-                    Icon(date_val == 0
-                        ? Icons.check_box
-                        : Icons.check_box_outline_blank),
+                    Icon(date_val == 0 ? Icons.check_box : Icons.check_box_outline_blank),
                     Text("Exp Dt."),
                   ],
                 ),
@@ -1014,9 +987,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
                 },
                 child: new Row(
                   children: [
-                    Icon(date_val == 1
-                        ? Icons.check_box
-                        : Icons.check_box_outline_blank),
+                    Icon(date_val == 1 ? Icons.check_box : Icons.check_box_outline_blank),
                     Text("Mfg Dt."),
                   ],
                 ),

@@ -1,27 +1,29 @@
-class DBConstant
-{
+class DBConstant {
   static final String DATA_BASE_NAME = "retrieval_db";
 
+  static final String TABLE_ALL_PRODUCT = "All_Product";
 
-  static   final String TABLE_ALL_PRODUCT = "All_Product";
   static final String PRODUCT_DATA = "PRODUCT_DATA";
   static final String PRODUCT_ID = "PRODUCT_ID";
   static final String BAR_CODE = "BARCODE";
   static final String ID = "id";
 
+  static final String productTable = "products";
+  static final String itId = "it_id";
+  static final String itemName = "item_name";
+  static final String barcode = "barcode";
 
   static final String CREATE_All_PRODUCT_TABLE = "CREATE TABLE " +
       TABLE_ALL_PRODUCT +
       "(" +
-      ID+" INTEGER PRIMARY KEY AUTOINCREMENT , " +
+      ID +
+      " INTEGER PRIMARY KEY AUTOINCREMENT , " +
       PRODUCT_ID +
       " TEXT," +
       BAR_CODE +
       " TEXT," +
       PRODUCT_DATA +
       " TEXT )";
-
-
 }
 
 // work by gaurav
@@ -58,4 +60,3 @@ class DBConstant
 * Send Bill To ho.
 *
 * */
-

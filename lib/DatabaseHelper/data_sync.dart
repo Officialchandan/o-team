@@ -31,9 +31,7 @@ class _DataSyncState extends State<DataSync> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () {
-        _onBackPressed();
-      },
+      onWillPop: () async => _onBackPressed(),
       child: new Scaffold(
         body: new Container(
           color: Colors.white,
@@ -119,7 +117,7 @@ class _DataSyncState extends State<DataSync> {
   Future<void> updateData() async {
     print("updateData---->");
 
-    List l1 = await DatabaseHelper.db.getAllPendingProducts();
+    // List l1 = await DatabaseHelper.db.getAllPendingProducts();
     // print("dblength ${l1.length}");
     List a1 = [];
     String COCO_ID = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
@@ -203,13 +201,13 @@ class _DataSyncState extends State<DataSync> {
 
           for (int i = 0; i < products.length; i++) {
             try {
-              globalFile.addBook(products[i]['cols']);
+              await globalFile.addBook1(products[i]['cols']);
             } catch (e) {
               print("myerrro $e");
             }
           }
 
-          DatabaseHelper.db.getAllPendingProducts();
+          // DatabaseHelper.db.getAllPendingProducts();
           DateTime now = new DateTime.now();
           print("dateval ${now.millisecondsSinceEpoch}");
           Utility.setStringPreference(GlobalConstant.LAST_TS, "${now.millisecondsSinceEpoch}");

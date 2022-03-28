@@ -10,7 +10,7 @@ BaseOptions baseOptions = BaseOptions(headers: {
   'Content-Type': 'application/json',
   'User-Agent': 'Mozilla/5.0 ( compatible )',
   'Accept': '*/*',
-}, connectTimeout: 30000, receiveTimeout: 30000);
+}, connectTimeout: 60000, receiveTimeout: 60000);
 
 Dio dio = Dio(baseOptions);
 
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'O-team',
       theme: ThemeData(
         fontFamily: "Poppins-SemiBold",
         primarySwatch: Colors.blue,

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ import 'package:ondoprationapp/Attendence/AttendanceClass.dart';
 import 'package:ondoprationapp/BulkIndent/BulkIndentSecActivity.dart';
 import 'package:ondoprationapp/CounterPackage/CounterActivity.dart';
 import 'package:ondoprationapp/DatabaseHelper/DatabaseHelper.dart';
+import 'package:ondoprationapp/DatabaseHelper/data_sync.dart';
 import 'package:ondoprationapp/GRC_Inward/Grc_InwardClass.dart';
 import 'package:ondoprationapp/GlobalData/ApiController.dart';
 import 'package:ondoprationapp/GlobalData/GlobalConstant.dart';
@@ -71,7 +73,7 @@ class DashView extends State<Dashboard> {
     subject.stream.listen(_textChanged);
     getData();
     initPlatformState();
-    updateData();
+    // updateData();
     super.initState();
   }
 
@@ -83,19 +85,20 @@ class DashView extends State<Dashboard> {
   }
 
   Future<void> updateData() async {
-    List l1 = await DatabaseHelper.db.getAllPendingProducts();
-    print("dblength ${l1.length}");
+    // List l1 = await DatabaseHelper.db.getAllPendingProducts();
+    // print("dblength ${l1.length}");
     List a1 = [];
-    String COCO_ID = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
+    String cocoId = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
     String LAST_TS = (await Utility.getStringPreference(GlobalConstant.LAST_TS));
-    if (LAST_TS == 0) {
-      return;
-      // DatabaseHelper.db.clearDatabase();
+    log("LAST_TS-->$LAST_TS");
+    LAST_TS = "0";
+    if (LAST_TS == "0") {
+      await DatabaseHelper.db.clearDatabase();
     }
 
     Map<String, dynamic> map() => {
           'pname': 'Pid',
-          'value': COCO_ID,
+          'value': cocoId,
         };
 
     var dmap = map();
@@ -142,13 +145,16 @@ class DashView extends State<Dashboard> {
     GlobalFile globalFile = new GlobalFile();
     if (await NetworkCheck.check()) {
       apiController.postsNew(GlobalConstant.SignUp, json.encode(map2())).then((value) async {
+        print("value-->$value");
         try {
           var data1 = json.decode(value.body);
           if (data1['status'] == 0) {
             var products = data1['ds']['tables'][0]['rowsList'];
+            print("products.length--->${products.length}");
+
             for (int i = 0; i < products.length; i++) {
               try {
-                globalFile.addBook1(products[i]['cols']);
+                await globalFile.addBook1(products[i]['cols']);
               } catch (e) {
                 print("myerrro $e");
               }
@@ -267,9 +273,9 @@ class DashView extends State<Dashboard> {
                       String LAST_TS = (await Utility.getStringPreference(GlobalConstant.LAST_TS));
                       print("Last ts $LAST_TS");
                       if (LAST_TS == "0") {
-                        // Navigator.of(context).push(
-                        //   MaterialPageRoute(builder: (BuildContext context) => DataSync()),
-                        // );
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder: (BuildContext context) => DataSync()),
+                        );
                       }
                     },
                     child: Text("Reset Item Sync"),
@@ -490,22 +496,22 @@ class DashView extends State<Dashboard> {
 
           Utility.setStringPreference(GlobalConstant.COCO_NAME, name.toString());
 
-          // if (COCO_ID != Id) {
-          //   Utility.setStringPreference(GlobalConstant.LAST_TS, "0");
-          //   Navigator.of(context).push(
-          //     MaterialPageRoute(builder: (BuildContext context) => DataSync()),
-          //   );
-          // } else {
-          //   Navigator.of(context).pushAndRemoveUntil(
-          //     MaterialPageRoute(builder: (BuildContext context) => Dashboard()),
-          //     ModalRoute.withName('/'),
-          //   );
-          // }
+          if (COCO_ID != Id) {
+            Utility.setStringPreference(GlobalConstant.LAST_TS, "0");
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (BuildContext context) => DataSync()),
+            );
+          } /* else {
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (BuildContext context) => Dashboard()),
+              ModalRoute.withName('/'),
+            );
+          }*/
 
-          Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (BuildContext context) => Dashboard()),
-            ModalRoute.withName('/'),
-          );
+          // Navigator.of(context).pushAndRemoveUntil(
+          //   MaterialPageRoute(builder: (BuildContext context) => Dashboard()),
+          //   ModalRoute.withName('/'),
+          // );
         });
       }
     });

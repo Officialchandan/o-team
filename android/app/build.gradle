@@ -56,7 +56,7 @@ android {
         targetSdkVersion 31
         versionCode 55
         versionName "18.2"
-        signingConfig signingConfigs.release
+        signingConfig signingConfigs.debug
     }
 
     buildTypes {
