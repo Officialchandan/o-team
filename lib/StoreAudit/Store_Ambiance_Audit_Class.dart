@@ -224,10 +224,8 @@ class AmbianceView extends State<StoreAmbiance_Audit> {
           'rowsList': a1,
         };
 
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
-    String USER_ID =
-        (await Utility.getStringPreference(GlobalConstant.USER_ID));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String USER_ID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
     Map<String, dynamic> map_submit() => {
           'dbPassword': userPass,
           'dbUser': USER_ID.toString(),
@@ -245,31 +243,27 @@ class AmbianceView extends State<StoreAmbiance_Audit> {
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
       try {
-        var data = await apiController.postsNew(
-            GlobalConstant.SignUp, json.encode(map_submit()));
+        var data = await apiController.postsNew(GlobalConstant.SignUp, json.encode(map_submit()));
         Dialogs.hideProgressDialog(context);
         var data1 = json.decode(data.body);
         Utility.log(TAG, data1);
         if (data1['status'] == 0) {
-          GlobalWidget.GetToast(context, "Saved successfully");
+          GlobalWidget.showToast(context, "Saved successfully");
 
           Navigator.of(context).pop();
         } else {
           if (data1['msg'].toString() == "Login failed for user") {
-            GlobalWidget.showMyDialog(context, "Error",
-                "Invalid id or password.Please enter correct id psw or contact HR/IT");
+            GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
           } else {
-            GlobalWidget.showMyDialog(
-                context, "Error", data1['msg'].toString());
+            GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
           }
         }
       } catch (e) {
         Dialogs.hideProgressDialog(context);
-        GlobalWidget.showMyDialog(
-            context, "", GlobalConstant.interNetException(e.toString()));
+        GlobalWidget.showMyDialog(context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -281,8 +275,7 @@ class AmbianceView extends State<StoreAmbiance_Audit> {
           if (listdata[i].star <= 0) {
             val = 1;
             int index = i + 1;
-            GlobalWidget.showMyDialog(context, GlobalWidget.GetAppName,
-                "Please mark star for point $index  ");
+            GlobalWidget.showMyDialog(context, GlobalWidget.GetAppName, "Please mark star for point $index  ");
             break;
           }
         }
@@ -290,8 +283,7 @@ class AmbianceView extends State<StoreAmbiance_Audit> {
           if (remarkController.text.toString().length > 0) {
             UpdateData();
           } else {
-            GlobalWidget.showMyDialog(
-                context, GlobalWidget.GetAppName, "Please Enter Remark");
+            GlobalWidget.showMyDialog(context, GlobalWidget.GetAppName, "Please Enter Remark");
           }
         }
       },

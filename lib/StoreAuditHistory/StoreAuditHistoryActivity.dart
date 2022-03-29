@@ -64,13 +64,11 @@ class StoreAuditHistoryView extends State<StoreAuditHistoryActivity> {
                               children: [
                                 new Text(
                                   "Audit Id  ",
-                                  style: TextStyle(
-                                      color: Colors.black, fontSize: 14),
+                                  style: TextStyle(color: Colors.black, fontSize: 14),
                                 ),
                                 new Text(
                                   products[index]["cols"]["AudId"],
-                                  style: TextStyle(
-                                      color: Colors.grey, fontSize: 12),
+                                  style: TextStyle(color: Colors.grey, fontSize: 12),
                                 ),
                               ],
                             )),
@@ -81,13 +79,11 @@ class StoreAuditHistoryView extends State<StoreAuditHistoryActivity> {
                             children: [
                               new Text(
                                 "Manager",
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 14),
+                                style: TextStyle(color: Colors.black, fontSize: 14),
                               ),
                               new Text(
                                 products[index]["cols"]["Manager"].toString(),
-                                style:
-                                    TextStyle(color: Colors.grey, fontSize: 12),
+                                style: TextStyle(color: Colors.grey, fontSize: 12),
                               ),
                             ],
                           ),
@@ -104,11 +100,7 @@ class StoreAuditHistoryView extends State<StoreAuditHistoryActivity> {
                               child: InkWell(
                                 onTap: () {
                                   Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              StoreReviewAudit(
-                                                  products[index]["cols"])));
+                                      context, MaterialPageRoute(builder: (context) => StoreReviewAudit(products[index]["cols"])));
                                 },
                                 child: Icon(
                                   Icons.mode_edit,
@@ -127,14 +119,11 @@ class StoreAuditHistoryView extends State<StoreAuditHistoryActivity> {
                             children: [
                               new Text(
                                 "entryStartDt",
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 14),
+                                style: TextStyle(color: Colors.black, fontSize: 14),
                               ),
                               new Text(
-                                products[index]["cols"]["EntryStartDt"]
-                                    .toString(),
-                                style:
-                                    TextStyle(color: Colors.grey, fontSize: 12),
+                                products[index]["cols"]["EntryStartDt"].toString(),
+                                style: TextStyle(color: Colors.grey, fontSize: 12),
                               ),
                             ],
                           ),
@@ -146,13 +135,11 @@ class StoreAuditHistoryView extends State<StoreAuditHistoryActivity> {
                             children: [
                               new Text(
                                 "Updated at ",
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 14),
+                                style: TextStyle(color: Colors.black, fontSize: 14),
                               ),
                               new Text(
                                 products[index]["cols"]["UpdDt"].toString(),
-                                style:
-                                    TextStyle(color: Colors.grey, fontSize: 12),
+                                style: TextStyle(color: Colors.grey, fontSize: 12),
                               ),
                             ],
                           ),
@@ -168,13 +155,11 @@ class StoreAuditHistoryView extends State<StoreAuditHistoryActivity> {
                             children: [
                               new Text(
                                 "COCO",
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 14),
+                                style: TextStyle(color: Colors.black, fontSize: 14),
                               ),
                               new Text(
                                 products[index]["cols"]["Coco"].toString(),
-                                style:
-                                    TextStyle(color: Colors.grey, fontSize: 12),
+                                style: TextStyle(color: Colors.grey, fontSize: 12),
                               ),
                             ],
                           ),
@@ -186,13 +171,11 @@ class StoreAuditHistoryView extends State<StoreAuditHistoryActivity> {
                             children: [
                               new Text(
                                 "Audit By ",
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 14),
+                                style: TextStyle(color: Colors.black, fontSize: 14),
                               ),
                               new Text(
                                 products[index]["cols"]["AudBy"].toString(),
-                                style:
-                                    TextStyle(color: Colors.grey, fontSize: 12),
+                                style: TextStyle(color: Colors.grey, fontSize: 12),
                               ),
                             ],
                           ),
@@ -218,8 +201,7 @@ class StoreAuditHistoryView extends State<StoreAuditHistoryActivity> {
   var products;
 
   Future<void> UpdateData() async {
-    String COCO_ID =
-        (await Utility.getStringPreference(GlobalConstant.COCO_ID));
+    String COCO_ID = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
     // COCO_ID="14143";
 
     Map<String, dynamic> map() => {
@@ -241,8 +223,7 @@ class StoreAuditHistoryView extends State<StoreAuditHistoryActivity> {
         };
 
     var data = map1();
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
     userID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
     Map<String, dynamic> map2() => {
           'dbPassword': userPass,
@@ -259,9 +240,7 @@ class StoreAuditHistoryView extends State<StoreAuditHistoryActivity> {
     ApiController apiController = new ApiController.internal();
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
-      apiController
-          .postsNew(GlobalConstant.SignUp, json.encode(map2()))
-          .then((value) {
+      apiController.postsNew(GlobalConstant.SignUp, json.encode(map2())).then((value) {
         try {
           Dialogs.hideProgressDialog(context);
           var data = value;
@@ -283,11 +262,9 @@ class StoreAuditHistoryView extends State<StoreAuditHistoryActivity> {
             }
           } else {
             if (data1['msg'].toString() == "Login failed for user") {
-              GlobalWidget.showMyDialog(context, "Error",
-                  "Invalid id or password.Please enter correct id psw or contact HR/IT");
+              GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
             } else {
-              GlobalWidget.showMyDialog(
-                  context, "Error", data1['msg'].toString());
+              GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
             }
           }
         } catch (e) {
@@ -295,7 +272,7 @@ class StoreAuditHistoryView extends State<StoreAuditHistoryActivity> {
         }
       });
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 }

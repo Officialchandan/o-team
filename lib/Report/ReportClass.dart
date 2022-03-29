@@ -175,7 +175,7 @@ class ReportsData extends State<MyReportSubClass> {
         }
       });
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -596,7 +596,7 @@ class _ExpandableListViewState extends State<ExpandableListView> {
                                       city_id, Pro, Title_Value, Param)));
                           break;
                         case "rpt_DlvAppInfo":
-                          GlobalWidget.GetToast(context, "Sorry not working");
+                          GlobalWidget.showToast(context, "Sorry not working");
                           Navigator.push(
                               context,
                               MaterialPageRoute(

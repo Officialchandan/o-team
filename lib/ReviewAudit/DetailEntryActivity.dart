@@ -326,7 +326,7 @@ class DetailEntryView extends State<DetailEntryActivity> {
                                                                     subIndex]
                                                                 .imagePath ==
                                                             "") {
-                                                          GlobalWidget.GetToast(
+                                                          GlobalWidget.showToast(
                                                               context,
                                                               "No Images Found.");
                                                         } else {
@@ -494,7 +494,7 @@ class DetailEntryView extends State<DetailEntryActivity> {
                     textColor: GlobalWidget.getBtnTextColor(),
                     onPressed: () {
                       if (CustomerController.text.toString().length < 0) {
-                        GlobalWidget.GetToast(context, "Please enter remark");
+                        GlobalWidget.showToast(context, "Please enter remark");
                       } else {
                         reviewDataList[selectedindex]
                             .review[selectedSubindex]
@@ -838,7 +838,7 @@ class DetailEntryView extends State<DetailEntryActivity> {
             context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -869,7 +869,7 @@ class DetailEntryView extends State<DetailEntryActivity> {
         Dialogs.hideProgressDialog(context);
         var data1 = json.decode(data.body);
         if (data1['status'] == 0) {
-          GlobalWidget.GetToast(context, "Record saved successfully");
+          GlobalWidget.showToast(context, "Record saved successfully");
           Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(builder: (BuildContext context) => Dashboard()),
             ModalRoute.withName('/'),
@@ -889,7 +889,7 @@ class DetailEntryView extends State<DetailEntryActivity> {
             context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -1157,7 +1157,7 @@ class DetailEntryView extends State<DetailEntryActivity> {
         Dialogs.hideProgressDialog(context);
         var data1 = json.decode(data.body);
         if (data1['status'] == 0) {
-          GlobalWidget.GetToast(context, "Record saved successfully");
+          GlobalWidget.showToast(context, "Record saved successfully");
           Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(builder: (BuildContext context) => Dashboard()),
             ModalRoute.withName('/'),
@@ -1177,7 +1177,7 @@ class DetailEntryView extends State<DetailEntryActivity> {
             context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 }

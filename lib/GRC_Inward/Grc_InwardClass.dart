@@ -145,7 +145,7 @@ class ReoportView extends State<GrcInwardActivity> {
             context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -249,7 +249,7 @@ class ReoportView extends State<GrcInwardActivity> {
             context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -300,7 +300,7 @@ class ReoportView extends State<GrcInwardActivity> {
         if (data1['status'] == 0) {
           UpdateData();
           setState(() {});
-          GlobalWidget.GetToast(context, "Delete Successfully");
+          GlobalWidget.showToast(context, "Delete Successfully");
         } else {
           if (data1['msg'].toString() == "Login failed for user") {
             GlobalWidget.showMyDialog(context, "Error",
@@ -316,7 +316,7 @@ class ReoportView extends State<GrcInwardActivity> {
             context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 /*
@@ -447,7 +447,7 @@ class ReoportView extends State<GrcInwardActivity> {
             _GetSuppliers(POIDController.text.trim());
             GlobalWidget.fieldFocusChange(context, _PoNoFocus, _BillNoFocus);
           } else {
-            GlobalWidget.GetToast(context, "Enter PO Number");
+            GlobalWidget.showToast(context, "Enter PO Number");
           }
         },
         controller: POIDController,
@@ -1147,7 +1147,7 @@ class ReoportView extends State<GrcInwardActivity> {
             GlobalConstant.interNetException(dataerror + "\n" + e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -1344,7 +1344,7 @@ class ReoportView extends State<GrcInwardActivity> {
           _isSaveEnabled = true;
           setState(() {});
 
-          GlobalWidget.GetToast(context, "Data Saved Successfully ");
+          GlobalWidget.showToast(context, "Data Saved Successfully ");
 
           /* try
           {
@@ -1379,7 +1379,7 @@ class ReoportView extends State<GrcInwardActivity> {
       }
       UpdateData();
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -1394,10 +1394,10 @@ class ReoportView extends State<GrcInwardActivity> {
           ? null
           : () {
               if (TtlQtyController.text.toString().length < 0) {
-                GlobalWidget.GetToast(context, "Please enter bill quantity . ");
+                GlobalWidget.showToast(context, "Please enter bill quantity . ");
               } else {
                 if (_currentStatus == "Select RCV Status") {
-                  GlobalWidget.GetToast(context, "Please select rcv status");
+                  GlobalWidget.showToast(context, "Please select rcv status");
                   return;
                 }
                 showSubmitDialog(context);
@@ -1773,7 +1773,7 @@ class ReoportView extends State<GrcInwardActivity> {
             context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 

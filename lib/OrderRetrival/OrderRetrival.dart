@@ -23,8 +23,7 @@ class orderRetriveView extends State<OrderRetrivalActivity> {
   int current_index = 0;
   bool _refreshing = false;
 
-  final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
-      new GlobalKey<RefreshIndicatorState>();
+  final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey = new GlobalKey<RefreshIndicatorState>();
 
   @override
   Widget build(BuildContext context) {
@@ -52,21 +51,15 @@ class orderRetriveView extends State<OrderRetrivalActivity> {
                     children: [
                       Text(
                         "All",
-                        style: active == 1
-                            ? GlobalWidget.getTextStyleBottomText(true)
-                            : GlobalWidget.getTextStyleBottomText(false),
+                        style: active == 1 ? GlobalWidget.getTextStyleBottomText(true) : GlobalWidget.getTextStyleBottomText(false),
                       ),
                       new Container(
                         padding: GlobalWidget.getpaddingNavBottom(),
-                        decoration: active == 1
-                            ? GlobalWidget.getDecoration(true)
-                            : GlobalWidget.getDecoration(false),
+                        decoration: active == 1 ? GlobalWidget.getDecoration(true) : GlobalWidget.getDecoration(false),
                         constraints: GlobalWidget.getBoxConstraint(),
                         child: new Text(
                           '${All_Count.toString()}',
-                          style: active == 1
-                              ? GlobalWidget.getTextStyle(true)
-                              : GlobalWidget.getTextStyle(false),
+                          style: active == 1 ? GlobalWidget.getTextStyle(true) : GlobalWidget.getTextStyle(false),
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -87,21 +80,15 @@ class orderRetriveView extends State<OrderRetrivalActivity> {
                     children: [
                       Text(
                         "VG",
-                        style: active == 2
-                            ? GlobalWidget.getTextStyleBottomText(true)
-                            : GlobalWidget.getTextStyleBottomText(false),
+                        style: active == 2 ? GlobalWidget.getTextStyleBottomText(true) : GlobalWidget.getTextStyleBottomText(false),
                       ),
                       new Container(
                         padding: GlobalWidget.getpaddingNavBottom(),
-                        decoration: active == 2
-                            ? GlobalWidget.getDecoration(true)
-                            : GlobalWidget.getDecoration(false),
+                        decoration: active == 2 ? GlobalWidget.getDecoration(true) : GlobalWidget.getDecoration(false),
                         constraints: GlobalWidget.getBoxConstraint(),
                         child: new Text(
                           '${All_Vg.toString()}',
-                          style: active == 2
-                              ? GlobalWidget.getTextStyle(true)
-                              : GlobalWidget.getTextStyle(false),
+                          style: active == 2 ? GlobalWidget.getTextStyle(true) : GlobalWidget.getTextStyle(false),
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -122,21 +109,15 @@ class orderRetriveView extends State<OrderRetrivalActivity> {
                     children: [
                       Text(
                         "GRC",
-                        style: active == 3
-                            ? GlobalWidget.getTextStyleBottomText(true)
-                            : GlobalWidget.getTextStyleBottomText(false),
+                        style: active == 3 ? GlobalWidget.getTextStyleBottomText(true) : GlobalWidget.getTextStyleBottomText(false),
                       ),
                       new Container(
                         padding: GlobalWidget.getpaddingNavBottom(),
-                        decoration: active == 3
-                            ? GlobalWidget.getDecoration(true)
-                            : GlobalWidget.getDecoration(false),
+                        decoration: active == 3 ? GlobalWidget.getDecoration(true) : GlobalWidget.getDecoration(false),
                         constraints: GlobalWidget.getBoxConstraint(),
                         child: new Text(
                           '${All_GRC.toString()}',
-                          style: active == 3
-                              ? GlobalWidget.getTextStyle(true)
-                              : GlobalWidget.getTextStyle(false),
+                          style: active == 3 ? GlobalWidget.getTextStyle(true) : GlobalWidget.getTextStyle(false),
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -176,13 +157,11 @@ class orderRetriveView extends State<OrderRetrivalActivity> {
 
   Future<void> UpdateData() async {
     litems = new List();
-    String COCO_ID =
-        (await Utility.getStringPreference(GlobalConstant.COCO_ID));
+    String COCO_ID = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
 
     var data = GlobalConstant.GetMapForRetrival(COCO_ID);
 
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
     String userID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
     Map<String, dynamic> map2() => {
           'dbPassword': userPass,
@@ -202,8 +181,7 @@ class orderRetriveView extends State<OrderRetrivalActivity> {
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
       try {
-        var data = await apiController.postsNew(
-            GlobalConstant.SignUp, json.encode(map2()));
+        var data = await apiController.postsNew(GlobalConstant.SignUp, json.encode(map2()));
         Dialogs.hideProgressDialog(context);
         var data1 = json.decode(data.body);
         Utility.log(TAG, "Response: " + data1.toString());
@@ -214,20 +192,17 @@ class orderRetriveView extends State<OrderRetrivalActivity> {
           }
         } else {
           if (data1['msg'].toString() == "Login failed for user") {
-            GlobalWidget.showMyDialog(context, "Error",
-                "Invalid id or password.Please enter correct id psw or contact HR/IT");
+            GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
           } else {
-            GlobalWidget.showMyDialog(
-                context, "Error", data1['msg'].toString());
+            GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
           }
         }
       } catch (e) {
         Dialogs.hideProgressDialog(context);
-        GlobalWidget.showMyDialog(
-            context, "", GlobalConstant.interNetException(e.toString()));
+        GlobalWidget.showMyDialog(context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -276,8 +251,7 @@ class orderRetriveView extends State<OrderRetrivalActivity> {
   String getRiConut(int index) {
     int k = 0;
     try {
-      k = int.parse(litems[index].data['Vegrcv']) +
-          int.parse(litems[index].data['Grcv']);
+      k = int.parse(litems[index].data['Vegrcv']) + int.parse(litems[index].data['Grcv']);
     } catch (e) {}
     return k.toString();
   }
@@ -285,8 +259,7 @@ class orderRetriveView extends State<OrderRetrivalActivity> {
   String getVGConut(int index) {
     int k = 0;
     try {
-      k = int.parse(litems[index].data['Vegrcv']) +
-          int.parse(litems[index].data['VegPend']);
+      k = int.parse(litems[index].data['Vegrcv']) + int.parse(litems[index].data['VegPend']);
     } catch (e) {}
     return k.toString();
   }
@@ -294,8 +267,7 @@ class orderRetriveView extends State<OrderRetrivalActivity> {
   String getGRCConut(int index) {
     int k = 0;
     try {
-      k = int.parse(litems[index].data['Gpend']) +
-          int.parse(litems[index].data['Grcv']);
+      k = int.parse(litems[index].data['Gpend']) + int.parse(litems[index].data['Grcv']);
     } catch (e) {}
     return k.toString();
   }
@@ -303,8 +275,7 @@ class orderRetriveView extends State<OrderRetrivalActivity> {
   String getPiConut(int index) {
     int k = 0;
     try {
-      k = int.parse(litems[index].data['VegPend']) +
-          int.parse(litems[index].data['Gpend']);
+      k = int.parse(litems[index].data['VegPend']) + int.parse(litems[index].data['Gpend']);
     } catch (e) {}
     return k.toString();
   }
@@ -348,8 +319,7 @@ class orderRetriveView extends State<OrderRetrivalActivity> {
             children: [
               Expanded(
                 flex: 2,
-                child: new Text(litems[index].data['OrderId'].toString(),
-                    style: TextStyle(color: Colors.black, fontSize: 14.0)),
+                child: new Text(litems[index].data['OrderId'].toString(), style: TextStyle(color: Colors.black, fontSize: 14.0)),
               ),
               Expanded(
                 flex: 5,

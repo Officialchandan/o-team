@@ -185,11 +185,9 @@ class SentBillHistoryView extends State<SentBillHistoryActivity> {
   Future<void> UpdateData() async {
     duplicateItems = new List();
     items = new List();
-    String COCO_ID =
-        (await Utility.getStringPreference(GlobalConstant.COCO_ID));
+    String COCO_ID = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
     var data = GlobalConstant.GetMapForCPID(COCO_ID);
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
     userID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
     Map<String, dynamic> map2() => {
           'dbPassword': userPass,
@@ -207,9 +205,7 @@ class SentBillHistoryView extends State<SentBillHistoryActivity> {
     ApiController apiController = new ApiController.internal();
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
-      apiController
-          .postsNew(GlobalConstant.SignUp, json.encode(map2()))
-          .then((value) {
+      apiController.postsNew(GlobalConstant.SignUp, json.encode(map2())).then((value) {
         try {
           Dialogs.hideProgressDialog(context);
           var data = value;
@@ -231,11 +227,9 @@ class SentBillHistoryView extends State<SentBillHistoryActivity> {
             }
           } else {
             if (data1['msg'].toString() == "Login failed for user") {
-              GlobalWidget.showMyDialog(context, "Error",
-                  "Invalid id or password.Please enter correct id psw or contact HR/IT");
+              GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
             } else {
-              GlobalWidget.showMyDialog(
-                  context, "Error", data1['msg'].toString());
+              GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
             }
           }
         } catch (e) {
@@ -243,7 +237,7 @@ class SentBillHistoryView extends State<SentBillHistoryActivity> {
         }
       });
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -261,10 +255,7 @@ class SentBillHistoryView extends State<SentBillHistoryActivity> {
           book['PoId'].toString(),
           book['InvoiceAmt'].toString(),
           book['SendDt'].toString(),
-          book['DCRcvRmk'].toString() == null ||
-                  book['DCRcvRmk'].toString().isEmpty
-              ? ""
-              : book['DCSendRmk'].toString()));
+          book['DCRcvRmk'].toString() == null || book['DCRcvRmk'].toString().isEmpty ? "" : book['DCSendRmk'].toString()));
     });
   }
 }

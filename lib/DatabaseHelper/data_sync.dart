@@ -233,7 +233,7 @@ class _DataSyncState extends State<DataSync> {
       }
     } else {
       print("e====");
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 }

@@ -105,4 +105,47 @@ class ApiController {
       // return json.decode(map3().toString());
     }
   }
+
+  Future<Map<String, dynamic>> postMultipart({String url, Map input}) async {
+    try {
+      FormData formData = FormData.fromMap(input);
+
+      Response response = await dio.post(
+        url,
+        data: formData,
+        options: Options(headers: {
+          'Content-type': 'application/x-www-form-urlencoded',
+          'charset': 'UTF-8',
+          'User-Agent': 'Mozilla/5.0 ( compatible )',
+          'Accept': '*/*',
+        }, maxRedirects: 3, followRedirects: true, receiveTimeout: 60000, sendTimeout: 30000),
+      );
+
+      return response.data;
+    } catch (exception) {
+      debugPrint("exception--->$exception");
+      if (exception is DioError) {
+        if (exception.type == DioErrorType.receiveTimeout ||
+            exception.type == DioErrorType.connectTimeout ||
+            exception.type == DioErrorType.sendTimeout) {
+          Map<String, dynamic> map = {
+            'pname': 'TimeOut',
+            'value': true,
+          };
+
+          return map;
+        }
+      }
+
+      Map<String, dynamic> map = {
+        'pname': 'TimeOut',
+        'value': true,
+      };
+
+      return map;
+
+      // time out after 30 second
+      // return json.decode(map3().toString());
+    }
+  }
 }

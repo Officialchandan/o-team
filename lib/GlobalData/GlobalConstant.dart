@@ -840,9 +840,7 @@ class GlobalConstant {
 
       amt = GlobalConstant.ConvertDecimal(amt);
 
-      return items_column_heading["type"].toString() != "varchar"
-          ? getContainer(amt, items_column_heading["name"])
-          : new Container();
+      return items_column_heading["type"].toString() != "varchar" ? getContainer(amt, items_column_heading["name"]) : new Container();
     } catch (e) {}
 
     return new Container();
@@ -986,7 +984,7 @@ class GlobalConstant {
       Utility.log("tag1", filename2);
     } catch (e) {}
     if (filename2 == "" || filename2 == null) {
-      GlobalWidget.GetToast(context, "Image Not Available ");
+      GlobalWidget.showToast(context, "Image Not Available ");
     } else {
       Navigator.push(context, MaterialPageRoute(builder: (context) => ZoomPhotoActivity(filename2)));
     }

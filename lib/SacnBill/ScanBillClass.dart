@@ -112,7 +112,7 @@ class ReportView extends State<ScanBillActivity> {
         GlobalWidget.showMyDialog(context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -174,7 +174,7 @@ class ReportView extends State<ScanBillActivity> {
         }
       });
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -547,7 +547,7 @@ class ReportView extends State<ScanBillActivity> {
         }
       });
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 }

@@ -190,7 +190,7 @@ class _LoginScreenState extends State<LoginScreen> {
           var data = value;
           var data1 = json.decode(data.body);
           if (data1['status'] == 0) {
-            GlobalWidget.GetToast(context, "Successfully Login");
+            GlobalWidget.showToast(context, "Successfully Login");
             List a1 = new List();
             var menudata = data1['ds']['tables'][2]['rowsList'];
             for (int i = 0; i < menudata.length; i++) {
@@ -260,7 +260,7 @@ class _LoginScreenState extends State<LoginScreen> {
         }
       });
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 

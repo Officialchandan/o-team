@@ -77,8 +77,8 @@ class GlobalWidget {
     );
   }
 
-  static GetToast(BuildContext context, String msg) {
-    return Toast.show(msg, context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
+  static showToast(BuildContext context, String msg) {
+    Toast.show(msg, context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
   }
 
   static getHeadImage(BuildContext context) {

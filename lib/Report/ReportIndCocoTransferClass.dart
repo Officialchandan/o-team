@@ -18,8 +18,7 @@ import 'ModelClassReportDetail/GrpModel.dart';
 class InterCocoDetailActivity extends StatefulWidget {
   String city_params, Api_Name, title, date_req;
 
-  InterCocoDetailActivity(
-      this.city_params, this.Api_Name, this.title, this.date_req);
+  InterCocoDetailActivity(this.city_params, this.Api_Name, this.title, this.date_req);
 
   @override
   State<StatefulWidget> createState() {
@@ -42,20 +41,14 @@ class ReoportView extends State<InterCocoDetailActivity> {
   var TAG = "InterCocoDetail";
 
   Future<void> UpdateData() async {
-    String COCO_ID =
-        (await Utility.getStringPreference(GlobalConstant.COCO_ID));
-    String FROM_DATE_InterCoco =
-        (await Utility.getStringPreference(GlobalConstant.FROM_DATE_Report));
-    String TO_DATE_InterCoco =
-        (await Utility.getStringPreference(GlobalConstant.TO_DATE_Report));
-    String AllCityIds =
-        (await Utility.getStringPreference(GlobalConstant.AllCityIds));
+    String COCO_ID = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
+    String FROM_DATE_InterCoco = (await Utility.getStringPreference(GlobalConstant.FROM_DATE_Report));
+    String TO_DATE_InterCoco = (await Utility.getStringPreference(GlobalConstant.TO_DATE_Report));
+    String AllCityIds = (await Utility.getStringPreference(GlobalConstant.AllCityIds));
 
-    var data = GlobalConstant.GetMapForRePortDetail(
-        FROM_DATE_InterCoco, TO_DATE_InterCoco, AllCityIds, widget.date_req);
+    var data = GlobalConstant.GetMapForRePortDetail(FROM_DATE_InterCoco, TO_DATE_InterCoco, AllCityIds, widget.date_req);
 
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
     String userID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
 
     Map<String, dynamic> map2() => {
@@ -75,8 +68,7 @@ class ReoportView extends State<InterCocoDetailActivity> {
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
       try {
-        var data = await apiController.postsNew(
-            GlobalConstant.SignUp, json.encode(map2()));
+        var data = await apiController.postsNew(GlobalConstant.SignUp, json.encode(map2()));
         Dialogs.hideProgressDialog(context);
         var data1 = json.decode(data.body);
         Utility.log(TAG, "Response: " + data1.toString());
@@ -100,21 +92,18 @@ class ReoportView extends State<InterCocoDetailActivity> {
             FirstHeadName = header[3]["name"];
 
             var list = products;
-            var Grp2Map =
-                groupBy(list, (obj) => obj["cols"][header[0]["name"]]);
+            var Grp2Map = groupBy(list, (obj) => obj["cols"][header[0]["name"]]);
             Grp2Map.forEach((key_city, city_value) {
               DateList = new List();
               //dategroup
-              var Grp1Map = groupBy(
-                  city_value.toList(), (obj) => obj["cols"][header[1]["name"]]);
+              var Grp1Map = groupBy(city_value.toList(), (obj) => obj["cols"][header[1]["name"]]);
               //start  date loop
 
               Grp1Map.forEach((key_date, value) {
                 TimeList = new List();
                 //  Utility.log(TAG + " vallength1 ", value.length);
                 //timegroup
-                var GrpMap = groupBy(
-                    value.toList(), (obj) => obj["cols"][header[2]["name"]]);
+                var GrpMap = groupBy(value.toList(), (obj) => obj["cols"][header[2]["name"]]);
 
                 //start group time
                 GrpMap.forEach((key, value) {
@@ -130,19 +119,12 @@ class ReoportView extends State<InterCocoDetailActivity> {
                     items.add(data);
                   }
 
-                  Utility.log(
-                      TAG + " lastcolumlen",
-                      fromcoco +
-                          " " +
-                          items.length.toString() +
-                          "  " +
-                          key_city);
+                  Utility.log(TAG + " lastcolumlen", fromcoco + " " + items.length.toString() + "  " + key_city);
                   /*for (var t in value) {
 
                     }
 */
-                  TimeList.add(new GrpModel(key.toString(), items,
-                      items_column_Heading, items_first_column));
+                  TimeList.add(new GrpModel(key.toString(), items, items_column_Heading, items_first_column));
                 }); //end group time
 
                 DateList.add(new DateModel(key_date, TimeList));
@@ -156,20 +138,17 @@ class ReoportView extends State<InterCocoDetailActivity> {
           }
         } else {
           if (data1['msg'].toString() == "Login failed for user") {
-            GlobalWidget.showMyDialog(context, "Error",
-                "Invalid id or password.Please enter correct id psw or contact HR/IT");
+            GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
           } else {
-            GlobalWidget.showMyDialog(
-                context, "Error", data1['msg'].toString());
+            GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
           }
         }
       } catch (e) {
         Dialogs.hideProgressDialog(context);
-        GlobalWidget.showMyDialog(
-            context, "", GlobalConstant.interNetException(e.toString()));
+        GlobalWidget.showMyDialog(context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -197,42 +176,28 @@ class ReoportView extends State<InterCocoDetailActivity> {
         shrinkWrap: true,
         itemBuilder: (context, dateIndex) {
           return ExpansionTile(
-            title:
-                Text(city_modelList[cityindex].DateList[dateIndex].DateString),
+            title: Text(city_modelList[cityindex].DateList[dateIndex].DateString),
             children: [
               new Container(
                 height: 60.0,
                 child: new ListView.builder(
                   itemCount: items_column_Heading.length,
                   itemBuilder: (context, index_head) {
-                    return GlobalConstant.getDateWiseAmount(
-                        city_modelList[cityindex]
-                            .DateList[dateIndex]
-                            .grp_modelList,
-                        city_modelList[cityindex]
-                            .DateList[dateIndex]
-                            .grp_modelList
-                            .length,
-                        items_column_Heading[index_head]);
+                    return GlobalConstant.getDateWiseAmount(city_modelList[cityindex].DateList[dateIndex].grp_modelList,
+                        city_modelList[cityindex].DateList[dateIndex].grp_modelList.length, items_column_Heading[index_head]);
                   },
                   scrollDirection: Axis.horizontal,
                 ),
               ),
               ListView.builder(
-                  itemCount: city_modelList[cityindex]
-                      .DateList[dateIndex]
-                      .grp_modelList
-                      .length,
+                  itemCount: city_modelList[cityindex].DateList[dateIndex].grp_modelList.length,
                   physics: ClampingScrollPhysics(),
                   shrinkWrap: true,
                   itemBuilder: (BuildContext context, int index1) {
                     return InkWell(
                       onTap: () {},
                       child: ExpansionTile(
-                        title: Text(city_modelList[cityindex]
-                            .DateList[dateIndex]
-                            .grp_modelList[index1]
-                            .TimeGroup),
+                        title: Text(city_modelList[cityindex].DateList[dateIndex].grp_modelList[index1].TimeGroup),
                         children: [
                           SingleChildScrollView(
                             child: Row(
@@ -241,15 +206,8 @@ class ReoportView extends State<InterCocoDetailActivity> {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: GlobalConstant.buildCellsHeding(
-                                      city_modelList[cityindex]
-                                          .DateList[dateIndex]
-                                          .grp_modelList[index1]
-                                          .items_first_column
-                                          .length,
-                                      city_modelList[cityindex]
-                                          .DateList[dateIndex]
-                                          .grp_modelList[index1]
-                                          .items_first_column,
+                                      city_modelList[cityindex].DateList[dateIndex].grp_modelList[index1].items_first_column.length,
+                                      city_modelList[cityindex].DateList[dateIndex].grp_modelList[index1].items_first_column,
                                       FirstHeadName,
                                       context),
                                 ),
@@ -257,18 +215,14 @@ class ReoportView extends State<InterCocoDetailActivity> {
                                   child: SingleChildScrollView(
                                     scrollDirection: Axis.horizontal,
                                     child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: _buildRows(
                                           city_modelList[cityindex]
                                               .DateList[dateIndex]
                                               .grp_modelList[index1]
                                               .items_first_column
                                               .length,
-                                          city_modelList[cityindex]
-                                              .DateList[dateIndex]
-                                              .grp_modelList[index1]
-                                              .items),
+                                          city_modelList[cityindex].DateList[dateIndex].grp_modelList[index1].items),
                                     ),
                                   ),
                                 )
@@ -301,8 +255,7 @@ class ReoportView extends State<InterCocoDetailActivity> {
                     child: Text(
                       items_column_Heading[index]["name"].toString() +
                           "\n" +
-                          GlobalConstant.getamtCount(
-                              items_column_Heading[index], items),
+                          GlobalConstant.getamtCount(items_column_Heading[index], items),
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.white,
@@ -318,9 +271,7 @@ class ReoportView extends State<InterCocoDetailActivity> {
                     color: Colors.white,
                     // margin: EdgeInsets.all(4.0),
                     child: Text(
-                      GlobalWidget.getstringValue(items[rowcount]
-                              [items_column_Heading[index]["name"].toString()]
-                          .toString()),
+                      GlobalWidget.getstringValue(items[rowcount][items_column_Heading[index]["name"].toString()].toString()),
                       style: TextStyle(fontSize: 14, color: Colors.black),
                       maxLines: 1,
                     )),
@@ -333,9 +284,7 @@ class ReoportView extends State<InterCocoDetailActivity> {
               color: rowcount == 0 ? colorPrimary : Colors.white,
               // margin: EdgeInsets.all(4.0),
               child: Text(
-                GlobalWidget.getstringValue(items[rowcount]
-                        [items_column_Heading[index]["name"].toString()]
-                    .toString()),
+                GlobalWidget.getstringValue(items[rowcount][items_column_Heading[index]["name"].toString()].toString()),
                 style: TextStyle(fontSize: 14, color: Colors.black),
                 maxLines: 1,
               )),
@@ -346,8 +295,7 @@ class ReoportView extends State<InterCocoDetailActivity> {
     return List.generate(
       no_of_rows,
       (index) {
-        return Row(
-            children: _buildCells(items_column_Heading.length, index, items));
+        return Row(children: _buildCells(items_column_Heading.length, index, items));
       },
     );
   }
@@ -373,10 +321,8 @@ class ReoportView extends State<InterCocoDetailActivity> {
                           child: new ListView.builder(
                             itemCount: items_column_Heading.length,
                             itemBuilder: (context, index_head) {
-                              return GlobalConstant.getCityWiseAmount(
-                                  city_modelList[cityIndex].DateList,
-                                  city_modelList[cityIndex].DateList.length,
-                                  items_column_Heading[index_head]);
+                              return GlobalConstant.getCityWiseAmount(city_modelList[cityIndex].DateList,
+                                  city_modelList[cityIndex].DateList.length, items_column_Heading[index_head]);
                             },
                             scrollDirection: Axis.horizontal,
                           ),
@@ -392,8 +338,7 @@ class ReoportView extends State<InterCocoDetailActivity> {
                   child: new ListView.builder(
                     itemCount: items_column_Heading.length,
                     itemBuilder: (context, index_head) {
-                      return GlobalConstant.getAllAmount(
-                          city_modelList, items_column_Heading[index_head]);
+                      return GlobalConstant.getAllAmount(city_modelList, items_column_Heading[index_head]);
                     },
                     scrollDirection: Axis.horizontal,
                   ),

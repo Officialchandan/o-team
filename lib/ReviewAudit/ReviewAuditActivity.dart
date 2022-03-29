@@ -175,7 +175,7 @@ class ReviewAuditView extends State<ReviewAuditActivity> {
             context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 

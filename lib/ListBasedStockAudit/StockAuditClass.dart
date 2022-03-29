@@ -35,9 +35,7 @@ class StockView extends State<StockAuditActivity> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-        appBar: GlobalWidget.getAppbar("Stock Audit"),
-        body: getListingOntheBasisOfCondition());
+    return new Scaffold(appBar: GlobalWidget.getAppbar("Stock Audit"), body: getListingOntheBasisOfCondition());
   }
 
   @override
@@ -60,15 +58,11 @@ class StockView extends State<StockAuditActivity> {
 
   Future<void> GetBadStockList() async {
     RefreshList_items = new List();
-    String COCO_ID =
-        (await Utility.getStringPreference(GlobalConstant.COCO_ID));
-    String EMPCODE =
-        (await Utility.getStringPreference(GlobalConstant.USER_ID));
+    String COCO_ID = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
+    String EMPCODE = (await Utility.getStringPreference(GlobalConstant.USER_ID));
     var data = GlobalConstant.GetMapForStockAudit(COCO_ID, EMPCODE);
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
-    String Item_Id =
-        (await Utility.getStringPreference(GlobalConstant.USER_ID));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String Item_Id = (await Utility.getStringPreference(GlobalConstant.USER_ID));
 
     Map<String, dynamic> map2() => {
           'dbPassword': userPass,
@@ -87,8 +81,7 @@ class StockView extends State<StockAuditActivity> {
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
       try {
-        var data = await apiController.postsNew(
-            GlobalConstant.SignUp, json.encode(map2()));
+        var data = await apiController.postsNew(GlobalConstant.SignUp, json.encode(map2()));
         Dialogs.hideProgressDialog(context);
         var data1 = json.decode(data.body);
         Utility.log(TAG, "Response: " + data1.toString());
@@ -108,8 +101,7 @@ class StockView extends State<StockAuditActivity> {
             TimeList = new List();
             //  Utility.log(TAG + " vallength1 ", value.length);
             //timegroup
-            var GrpMap =
-                groupBy(list.toList(), (obj) => obj["cols"][header[0]["name"]]);
+            var GrpMap = groupBy(list.toList(), (obj) => obj["cols"][header[0]["name"]]);
 
             //start group time
             GrpMap.forEach((key, value) {
@@ -122,8 +114,7 @@ class StockView extends State<StockAuditActivity> {
                 // items.add(data[0]["cols"]);
               }
 
-              TimeList.add(new GrpModel(key.toString(), items,
-                  items_column_Heading, items_first_column));
+              TimeList.add(new GrpModel(key.toString(), items, items_column_Heading, items_first_column));
             }); //end group time
 
             // SetAmountListIng();
@@ -131,20 +122,17 @@ class StockView extends State<StockAuditActivity> {
           }
         } else {
           if (data1['msg'].toString() == "Login failed for user") {
-            GlobalWidget.showMyDialog(context, "Error",
-                "Invalid id or password.Please enter correct id psw or contact HR/IT");
+            GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
           } else {
-            GlobalWidget.showMyDialog(
-                context, "Error", data1['msg'].toString());
+            GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
           }
         }
       } catch (e) {
         Dialogs.hideProgressDialog(context);
-        GlobalWidget.showMyDialog(
-            context, "", GlobalConstant.interNetException(e.toString()));
+        GlobalWidget.showMyDialog(context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -165,8 +153,7 @@ class StockView extends State<StockAuditActivity> {
                     child: Text(
                       items_column_Heading[index]["name"].toString() +
                           "\n" +
-                          GlobalConstant.getamtCount(
-                              items_column_Heading[index], items),
+                          GlobalConstant.getamtCount(items_column_Heading[index], items),
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.white,
@@ -182,9 +169,7 @@ class StockView extends State<StockAuditActivity> {
                     color: Colors.white,
                     // margin: EdgeInsets.all(4.0),
                     child: Text(
-                      GlobalWidget.getstringValue(items[rowcount]
-                              [items_column_Heading[index]["name"].toString()]
-                          .toString()),
+                      GlobalWidget.getstringValue(items[rowcount][items_column_Heading[index]["name"].toString()].toString()),
                       style: TextStyle(fontSize: 14, color: Colors.black),
                       maxLines: 1,
                     )),
@@ -197,9 +182,7 @@ class StockView extends State<StockAuditActivity> {
               color: rowcount == 0 ? colorPrimary : Colors.white,
               // margin: EdgeInsets.all(4.0),
               child: Text(
-                GlobalWidget.getstringValue(items[rowcount]
-                        [items_column_Heading[index]["name"].toString()]
-                    .toString()),
+                GlobalWidget.getstringValue(items[rowcount][items_column_Heading[index]["name"].toString()].toString()),
                 style: TextStyle(fontSize: 14, color: Colors.black),
                 maxLines: 1,
               )),
@@ -210,8 +193,7 @@ class StockView extends State<StockAuditActivity> {
     return List.generate(
       no_of_rows,
       (index) {
-        return Row(
-            children: _buildCells(items_column_Heading.length, index, items));
+        return Row(children: _buildCells(items_column_Heading.length, index, items));
       },
     );
   }
@@ -253,19 +235,14 @@ class StockView extends State<StockAuditActivity> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: GlobalConstant.buildCellsHeding(
-                        TimeList[index1].items_first_column.length,
-                        TimeList[index1].items_first_column,
-                        FirstHeadName,
-                        context),
+                        TimeList[index1].items_first_column.length, TimeList[index1].items_first_column, FirstHeadName, context),
                   ),
                   Flexible(
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: _buildRows(
-                            TimeList[index1].items_first_column.length,
-                            TimeList[index1].items),
+                        children: _buildRows(TimeList[index1].items_first_column.length, TimeList[index1].items),
                       ),
                     ),
                   )
@@ -280,11 +257,10 @@ class StockView extends State<StockAuditActivity> {
 
   Future<void> SubmitItemDetail() async {
     if (SelectedListId == "") {
-      GlobalWidget.GetToast(context, GlobalConstant.ItemError);
+      GlobalWidget.showToast(context, GlobalConstant.ItemError);
       return;
     }
-    String COCO_ID =
-        (await Utility.getStringPreference(GlobalConstant.COCO_ID));
+    String COCO_ID = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
     Map<String, dynamic> map() => {
           'pname': 'Pid',
           'value': COCO_ID,
@@ -351,10 +327,8 @@ class StockView extends State<StockAuditActivity> {
         };
 
     var data = map1();
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
-    String USER_ID =
-        (await Utility.getStringPreference(GlobalConstant.USER_ID));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String USER_ID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
     Map<String, dynamic> map2() => {
           'dbPassword': userPass,
           'dbUser': USER_ID,
@@ -371,30 +345,26 @@ class StockView extends State<StockAuditActivity> {
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
       try {
-        var data = await apiController.postsNew(
-            GlobalConstant.SignUp, json.encode(map2()));
+        var data = await apiController.postsNew(GlobalConstant.SignUp, json.encode(map2()));
         Dialogs.hideProgressDialog(context);
         var data1 = json.decode(data.body);
         Utility.log(TAG, "Response: " + data1.toString());
         if (data1['status'] == 0) {
-          GlobalWidget.GetToast(context, "Stock Updated Successfully");
+          GlobalWidget.showToast(context, "Stock Updated Successfully");
           updateReset();
         } else {
           if (data1['msg'].toString() == "Login failed for user") {
-            GlobalWidget.showMyDialog(context, "Error",
-                "Invalid id or password.Please enter correct id psw or contact HR/IT");
+            GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
           } else {
-            GlobalWidget.showMyDialog(
-                context, "Error", data1['msg'].toString());
+            GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
           }
         }
       } catch (e) {
         Dialogs.hideProgressDialog(context);
-        GlobalWidget.showMyDialog(
-            context, "", GlobalConstant.interNetException(e.toString()));
+        GlobalWidget.showMyDialog(context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -434,8 +404,7 @@ class StockView extends State<StockAuditActivity> {
       child: new Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          new Text(data1.data['ItName'].toString(),
-              style: TextStyle(color: Colors.black, fontSize: 14.0)),
+          new Text(data1.data['ItName'].toString(), style: TextStyle(color: Colors.black, fontSize: 14.0)),
           GlobalWidget.getRowInsideDevide(),
           new Row(
             children: [
@@ -479,12 +448,7 @@ class StockView extends State<StockAuditActivity> {
     return TableRow(
         //First line style add background color
         children: [
-          GlobalHorizontal.buildSideBox(
-              index,
-              index == -1
-                  ? 'BadDt'
-                  : RefreshList_items[index].data["BadDt"].toString(),
-              index == -1),
+          GlobalHorizontal.buildSideBox(index, index == -1 ? 'BadDt' : RefreshList_items[index].data["BadDt"].toString(), index == -1),
         ]);
   }
 
@@ -501,12 +465,7 @@ class StockView extends State<StockAuditActivity> {
                   "                           " +
                   RefreshList_items[index].data["ItId"].toString(),
           index == -1),
-      GlobalHorizontal.buildSideBox(
-          index,
-          index == -1
-              ? 'ItName'
-              : RefreshList_items[index].data["ItName"].toString(),
-          index == -1),
+      GlobalHorizontal.buildSideBox(index, index == -1 ? 'ItName' : RefreshList_items[index].data["ItName"].toString(), index == -1),
     ]);
   }
 
@@ -559,8 +518,7 @@ class StockView extends State<StockAuditActivity> {
                             : InkWell(
                                 child: GlobalWidget.showItemName(Item_name),
                                 onTap: () {
-                                  GlobalConstant.OpenZoomImage(
-                                      data1_upd, context);
+                                  GlobalConstant.OpenZoomImage(data1_upd, context);
                                 },
                               ),
                         SizedBox(
@@ -570,9 +528,7 @@ class StockView extends State<StockAuditActivity> {
                           children: [
                             Expanded(
                               child: Text(
-                                "Lg Stock : " +
-                                    data1_upd['ds']['tables'][0]['rowsList'][0]
-                                        ['cols']['Stock'],
+                                "Lg Stock : " + data1_upd['ds']['tables'][0]['rowsList'][0]['cols']['Stock'],
                                 style: TextStyle(color: colorPrimary),
                               ),
                             ),
@@ -580,12 +536,8 @@ class StockView extends State<StockAuditActivity> {
                               width: 10.0,
                             ),
                             Expanded(
-                              child: Text(
-                                  "In Transit : " +
-                                      data1_upd['ds']['tables'][0]['rowsList']
-                                          [0]['cols']['InTransit'],
-                                  style: TextStyle(color: colorPrimary),
-                                  textAlign: TextAlign.right),
+                              child: Text("In Transit : " + data1_upd['ds']['tables'][0]['rowsList'][0]['cols']['InTransit'],
+                                  style: TextStyle(color: colorPrimary), textAlign: TextAlign.right),
                             ),
                           ],
                         ),
@@ -595,20 +547,13 @@ class StockView extends State<StockAuditActivity> {
                         new Row(
                           children: [
                             Expanded(
-                              child: Text("MRP : " +
-                                  data1_upd['ds']['tables'][0]['rowsList'][0]
-                                          ['cols']['Mrp']
-                                      .toString()),
+                              child: Text("MRP : " + data1_upd['ds']['tables'][0]['rowsList'][0]['cols']['Mrp'].toString()),
                             ),
                             SizedBox(
                               width: 20.0,
                             ),
                             Expanded(
-                              child: Text(
-                                  "ORP: " +
-                                      data1_upd['ds']['tables'][0]['rowsList']
-                                              [0]['cols']['Orp']
-                                          .toString(),
+                              child: Text("ORP: " + data1_upd['ds']['tables'][0]['rowsList'][0]['cols']['Orp'].toString(),
                                   textAlign: TextAlign.right),
                             ),
                           ],
@@ -689,14 +634,12 @@ class StockView extends State<StockAuditActivity> {
       color: Colors.grey,
       textColor: GlobalWidget.getBtnTextColor(),
       onPressed: () {
-        Stock = data1_upd['ds']['tables'][0]['rowsList'][0]['cols']['Stock']
-            .toString();
+        Stock = data1_upd['ds']['tables'][0]['rowsList'][0]['cols']['Stock'].toString();
         if (_formKey.currentState.validate()) {
           if (Stock.length > 0) {
             SubmitItemDetail();
           } else {
-            GlobalWidget.GetToast(context,
-                "Logical stock is not available for this item.select item again.");
+            GlobalWidget.showToast(context, "Logical stock is not available for this item.select item again.");
           }
         }
         // Validate returns true if the form is valid, otherwise false.
@@ -764,18 +707,14 @@ class StockView extends State<StockAuditActivity> {
     try {
       //  String qrResult = await BarcodeScanner.scan();
 
-      String qrResult = await FlutterBarcodeScanner.scanBarcode(
-          "#ff6666", "Cancel", false, ScanMode.DEFAULT);
+      String qrResult = await FlutterBarcodeScanner.scanBarcode("#ff6666", "Cancel", false, ScanMode.DEFAULT);
 
-      var itemDetail =
-          await DatabaseHelper.db.getSingleItemDetailBarCode(qrResult, context);
+      var itemDetail = await DatabaseHelper.db.getSingleItemDetailBarCode(qrResult, context);
       Utility.log("tag", itemDetail);
       itemDetail = json.decode(itemDetail);
       SelectedListId = itemDetail["ItId"].toString();
       GlobalWidget.getItemDetail(context, SelectedListId, getData);
-      Item_name = itemDetail["ItId"].toString() +
-          "  " +
-          itemDetail["ItName"].toString();
+      Item_name = itemDetail["ItId"].toString() + "  " + itemDetail["ItName"].toString();
       getstock = false;
       if (SelectedListId.length > 0) {
         GlobalWidget.getItemDetail(context, SelectedListId, getData);
@@ -833,7 +772,7 @@ class StockView extends State<StockAuditActivity> {
     List l1 = await DatabaseHelper.db.getAllPendingProducts1();
 
     if (l1.length < 0) {
-      GlobalWidget.GetToast(context, "Please wait untill data is sync");
+      GlobalWidget.showToast(context, "Please wait untill data is sync");
     } else {
       //SearchItems = loadSearchItems(l1);
       SearchItems = GlobalSearchItem.loadSearchItems(l1.toString());
@@ -862,8 +801,7 @@ class StockView extends State<StockAuditActivity> {
   ItemNameFeild() {
     return loading
         ? new Container()
-        : searchTextField = GlobalSearchItem.getAutoSelectionField(
-            key, SearchItems, searchTextField, onSelectItem);
+        : searchTextField = GlobalSearchItem.getAutoSelectionField(key, SearchItems, searchTextField, onSelectItem);
   }
 /*
 

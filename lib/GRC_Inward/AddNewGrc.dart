@@ -76,7 +76,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
   void getSearchItems() async {
     List l1 = await DatabaseHelper.db.getAllPendingProducts1();
     if (l1.length < 0) {
-      GlobalWidget.GetToast(context, "Please wait untill data is sync");
+      GlobalWidget.showToast(context, "Please wait untill data is sync");
     } else {
       //SearchItems = loadSearchItems(l1);
       SearchItems = GlobalSearchItem.loadSearchItems(l1.toString());
@@ -189,7 +189,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
   String TAG = "AddNewGrc";
   Future<void> AddItemDetail() async {
     if (SelectedListId == "") {
-      GlobalWidget.GetToast(context, GlobalConstant.ItemError);
+      GlobalWidget.showToast(context, GlobalConstant.ItemError);
       return;
     }
 
@@ -496,7 +496,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
         var data1 = json.decode(data.body);
         Utility.log(TAG, "Response: " + data1.toString());
         if (data1['status'] == 0) {
-          GlobalWidget.GetToast(context, "Success");
+          GlobalWidget.showToast(context, "Success");
           Navigator.pop(context, true);
         } else {
           if (data1['msg'].toString() == "Login failed for user") {
@@ -510,7 +510,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
         GlobalWidget.showMyDialog(context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -758,14 +758,14 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
               double fqty = double.parse(FreeQTYController.text.toString());
               double qty = double.parse(QTYController.text.toString());
               if (fqty <= 0) {
-                GlobalWidget.GetToast(context, "Enter valid value for Free Qty");
+                GlobalWidget.showToast(context, "Enter valid value for Free Qty");
               } else if (fqty + qty <= 0) {
-                GlobalWidget.GetToast(context, "Qty and Free Qty both can't be 0.Please enter correct Qty.");
+                GlobalWidget.showToast(context, "Qty and Free Qty both can't be 0.Please enter correct Qty.");
               } else {
                 AddItemDetail();
               }
             } catch (e) {
-              GlobalWidget.GetToast(context, "Qty and Free Qty both can't be 0.Please enter correct Qty.");
+              GlobalWidget.showToast(context, "Qty and Free Qty both can't be 0.Please enter correct Qty.");
             }
           } else {
             AddItemDetail();

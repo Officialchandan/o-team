@@ -32,8 +32,7 @@ class SplashView extends State<SplashScreen> {
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        decoration:
-            BoxDecoration(image: DecorationImage(image: AssetImage("drawable/splash_background_720.png"), fit: BoxFit.fill)),
+        decoration: BoxDecoration(image: DecorationImage(image: AssetImage("drawable/splash_background_720.png"), fit: BoxFit.fill)),
         alignment: Alignment.center,
         child: Stack(
           children: [
@@ -68,7 +67,7 @@ class SplashView extends State<SplashScreen> {
         print("e--->$e");
       }
     } else {
-      GlobalWidget.GetToast(context, "No internet connection...Refresh and try again!!");
+      GlobalWidget.showToast(context, "No internet connection...Refresh and try again!!");
     }
   }
 

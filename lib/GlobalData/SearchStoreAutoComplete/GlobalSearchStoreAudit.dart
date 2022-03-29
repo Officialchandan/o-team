@@ -14,15 +14,11 @@ import 'SearchStoreModel.dart';
 class GlobalSearchStoreAudit {
   static List<ModelSearchStore> loadSearchCity(var jsonString) {
     final parsed = json.decode(jsonString).cast<Map<String, dynamic>>();
-    return parsed
-        .map<ModelSearchStore>((json) => ModelSearchStore.fromJson(json))
-        .toList();
+    return parsed.map<ModelSearchStore>((json) => ModelSearchStore.fromJson(json)).toList();
   }
 
   static void getSearchItems(
-      Function(List<ModelSearchStore> DataLoad) FunctionCityStoreLoad,
-      BuildContext context,
-      String Cityid) async {
+      Function(List<ModelSearchStore> DataLoad) FunctionCityStoreLoad, BuildContext context, String Cityid) async {
     Map<String, dynamic> map() => {
           'pname': 'CityId',
           'value': Cityid,
@@ -41,10 +37,8 @@ class GlobalSearchStoreAudit {
           'rowsList': a1,
         };
 
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
-    String USER_ID =
-        (await Utility.getStringPreference(GlobalConstant.USER_ID));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String USER_ID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
     Map<String, dynamic> map2() => {
           'dbPassword': userPass,
           'dbUser': USER_ID,
@@ -64,8 +58,7 @@ class GlobalSearchStoreAudit {
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
       try {
-        var data = await apiController.postsNew(
-            GlobalConstant.SignUp, json.encode(map2()));
+        var data = await apiController.postsNew(GlobalConstant.SignUp, json.encode(map2()));
         Dialogs.hideProgressDialog(context);
         var data1 = json.decode(data.body);
         Utility.log("tag", data.body);
@@ -77,31 +70,26 @@ class GlobalSearchStoreAudit {
             a1.add(json.encode(products[i]['cols']));
           }
           Utility.log('Howdy', "${a1.toString()}");
-          var SearchItems =
-              GlobalSearchStoreAudit.loadSearchCity(a1.toString());
+          var SearchItems = GlobalSearchStoreAudit.loadSearchCity(a1.toString());
           print('Users: ${SearchItems.length}');
           return FunctionCityStoreLoad(SearchItems);
         } else {
           if (data1['msg'].toString() == "Login failed for user") {
-            GlobalWidget.showMyDialog(context, "Error",
-                "Invalid id or password.Please enter correct id psw or contact HR/IT");
+            GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
           } else {
-            GlobalWidget.showMyDialog(
-                context, "Error", data1['msg'].toString());
+            GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
           }
         }
       } catch (e) {
         Dialogs.hideProgressDialog(context);
-        GlobalWidget.showMyDialog(
-            context, "", GlobalConstant.interNetException(e.toString()));
+        GlobalWidget.showMyDialog(context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
-  static getAutoSelectionfeild(var key, var SearchItems, var searchTextField,
-      Function(ModelSearchStore item) onSelectItem) {
+  static getAutoSelectionfeild(var key, var SearchItems, var searchTextField, Function(ModelSearchStore item) onSelectItem) {
     return AutoCompleteTextField<ModelSearchStore>(
       key: key,
       clearOnSubmit: false,
@@ -114,8 +102,7 @@ class GlobalSearchStoreAudit {
       ),
       suggestionsAmount: 10,
       itemFilter: (item, query) {
-        return item.name.toLowerCase().contains(query.toLowerCase()) ||
-            item.id == (query);
+        return item.name.toLowerCase().contains(query.toLowerCase()) || item.id == (query);
       },
       itemSorter: (a, b) {
         return a.name.compareTo(b.name);

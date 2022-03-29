@@ -31,10 +31,8 @@ class _SearchStoreState extends State<SearchStore> {
   Future<void> UpdateData() async {
     var data = GlobalConstant.GetMapLogin();
     print("datatval ${data}");
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
-    String USER_ID =
-        (await Utility.getStringPreference(GlobalConstant.USER_ID));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String USER_ID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
 
     Map<String, dynamic> map2() => {
           'dbPassword': userPass,
@@ -54,9 +52,7 @@ class _SearchStoreState extends State<SearchStore> {
 
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
-      apiController
-          .postsNew(GlobalConstant.SignUp, json.encode(map2()))
-          .then((value) {
+      apiController.postsNew(GlobalConstant.SignUp, json.encode(map2())).then((value) {
         try {
           Dialogs.hideProgressDialog(context);
           var data = value;
@@ -70,11 +66,9 @@ class _SearchStoreState extends State<SearchStore> {
             setState(() {});
           } else {
             if (data1['msg'].toString() == "Login failed for user") {
-              GlobalWidget.showMyDialog(context, "Error",
-                  "Invalid id or password.Please enter correct id psw or contact HR/IT");
+              GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
             } else {
-              GlobalWidget.showMyDialog(
-                  context, "Error", data1['msg'].toString());
+              GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
             }
           }
         } catch (e) {
@@ -82,7 +76,7 @@ class _SearchStoreState extends State<SearchStore> {
         }
       });
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -163,24 +157,20 @@ class _SearchStoreState extends State<SearchStore> {
                                           flex: 1,
                                           child: new Container(
                                             alignment: Alignment.center,
-                                            child: new Icon(Icons.search,
-                                                color: Colors.black),
+                                            child: new Icon(Icons.search, color: Colors.black),
                                           ),
                                         ),
                                         Expanded(
                                           flex: 8,
                                           child: new Container(
-                                            padding:
-                                                EdgeInsets.only(left: 20.0),
+                                            padding: EdgeInsets.only(left: 20.0),
                                             child: new TextField(
                                               //focusNode: _focusNode,
                                               //  autofocus: true,
                                               controller: controller,
                                               cursorColor: Colors.black,
-                                              decoration: new InputDecoration(
-                                                  hintText:
-                                                      GlobalConstant.SearchHint,
-                                                  border: InputBorder.none),
+                                              decoration:
+                                                  new InputDecoration(hintText: GlobalConstant.SearchHint, border: InputBorder.none),
                                               onChanged: (value) {
                                                 subject.add(value);
                                               },
@@ -227,8 +217,7 @@ class _SearchStoreState extends State<SearchStore> {
                                   children: [
                                     new Container(
                                       padding: EdgeInsets.all(10.0),
-                                      child: new Text(
-                                          items[index].title.toString()),
+                                      child: new Text(items[index].title.toString()),
                                     ),
                                     Divider(
                                       thickness: 2.0,
@@ -236,21 +225,11 @@ class _SearchStoreState extends State<SearchStore> {
                                   ],
                                 ),
                                 onTap: () {
-                                  Utility.setStringPreference(
-                                      GlobalConstant.COCO_CITY_ID,
-                                      items[index].data['CityId'].toString());
-                                  Utility.setStringPreference(
-                                      GlobalConstant.COCO_CITY,
-                                      items[index].data['CityLbl'].toString());
-                                  Utility.setStringPreference(
-                                      GlobalConstant.COCO_CITY_CODE,
-                                      items[index].data['CityName'].toString());
-                                  Utility.setStringPreference(
-                                      GlobalConstant.COCO_ADDRESS,
-                                      items[index].data['Address'].toString());
-                                  Utility.setStringPreference(
-                                      GlobalConstant.COCO_ID,
-                                      items[index].data['PID'].toString());
+                                  Utility.setStringPreference(GlobalConstant.COCO_CITY_ID, items[index].data['CityId'].toString());
+                                  Utility.setStringPreference(GlobalConstant.COCO_CITY, items[index].data['CityLbl'].toString());
+                                  Utility.setStringPreference(GlobalConstant.COCO_CITY_CODE, items[index].data['CityName'].toString());
+                                  Utility.setStringPreference(GlobalConstant.COCO_ADDRESS, items[index].data['Address'].toString());
+                                  Utility.setStringPreference(GlobalConstant.COCO_ID, items[index].data['PID'].toString());
 
 /*
                         String idValue = ": \"" + "${items[index].data['PID'].toString()}" + "\"";
@@ -271,23 +250,12 @@ class _SearchStoreState extends State<SearchStore> {
                             */
 
                                   Map<String, dynamic> map() => {
-                                        'PID':
-                                            items[index].data['PID'].toString(),
-                                        'Pname': items[index]
-                                            .data['Pname']
-                                            .toString(),
-                                        'CityId': items[index]
-                                            .data['CityId']
-                                            .toString(),
-                                        'CityLbl': items[index]
-                                            .data['CityLbl']
-                                            .toString(),
-                                        'CityName': items[index]
-                                            .data['CityName']
-                                            .toString(),
-                                        "add": items[index]
-                                            .data['CityName']
-                                            .toString()
+                                        'PID': items[index].data['PID'].toString(),
+                                        'Pname': items[index].data['Pname'].toString(),
+                                        'CityId': items[index].data['CityId'].toString(),
+                                        'CityLbl': items[index].data['CityLbl'].toString(),
+                                        'CityName': items[index].data['CityName'].toString(),
+                                        "add": items[index].data['CityName'].toString()
                                       };
                                   Navigator.pop(context, map());
                                 },

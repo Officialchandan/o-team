@@ -31,17 +31,13 @@ class CounterActivity extends StatefulWidget {
 class CounterView extends State<CounterActivity> {
   Future<void> GetItemDetail() async {
     if (SelectedListId == "") {
-      GlobalWidget.GetToast(context, GlobalConstant.ItemError);
+      GlobalWidget.showToast(context, GlobalConstant.ItemError);
       return;
     }
-    String COCO_ID =
-        (await Utility.getStringPreference(GlobalConstant.COCO_ID));
-    var data = GlobalConstant.GetMapForListBasedStockItemDetail(
-        COCO_ID, SelectedListId);
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
-    String USER_ID =
-        (await Utility.getStringPreference(GlobalConstant.USER_ID));
+    String COCO_ID = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
+    var data = GlobalConstant.GetMapForListBasedStockItemDetail(COCO_ID, SelectedListId);
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String USER_ID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
 
     List a1 = new List();
     Map<String, dynamic> map() => {
@@ -90,8 +86,7 @@ class CounterView extends State<CounterActivity> {
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
       try {
-        var data = await apiController.postsNew(
-            GlobalConstant.SignUp, json.encode(map2()));
+        var data = await apiController.postsNew(GlobalConstant.SignUp, json.encode(map2()));
         Dialogs.hideProgressDialog(context);
         var data1 = json.decode(data.body);
         Utility.log(TAG, "Response: " + data1.toString());
@@ -105,20 +100,17 @@ class CounterView extends State<CounterActivity> {
           }
         } else {
           if (data1['msg'].toString() == "Login failed for user") {
-            GlobalWidget.showMyDialog(context, "Error",
-                "Invalid id or password.Please enter correct id psw or contact HR/IT");
+            GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
           } else {
-            GlobalWidget.showMyDialog(
-                context, "Error", data1['msg'].toString());
+            GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
           }
         }
       } catch (e) {
         Dialogs.hideProgressDialog(context);
-        GlobalWidget.showMyDialog(
-            context, "", GlobalConstant.interNetException(e.toString()));
+        GlobalWidget.showMyDialog(context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -239,16 +231,14 @@ class CounterView extends State<CounterActivity> {
 
     try {
       //  String qrResult = await BarcodeScanner.scan();
-      String qrResult = await FlutterBarcodeScanner.scanBarcode(
-          "#ff6666", "Cancel", false, ScanMode.DEFAULT);
+      String qrResult = await FlutterBarcodeScanner.scanBarcode("#ff6666", "Cancel", false, ScanMode.DEFAULT);
 
       result = qrResult;
       print(qrResult);
 
       SelectedListId = qrResult;
       GlobalWidget.getItemDetail(context, SelectedListId, getData);
-      var itemDetail =
-          await DatabaseHelper.db.getSingleItemDetail(SelectedListId);
+      var itemDetail = await DatabaseHelper.db.getSingleItemDetail(SelectedListId);
       Utility.log("tag", itemDetail);
       DataItem.add(new DataVal(json.decode(itemDetail)));
       setState(() {
@@ -297,7 +287,7 @@ class CounterView extends State<CounterActivity> {
   void getSearchItems() async {
     List l1 = await DatabaseHelper.db.getAllPendingProducts1();
     if (l1.length < 0) {
-      GlobalWidget.GetToast(context, "Please wait untill data is sync");
+      GlobalWidget.showToast(context, "Please wait untill data is sync");
     } else {
       //SearchItems = loadSearchItems(l1);
       SearchItems = GlobalSearchItem.loadSearchItems(l1.toString());
@@ -310,8 +300,7 @@ class CounterView extends State<CounterActivity> {
 
   Future<void> onSelectItem(ModelSearchItem item) async {
     SelectedListId = item.id;
-    var itemDetail =
-        await DatabaseHelper.db.getSingleItemDetail(SelectedListId);
+    var itemDetail = await DatabaseHelper.db.getSingleItemDetail(SelectedListId);
     GlobalWidget.getItemDetail(context, SelectedListId, getData);
     Utility.log("tag", itemDetail);
     DataItem.add(new DataVal(json.decode(itemDetail)));
@@ -326,8 +315,7 @@ class CounterView extends State<CounterActivity> {
   ItemNameFeild() {
     return loading
         ? new Container()
-        : searchTextField = GlobalSearchItem.getAutoSelectionField(
-            key, SearchItems, searchTextField, onSelectItem);
+        : searchTextField = GlobalSearchItem.getAutoSelectionField(key, SearchItems, searchTextField, onSelectItem);
   }
 
   var CustomerController = TextEditingController();
@@ -365,8 +353,7 @@ class CounterView extends State<CounterActivity> {
           String Id = "${data['id']}";
           Item_IdController.text = name;
           SelectedListId = Id;
-          var itemDetail =
-              await DatabaseHelper.db.getSingleItemDetail(SelectedListId);
+          var itemDetail = await DatabaseHelper.db.getSingleItemDetail(SelectedListId);
           Utility.log("tag", itemDetail.toString());
           DataItem.add(new DataVal(json.decode(itemDetail)));
           setState(() {});
@@ -404,9 +391,7 @@ class CounterView extends State<CounterActivity> {
                       new Row(
                         children: [
                           Expanded(
-                            child: Text(DataItem[index].data["ItId"] +
-                                "  " +
-                                DataItem[index].data["ItName"]),
+                            child: Text(DataItem[index].data["ItId"] + "  " + DataItem[index].data["ItName"]),
                           ),
                           Expanded(
                             child: Align(
@@ -421,8 +406,7 @@ class CounterView extends State<CounterActivity> {
                       new Row(
                         children: [
                           Expanded(
-                            child:
-                                Text("MRP : " + DataItem[index].data["Price"]),
+                            child: Text("MRP : " + DataItem[index].data["Price"]),
                           ),
                           Expanded(
                             child: Text(

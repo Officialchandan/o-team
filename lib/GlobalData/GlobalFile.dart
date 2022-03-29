@@ -10,7 +10,7 @@ class GlobalFile {
     for (int i = 0; i < str.length; i++) {
       if (str[i].toString().trim().length == 0) {
         //GlobalFile.ShowError(str_name[i].toString(), ctx);
-        GlobalWidget.GetToast(ctx, str_name[i].toString());
+        GlobalWidget.showToast(ctx, str_name[i].toString());
 
         val = false;
         break;
@@ -49,10 +49,7 @@ class GlobalFile {
   Future<int> addBook1(product) async {
     var map = getmap(product);
     String result = jsonEncode(map);
-    int id = 0;
-    print(result);
-
-    id = await DatabaseHelper.db.addProduct(product['ItId'].toString(), product['Barcode'].toString(), result);
+    int id = await DatabaseHelper.db.addProduct(product['ItId'].toString(), product['Barcode'].toString(), result);
 
     // if (!await DatabaseHelper.db.checkOrderIfAlreadyExist(product['ItId'].toString())) {
     //   id = await DatabaseHelper.db.addProductInAllTable(product['ItId'].toString(), product['Barcode'].toString(), result);

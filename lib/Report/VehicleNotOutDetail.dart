@@ -14,8 +14,7 @@ import 'package:rxdart/rxdart.dart';
 
 class VehicleNotOutActivity extends StatefulWidget {
   String city_params, Api_Name, title, date_req;
-  VehicleNotOutActivity(
-      this.city_params, this.Api_Name, this.title, this.date_req);
+  VehicleNotOutActivity(this.city_params, this.Api_Name, this.title, this.date_req);
 
   @override
   State<StatefulWidget> createState() {
@@ -36,18 +35,13 @@ class ReoportView extends State<VehicleNotOutActivity> {
   var TAG = "ReprtDetailClass";
 
   Future<void> UpdateData() async {
-    String COCO_ID =
-        (await Utility.getStringPreference(GlobalConstant.COCO_ID));
-    String FROM_DATE_OverAllSale =
-        (await Utility.getStringPreference(GlobalConstant.FROM_DATE_Report));
-    String TO_DATE_OverAllSale =
-        (await Utility.getStringPreference(GlobalConstant.TO_DATE_Report));
+    String COCO_ID = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
+    String FROM_DATE_OverAllSale = (await Utility.getStringPreference(GlobalConstant.FROM_DATE_Report));
+    String TO_DATE_OverAllSale = (await Utility.getStringPreference(GlobalConstant.TO_DATE_Report));
 
-    var data = GlobalConstant.GetMapForRePortDetail(FROM_DATE_OverAllSale,
-        TO_DATE_OverAllSale, widget.city_params, widget.date_req);
+    var data = GlobalConstant.GetMapForRePortDetail(FROM_DATE_OverAllSale, TO_DATE_OverAllSale, widget.city_params, widget.date_req);
 
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
     String userID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
 
     Map<String, dynamic> map2() => {
@@ -66,9 +60,7 @@ class ReoportView extends State<VehicleNotOutActivity> {
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
 
-      apiController
-          .postsNew(GlobalConstant.SignUp, json.encode(map2()))
-          .then((value) {
+      apiController.postsNew(GlobalConstant.SignUp, json.encode(map2())).then((value) {
         try {
           Dialogs.hideProgressDialog(context);
           var data = value;
@@ -85,11 +77,9 @@ class ReoportView extends State<VehicleNotOutActivity> {
             }
           } else {
             if (data1['msg'].toString() == "Login failed for user") {
-              GlobalWidget.showMyDialog(context, "Error",
-                  "Invalid id or password.Please enter correct id psw or contact HR/IT");
+              GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
             } else {
-              GlobalWidget.showMyDialog(
-                  context, "Error", data1['msg'].toString());
+              GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
             }
           }
         } catch (e) {
@@ -97,7 +87,7 @@ class ReoportView extends State<VehicleNotOutActivity> {
         }
       });
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -127,8 +117,7 @@ class ReoportView extends State<VehicleNotOutActivity> {
   void _addBook(dynamic book) {
     setState(() {
       String Name = book['DocDate'].toString();
-      duplicateItems
-          .add(new SearchModel(Name.trim(), "${book["DocDate"]}", book));
+      duplicateItems.add(new SearchModel(Name.trim(), "${book["DocDate"]}", book));
     });
   }
 
@@ -170,8 +159,7 @@ class ReoportView extends State<VehicleNotOutActivity> {
                               flex: 1,
                               child: new Container(
                                 alignment: Alignment.center,
-                                child:
-                                    new Icon(Icons.search, color: Colors.black),
+                                child: new Icon(Icons.search, color: Colors.black),
                               ),
                             ),
                             Expanded(
@@ -183,9 +171,7 @@ class ReoportView extends State<VehicleNotOutActivity> {
                                   //  autofocus: true,
                                   controller: controller,
                                   cursorColor: Colors.black,
-                                  decoration: new InputDecoration(
-                                      hintText: GlobalConstant.SearchHint,
-                                      border: InputBorder.none),
+                                  decoration: new InputDecoration(hintText: GlobalConstant.SearchHint, border: InputBorder.none),
                                   onChanged: (value) {
                                     subject.add(value);
                                   },
@@ -283,10 +269,7 @@ class ReoportView extends State<VehicleNotOutActivity> {
         //First line style add background color
         children: [
           //Increase row height
-          GlobalHorizontal.buildSideBox(
-              index,
-              index == -1 ? 'Date' : items[index].title.toString(),
-              index == -1),
+          GlobalHorizontal.buildSideBox(index, index == -1 ? 'Date' : items[index].title.toString(), index == -1),
         ]);
   }
 
@@ -295,40 +278,14 @@ class ReoportView extends State<VehicleNotOutActivity> {
     return TableRow(
         //First line style add background color
         children: [
+          GlobalHorizontal.buildSideBox(index, index == -1 ? 'Status' : items[index].data["Status"].toString(), index == -1),
+          GlobalHorizontal.buildSideBox(index, index == -1 ? 'DocNo' : items[index].data["DocNo"].toString(), index == -1),
+          GlobalHorizontal.buildSideBox(index, index == -1 ? 'Remarks' : items[index].data["Remarks"].toString(), index == -1),
           GlobalHorizontal.buildSideBox(
-              index,
-              index == -1 ? 'Status' : items[index].data["Status"].toString(),
-              index == -1),
-          GlobalHorizontal.buildSideBox(
-              index,
-              index == -1 ? 'DocNo' : items[index].data["DocNo"].toString(),
-              index == -1),
-          GlobalHorizontal.buildSideBox(
-              index,
-              index == -1 ? 'Remarks' : items[index].data["Remarks"].toString(),
-              index == -1),
-          GlobalHorizontal.buildSideBox(
-              index,
-              index == -1
-                  ? 'FromLocation'
-                  : items[index].data["FromLocation"].toString(),
-              index == -1),
-          GlobalHorizontal.buildSideBox(
-              index,
-              index == -1
-                  ? 'ToLocation'
-                  : items[index].data["ToLocation"].toString(),
-              index == -1),
-          GlobalHorizontal.buildSideBox(
-              index,
-              index == -1 ? 'DocTy' : items[index].data["DocTy"].toString(),
-              index == -1),
-          GlobalHorizontal.buildSideBox(
-              index,
-              index == -1
-                  ? 'AvgGrcSale'
-                  : items[index].data["AvgGrcSale"].toString(),
-              index == -1),
+              index, index == -1 ? 'FromLocation' : items[index].data["FromLocation"].toString(), index == -1),
+          GlobalHorizontal.buildSideBox(index, index == -1 ? 'ToLocation' : items[index].data["ToLocation"].toString(), index == -1),
+          GlobalHorizontal.buildSideBox(index, index == -1 ? 'DocTy' : items[index].data["DocTy"].toString(), index == -1),
+          GlobalHorizontal.buildSideBox(index, index == -1 ? 'AvgGrcSale' : items[index].data["AvgGrcSale"].toString(), index == -1),
         ]);
   }
   //Create a single table

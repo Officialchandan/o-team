@@ -138,7 +138,7 @@ class orderRetriveView extends State<IndentRetrivalActivity> {
         setState(() {});
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 

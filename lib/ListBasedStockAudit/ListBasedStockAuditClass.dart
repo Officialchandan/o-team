@@ -74,21 +74,16 @@ class StockView extends State<ListBasedStockAuditActivity> {
                           children: [
                             Text(
                               "  REFRESH",
-                              style: active == 1
-                                  ? GlobalWidget.getTextStyleBottomText(true)
-                                  : GlobalWidget.getTextStyleBottomText(false),
+                              style:
+                                  active == 1 ? GlobalWidget.getTextStyleBottomText(true) : GlobalWidget.getTextStyleBottomText(false),
                             ),
                             new Container(
                               padding: GlobalWidget.getpaddingNavBottom(),
-                              decoration: active == 1
-                                  ? GlobalWidget.getDecoration(true)
-                                  : GlobalWidget.getDecoration(false),
+                              decoration: active == 1 ? GlobalWidget.getDecoration(true) : GlobalWidget.getDecoration(false),
                               constraints: GlobalWidget.getBoxConstraint(),
                               child: new Text(
                                 '(${RefreshList_Count.toString()})',
-                                style: active == 1
-                                    ? GlobalWidget.getTextStyle(true)
-                                    : GlobalWidget.getTextStyle(false),
+                                style: active == 1 ? GlobalWidget.getTextStyle(true) : GlobalWidget.getTextStyle(false),
                                 textAlign: TextAlign.center,
                               ),
                             ),
@@ -112,21 +107,16 @@ class StockView extends State<ListBasedStockAuditActivity> {
                           children: [
                             Text(
                               "DISPUTE",
-                              style: active == 2
-                                  ? GlobalWidget.getTextStyleBottomText(true)
-                                  : GlobalWidget.getTextStyleBottomText(false),
+                              style:
+                                  active == 2 ? GlobalWidget.getTextStyleBottomText(true) : GlobalWidget.getTextStyleBottomText(false),
                             ),
                             new Container(
                               padding: GlobalWidget.getpaddingNavBottom(),
-                              decoration: active == 2
-                                  ? GlobalWidget.getDecoration(true)
-                                  : GlobalWidget.getDecoration(false),
+                              decoration: active == 2 ? GlobalWidget.getDecoration(true) : GlobalWidget.getDecoration(false),
                               constraints: GlobalWidget.getBoxConstraint(),
                               child: new Text(
                                 '(${DisputeList_Count.toString()})',
-                                style: active == 2
-                                    ? GlobalWidget.getTextStyle(true)
-                                    : GlobalWidget.getTextStyle(false),
+                                style: active == 2 ? GlobalWidget.getTextStyle(true) : GlobalWidget.getTextStyle(false),
                                 textAlign: TextAlign.center,
                               ),
                             ),
@@ -149,21 +139,16 @@ class StockView extends State<ListBasedStockAuditActivity> {
                           children: [
                             Text(
                               "CLOSE",
-                              style: active == 3
-                                  ? GlobalWidget.getTextStyleBottomText(true)
-                                  : GlobalWidget.getTextStyleBottomText(false),
+                              style:
+                                  active == 3 ? GlobalWidget.getTextStyleBottomText(true) : GlobalWidget.getTextStyleBottomText(false),
                             ),
                             new Container(
                               padding: GlobalWidget.getpaddingNavBottom(),
-                              decoration: active == 3
-                                  ? GlobalWidget.getDecoration(true)
-                                  : GlobalWidget.getDecoration(false),
+                              decoration: active == 3 ? GlobalWidget.getDecoration(true) : GlobalWidget.getDecoration(false),
                               constraints: GlobalWidget.getBoxConstraint(),
                               child: new Text(
                                 '(${CloseList_Count.toString()})',
-                                style: active == 3
-                                    ? GlobalWidget.getTextStyle(true)
-                                    : GlobalWidget.getTextStyle(false),
+                                style: active == 3 ? GlobalWidget.getTextStyle(true) : GlobalWidget.getTextStyle(false),
                                 textAlign: TextAlign.center,
                               ),
                             ),
@@ -210,8 +195,7 @@ class StockView extends State<ListBasedStockAuditActivity> {
                             : InkWell(
                                 child: GlobalWidget.showItemName(Item_name),
                                 onTap: () {
-                                  GlobalConstant.OpenZoomImage(
-                                      data1_upd, context);
+                                  GlobalConstant.OpenZoomImage(data1_upd, context);
                                 },
                               ),
                         SizedBox(
@@ -221,9 +205,7 @@ class StockView extends State<ListBasedStockAuditActivity> {
                           children: [
                             Expanded(
                               child: Text(
-                                "Lg Stock : " +
-                                    data1_upd['ds']['tables'][0]['rowsList'][0]
-                                        ['cols']['Stock'],
+                                "Lg Stock : " + data1_upd['ds']['tables'][0]['rowsList'][0]['cols']['Stock'],
                                 style: TextStyle(color: colorPrimary),
                               ),
                             ),
@@ -231,12 +213,8 @@ class StockView extends State<ListBasedStockAuditActivity> {
                               width: 10.0,
                             ),
                             Expanded(
-                              child: Text(
-                                  "In Transit : " +
-                                      data1_upd['ds']['tables'][0]['rowsList']
-                                          [0]['cols']['InTransit'],
-                                  style: TextStyle(color: colorPrimary),
-                                  textAlign: TextAlign.right),
+                              child: Text("In Transit : " + data1_upd['ds']['tables'][0]['rowsList'][0]['cols']['InTransit'],
+                                  style: TextStyle(color: colorPrimary), textAlign: TextAlign.right),
                             ),
                           ],
                         ),
@@ -246,20 +224,13 @@ class StockView extends State<ListBasedStockAuditActivity> {
                         new Row(
                           children: [
                             Expanded(
-                              child: Text("MRP : " +
-                                  data1_upd['ds']['tables'][0]['rowsList'][0]
-                                          ['cols']['Mrp']
-                                      .toString()),
+                              child: Text("MRP : " + data1_upd['ds']['tables'][0]['rowsList'][0]['cols']['Mrp'].toString()),
                             ),
                             SizedBox(
                               width: 20.0,
                             ),
                             Expanded(
-                              child: Text(
-                                  "ORP: " +
-                                      data1_upd['ds']['tables'][0]['rowsList']
-                                              [0]['cols']['Orp']
-                                          .toString(),
+                              child: Text("ORP: " + data1_upd['ds']['tables'][0]['rowsList'][0]['cols']['Orp'].toString(),
                                   textAlign: TextAlign.right),
                             ),
                           ],
@@ -316,9 +287,7 @@ class StockView extends State<ListBasedStockAuditActivity> {
                     //  autofocus: true,
                     controller: controller,
                     cursorColor: Colors.black,
-                    decoration: new InputDecoration(
-                        hintText: GlobalConstant.SearchHint,
-                        border: InputBorder.none),
+                    decoration: new InputDecoration(hintText: GlobalConstant.SearchHint, border: InputBorder.none),
                     onChanged: (value) {
                       subject.add(value);
                     },
@@ -380,14 +349,8 @@ class StockView extends State<ListBasedStockAuditActivity> {
     if (text.isNotEmpty) {
       List<RetriveModel> dummyListData = List<RetriveModel>();
       dummySearchList.forEach((item) {
-        if (item.data['ItName']
-                .toString()
-                .toLowerCase()
-                .contains(text.toLowerCase()) ||
-            item.data['Itid']
-                .toString()
-                .toLowerCase()
-                .contains(text.toLowerCase())) {
+        if (item.data['ItName'].toString().toLowerCase().contains(text.toLowerCase()) ||
+            item.data['Itid'].toString().toLowerCase().contains(text.toLowerCase())) {
           dummyListData.add(item);
         }
       });
@@ -435,13 +398,10 @@ class StockView extends State<ListBasedStockAuditActivity> {
   bool getstock = false;
   Future<void> GetRefreshList() async {
     RefreshList_items = new List();
-    String COCO_ID =
-        (await Utility.getStringPreference(GlobalConstant.COCO_ID));
+    String COCO_ID = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
     var data = GlobalConstant.GetMapForListBasedStockAudit(COCO_ID, "Fresh");
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
-    String Item_Id =
-        (await Utility.getStringPreference(GlobalConstant.USER_ID));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String Item_Id = (await Utility.getStringPreference(GlobalConstant.USER_ID));
     Map<String, dynamic> map2() => {
           'dbPassword': userPass,
           'dbUser': Item_Id,
@@ -458,8 +418,7 @@ class StockView extends State<ListBasedStockAuditActivity> {
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
       try {
-        var data = await apiController.postsNew(
-            GlobalConstant.SignUp, json.encode(map2()));
+        var data = await apiController.postsNew(GlobalConstant.SignUp, json.encode(map2()));
         Dialogs.hideProgressDialog(context);
         var data1 = json.decode(data.body);
         Utility.log(TAG, "Response: " + data1.toString());
@@ -470,41 +429,33 @@ class StockView extends State<ListBasedStockAuditActivity> {
           }
         } else {
           if (data1['msg'].toString() == "Login failed for user") {
-            GlobalWidget.showMyDialog(context, "Error",
-                "Invalid id or password.Please enter correct id psw or contact HR/IT");
+            GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
           } else {
-            GlobalWidget.showMyDialog(
-                context, "Error", data1['msg'].toString());
+            GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
           }
         }
       } catch (e) {
         Dialogs.hideProgressDialog(context);
-        GlobalWidget.showMyDialog(
-            context, "", GlobalConstant.interNetException(e.toString()));
+        GlobalWidget.showMyDialog(context, "", GlobalConstant.interNetException(e.toString()));
       }
-      apiController
-          .postsNew(GlobalConstant.SignUp, json.encode(map2()))
-          .then((value) {
+      apiController.postsNew(GlobalConstant.SignUp, json.encode(map2())).then((value) {
         try {} catch (e) {
           GlobalWidget.showMyDialog(context, "Error", "" + e.toString());
         }
       });
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
   Future<void> GetDisputeList() async {
     DisputeList_items = new List();
-    String COCO_ID =
-        (await Utility.getStringPreference(GlobalConstant.COCO_ID));
+    String COCO_ID = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
 
     var data = GlobalConstant.GetMapForListBasedStockAudit(COCO_ID, "ReView");
 
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
-    String Item_Id =
-        (await Utility.getStringPreference(GlobalConstant.USER_ID));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String Item_Id = (await Utility.getStringPreference(GlobalConstant.USER_ID));
     Map<String, dynamic> map2() => {
           'dbPassword': userPass,
           'dbUser': Item_Id,
@@ -521,8 +472,7 @@ class StockView extends State<ListBasedStockAuditActivity> {
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
       try {
-        var data = await apiController.postsNew(
-            GlobalConstant.SignUp, json.encode(map2()));
+        var data = await apiController.postsNew(GlobalConstant.SignUp, json.encode(map2()));
         Dialogs.hideProgressDialog(context);
         var data1 = json.decode(data.body);
         Utility.log(TAG, "Response: " + data1.toString());
@@ -533,26 +483,22 @@ class StockView extends State<ListBasedStockAuditActivity> {
           }
         } else {
           if (data1['msg'].toString() == "Login failed for user") {
-            GlobalWidget.showMyDialog(context, "Error",
-                "Invalid id or password.Please enter correct id psw or contact HR/IT");
+            GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
           } else {
-            GlobalWidget.showMyDialog(
-                context, "Error", data1['msg'].toString());
+            GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
           }
         }
       } catch (e) {
         Dialogs.hideProgressDialog(context);
-        GlobalWidget.showMyDialog(
-            context, "", GlobalConstant.interNetException(e.toString()));
+        GlobalWidget.showMyDialog(context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
   Future<void> SubmitItemDetail() async {
-    String COCO_ID =
-        (await Utility.getStringPreference(GlobalConstant.COCO_ID));
+    String COCO_ID = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
     Map<String, dynamic> map() => {
           'pname': 'Pid',
           'value': COCO_ID,
@@ -620,10 +566,8 @@ class StockView extends State<ListBasedStockAuditActivity> {
 
     var data = map1();
 
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
-    String USER_ID =
-        (await Utility.getStringPreference(GlobalConstant.USER_ID));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String USER_ID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
     Map<String, dynamic> map2() => {
           'dbPassword': userPass,
           'dbUser': USER_ID,
@@ -641,40 +585,34 @@ class StockView extends State<ListBasedStockAuditActivity> {
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
       try {
-        var data = await apiController.postsNew(
-            GlobalConstant.SignUp, json.encode(map2()));
+        var data = await apiController.postsNew(GlobalConstant.SignUp, json.encode(map2()));
         Dialogs.hideProgressDialog(context);
         var data1 = json.decode(data.body);
         Utility.log(TAG, "Response: " + data1.toString());
         if (data1['status'] == 0) {
-          GlobalWidget.GetToast(context, "Stock Updated Successfully");
+          GlobalWidget.showToast(context, "Stock Updated Successfully");
           updateReset();
         } else {
           if (data1['msg'].toString() == "Login failed for user") {
-            GlobalWidget.showMyDialog(context, "Error",
-                "Invalid id or password.Please enter correct id psw or contact HR/IT");
+            GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
           } else {
-            GlobalWidget.showMyDialog(
-                context, "Error", data1['msg'].toString());
+            GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
           }
         }
       } catch (e) {
         Dialogs.hideProgressDialog(context);
-        GlobalWidget.showMyDialog(
-            context, "", GlobalConstant.interNetException(e.toString()));
+        GlobalWidget.showMyDialog(context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
   Future<void> GetCloseList() async {
     CloseList_items = new List();
     var data = GlobalConstant.GetMapForListBasedStockAuditClose(SelectedListId);
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
-    String Item_Id =
-        (await Utility.getStringPreference(GlobalConstant.USER_ID));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String Item_Id = (await Utility.getStringPreference(GlobalConstant.USER_ID));
     Map<String, dynamic> map2() => {
           'dbPassword': userPass,
           'dbUser': Item_Id,
@@ -691,8 +629,7 @@ class StockView extends State<ListBasedStockAuditActivity> {
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
       try {
-        var data = await apiController.postsNew(
-            GlobalConstant.SignUp, json.encode(map2()));
+        var data = await apiController.postsNew(GlobalConstant.SignUp, json.encode(map2()));
         Dialogs.hideProgressDialog(context);
         var data1 = json.decode(data.body);
         Utility.log(TAG, "Response: " + data1.toString());
@@ -703,20 +640,17 @@ class StockView extends State<ListBasedStockAuditActivity> {
           }
         } else {
           if (data1['msg'].toString() == "Login failed for user") {
-            GlobalWidget.showMyDialog(context, "Error",
-                "Invalid id or password.Please enter correct id psw or contact HR/IT");
+            GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
           } else {
-            GlobalWidget.showMyDialog(
-                context, "Error", data1['msg'].toString());
+            GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
           }
         }
       } catch (e) {
         Dialogs.hideProgressDialog(context);
-        GlobalWidget.showMyDialog(
-            context, "", GlobalConstant.interNetException(e.toString()));
+        GlobalWidget.showMyDialog(context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -791,8 +725,7 @@ class StockView extends State<ListBasedStockAuditActivity> {
       child: new Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          new Text(data1.data['ItName'].toString(),
-              style: TextStyle(color: Colors.black, fontSize: 14.0)),
+          new Text(data1.data['ItName'].toString(), style: TextStyle(color: Colors.black, fontSize: 14.0)),
           new Row(
             children: [
               Expanded(
@@ -867,14 +800,12 @@ class StockView extends State<ListBasedStockAuditActivity> {
       color: GlobalWidget.getBtncolor(),
       textColor: GlobalWidget.getBtnTextColor(),
       onPressed: () {
-        Stock = data1_upd['ds']['tables'][0]['rowsList'][0]['cols']['Stock']
-            .toString();
+        Stock = data1_upd['ds']['tables'][0]['rowsList'][0]['cols']['Stock'].toString();
         if (_formKey.currentState.validate()) {
           if (Stock.length > 0) {
             SubmitItemDetail();
           } else {
-            GlobalWidget.GetToast(context,
-                "Logical stock is not available for this item.select item again.");
+            GlobalWidget.showToast(context, "Logical stock is not available for this item.select item again.");
           }
         }
         // Validate returns true if the form is valid, otherwise false.
@@ -948,18 +879,14 @@ class StockView extends State<ListBasedStockAuditActivity> {
     try {
       //    String qrResult = await BarcodeScanner.scan();
 
-      String qrResult = await FlutterBarcodeScanner.scanBarcode(
-          "#ff6666", "Cancel", false, ScanMode.DEFAULT);
+      String qrResult = await FlutterBarcodeScanner.scanBarcode("#ff6666", "Cancel", false, ScanMode.DEFAULT);
 
       Utility.log("tag", qrResult);
-      var itemDetail =
-          await DatabaseHelper.db.getSingleItemDetailBarCode(qrResult, context);
+      var itemDetail = await DatabaseHelper.db.getSingleItemDetailBarCode(qrResult, context);
       itemDetail = json.decode(itemDetail);
       SelectedListId = itemDetail["ItId"].toString();
       GlobalWidget.getItemDetail(context, SelectedListId, getData);
-      Item_name = itemDetail["ItId"].toString() +
-          "  " +
-          itemDetail["ItName"].toString();
+      Item_name = itemDetail["ItId"].toString() + "  " + itemDetail["ItName"].toString();
       getstock = false;
       if (SelectedListId.length > 0) {
         GlobalWidget.getItemDetail(context, SelectedListId, getData);
@@ -1007,8 +934,7 @@ class StockView extends State<ListBasedStockAuditActivity> {
   ItemNameFeild() {
     return loading
         ? new Container()
-        : searchTextField = GlobalSearchItem.getAutoSelectionField(
-            key, SearchItems, searchTextField, onSelectItem);
+        : searchTextField = GlobalSearchItem.getAutoSelectionField(key, SearchItems, searchTextField, onSelectItem);
   }
 /*
 
@@ -1073,7 +999,7 @@ class StockView extends State<ListBasedStockAuditActivity> {
   void getSearchItems() async {
     List l1 = await DatabaseHelper.db.getAllPendingProducts1();
     if (l1.length < 0) {
-      GlobalWidget.GetToast(context, "Please wait untill data is sync");
+      GlobalWidget.showToast(context, "Please wait untill data is sync");
     } else {
       //SearchItems = loadSearchItems(l1);
       SearchItems = GlobalSearchItem.loadSearchItems(l1.toString());

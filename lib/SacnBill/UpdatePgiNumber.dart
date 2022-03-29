@@ -153,7 +153,7 @@ class PgiView extends State<UpdatePgiNumber> {
         }
       });
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -172,10 +172,10 @@ class PgiView extends State<UpdatePgiNumber> {
           }
         }
         if (flag == false) {
-          GlobalWidget.GetToast(context, "Select Scan Document Type");
+          GlobalWidget.showToast(context, "Select Scan Document Type");
           return;
         } else if (pONumberController.text.toString().length < 4) {
-          GlobalWidget.GetToast(context, "Enter valid PGI NO");
+          GlobalWidget.showToast(context, "Enter valid PGI NO");
           return;
         } else {
           await submitPoItemData(context);
@@ -255,7 +255,7 @@ class PgiView extends State<UpdatePgiNumber> {
         GlobalWidget.showMyDialog(context, "Error", "" + e.toString());
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 

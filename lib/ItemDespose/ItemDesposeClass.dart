@@ -36,9 +36,7 @@ class ItemDesposeView extends State<ItemDesposeActivity> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-        appBar: GlobalWidget.getAppbar("Dispose Item"),
-        body: getListingOntheBasisOfCondition());
+    return new Scaffold(appBar: GlobalWidget.getAppbar("Dispose Item"), body: getListingOntheBasisOfCondition());
   }
 
   @override
@@ -115,12 +113,11 @@ class ItemDesposeView extends State<ItemDesposeActivity> {
               child: Text('SUBMIT'),
               onPressed: () {
                 //  if(otpController.text.toString())
-                if (otpController.text.isNotEmpty ||
-                    otpController.text != null) {
+                if (otpController.text.isNotEmpty || otpController.text != null) {
                   Navigator.of(context).pop();
                   verifyOTP(otpId, otpController.text.trim());
                 } else {
-                  GlobalWidget.GetToast(context, "Please enter otp");
+                  GlobalWidget.showToast(context, "Please enter otp");
                 }
               },
             ),
@@ -135,20 +132,12 @@ class ItemDesposeView extends State<ItemDesposeActivity> {
   Future<void> SendOtp() async {
     List a1 = new List();
 
-    String COCO_ID =
-        (await Utility.getStringPreference(GlobalConstant.COCO_ID));
-    String COCO_Name =
-        (await Utility.getStringPreference(GlobalConstant.COCO_NAME));
-    String USER_NAME =
-        (await Utility.getStringPreference(GlobalConstant.Empname));
+    String COCO_ID = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
+    String COCO_Name = (await Utility.getStringPreference(GlobalConstant.COCO_NAME));
+    String USER_NAME = (await Utility.getStringPreference(GlobalConstant.Empname));
 
     // COCO_ID="14143";
-    String message = "OTP to dispose Item: " +
-        Item_name +
-        " from COCO: " +
-        COCO_Name +
-        " through Executive " +
-        USER_NAME;
+    String message = "OTP to dispose Item: " + Item_name + " from COCO: " + COCO_Name + " through Executive " + USER_NAME;
     Map<String, dynamic> map() => {
           'pname': 'pid',
           'value': COCO_ID,
@@ -178,8 +167,7 @@ class ItemDesposeView extends State<ItemDesposeActivity> {
         };
 
     var data = map1();
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
     userID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
 
     Map<String, dynamic> map2() => {
@@ -199,8 +187,7 @@ class ItemDesposeView extends State<ItemDesposeActivity> {
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
       try {
-        var data = await apiController.postsNew(
-            GlobalConstant.SignUp, json.encode(map2()));
+        var data = await apiController.postsNew(GlobalConstant.SignUp, json.encode(map2()));
         Dialogs.hideProgressDialog(context);
         var data1 = json.decode(data.body);
         if (data1['status'] == 0) {
@@ -211,39 +198,32 @@ class ItemDesposeView extends State<ItemDesposeActivity> {
           }
         } else {
           if (data1['msg'].toString() == "Login failed for user") {
-            GlobalWidget.showMyDialog(context, "Error",
-                "Invalid id or password.Please enter correct id psw or contact HR/IT");
+            GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
           } else {
-            GlobalWidget.showMyDialog(
-                context, "Error", data1['msg'].toString());
+            GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
           }
         }
       } catch (e) {
         Dialogs.hideProgressDialog(context);
-        GlobalWidget.showMyDialog(
-            context, "", GlobalConstant.interNetException(e.toString()));
+        GlobalWidget.showMyDialog(context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
   _asyncFileUpload() async {
     Dialogs.showProgressDialog(context);
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
-    String USER_ID =
-        (await Utility.getStringPreference(GlobalConstant.USER_ID));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String USER_ID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
     Map<String, String> requestHeaders = {
       'Content-type': 'application/x-www-form-urlencoded',
       'charset': 'UTF-8',
     };
 
     Utility.log(TAG, userPass);
-    String COCO_ID =
-        (await Utility.getStringPreference(GlobalConstant.COCO_ID));
-    var request = http.MultipartRequest(
-        "POST", Uri.parse(GlobalConstant.BASE_URL + "data/saveDisposeItem"));
+    String COCO_ID = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
+    var request = http.MultipartRequest("POST", Uri.parse(GlobalConstant.BASE_URL + "data/saveDisposeItem"));
     request.headers.addAll(requestHeaders);
     //add text fields
     request.fields["ItId"] = "${SelectedListId}";
@@ -258,8 +238,7 @@ class ItemDesposeView extends State<ItemDesposeActivity> {
     Utility.log(TAG, request.toString());
 
     if ("${_image.toString()}" != "null") {
-      var gumastaupload =
-          await http.MultipartFile.fromPath("fileUpload", _image.path);
+      var gumastaupload = await http.MultipartFile.fromPath("fileUpload", _image.path);
       request.files.add(gumastaupload);
     }
 
@@ -273,13 +252,11 @@ class ItemDesposeView extends State<ItemDesposeActivity> {
     Utility.log("upload Response --> ", data1);
     Dialogs.hideProgressDialog(context);
     if (data1['status'] == 0) {
-      GlobalWidget.showMyDialog(
-          context, "Error", "Item Disposed Successfully. ");
+      GlobalWidget.showMyDialog(context, "Error", "Item Disposed Successfully. ");
       updateReset();
     } else {
       if (data1['msg'].toString() == "Login failed for user") {
-        GlobalWidget.showMyDialog(context, "Error",
-            "Invalid id or password.Please enter correct id psw or contact HR/IT");
+        GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
       } else {
         GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
         //GlobalWidget.showMyDialog(context, "Error", "Item Disposed Successfully. ");
@@ -322,8 +299,7 @@ class ItemDesposeView extends State<ItemDesposeActivity> {
       child: new Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          new Text(data1.data['ItName'].toString(),
-              style: TextStyle(color: Colors.black, fontSize: 14.0)),
+          new Text(data1.data['ItName'].toString(), style: TextStyle(color: Colors.black, fontSize: 14.0)),
           GlobalWidget.getRowInsideDevide(),
           new Row(
             children: [
@@ -378,9 +354,9 @@ class ItemDesposeView extends State<ItemDesposeActivity> {
         if (_formKey.currentState.validate()) {
           Utility.log(TAG, _image);
           if (_image == null) {
-            GlobalWidget.GetToast(context, "Take a picture of dispose item.");
+            GlobalWidget.showToast(context, "Take a picture of dispose item.");
           } else if (Item_name.isEmpty) {
-            GlobalWidget.GetToast(context, "Select item to dispose.");
+            GlobalWidget.showToast(context, "Select item to dispose.");
             //showYesNo(context,"Confirm","Are you sure ?");
           } else {
             SendOtp();
@@ -513,17 +489,13 @@ class ItemDesposeView extends State<ItemDesposeActivity> {
   Future getImage() async {
     try {
       // String qrResult = await BarcodeScanner.scan();
-      String qrResult = await FlutterBarcodeScanner.scanBarcode(
-          "#ff6666", "Cancel", false, ScanMode.DEFAULT);
+      String qrResult = await FlutterBarcodeScanner.scanBarcode("#ff6666", "Cancel", false, ScanMode.DEFAULT);
 
-      var itemDetail =
-          await DatabaseHelper.db.getSingleItemDetailBarCode(qrResult, context);
+      var itemDetail = await DatabaseHelper.db.getSingleItemDetailBarCode(qrResult, context);
       itemDetail = json.decode(itemDetail);
       SelectedListId = itemDetail["ItId"].toString();
       GlobalWidget.getItemDetail(context, SelectedListId, getData);
-      Item_name = itemDetail["ItId"].toString() +
-          "  " +
-          itemDetail["ItName"].toString();
+      Item_name = itemDetail["ItId"].toString() + "  " + itemDetail["ItName"].toString();
       setState(() {
         searchTextField.textField.controller.text = "";
       });
@@ -574,7 +546,7 @@ class ItemDesposeView extends State<ItemDesposeActivity> {
   void getSearchItems() async {
     List l1 = await DatabaseHelper.db.getAllPendingProducts1();
     if (l1.length < 0) {
-      GlobalWidget.GetToast(context, "Please wait untill data is sync");
+      GlobalWidget.showToast(context, "Please wait untill data is sync");
     } else {
       //SearchItems = loadSearchItems(l1);
       SearchItems = GlobalSearchItem.loadSearchItems(l1.toString());
@@ -598,8 +570,7 @@ class ItemDesposeView extends State<ItemDesposeActivity> {
   ItemNameFeild() {
     return loading
         ? new Container()
-        : searchTextField = GlobalSearchItem.getAutoSelectionField(
-            key, SearchItems, searchTextField, onSelectItem);
+        : searchTextField = GlobalSearchItem.getAutoSelectionField(key, SearchItems, searchTextField, onSelectItem);
   }
 
 /*
@@ -743,8 +714,7 @@ class ItemDesposeView extends State<ItemDesposeActivity> {
   Future<void> verifyOTP(String otpId, String otp) async {
     List a1 = new List();
 
-    String COCO_ID =
-        (await Utility.getStringPreference(GlobalConstant.COCO_ID));
+    String COCO_ID = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
 
     // COCO_ID="14143";
     Map<String, dynamic> map() => {
@@ -790,8 +760,7 @@ class ItemDesposeView extends State<ItemDesposeActivity> {
         };
 
     var data = map1();
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
     userID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
 
     Map<String, dynamic> map2() => {
@@ -811,8 +780,7 @@ class ItemDesposeView extends State<ItemDesposeActivity> {
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
       try {
-        var data = await apiController.postsNew(
-            GlobalConstant.SignUp, json.encode(map2()));
+        var data = await apiController.postsNew(GlobalConstant.SignUp, json.encode(map2()));
         Dialogs.hideProgressDialog(context);
         var data1 = json.decode(data.body);
         if (data1['status'] == 0) {
@@ -827,20 +795,17 @@ class ItemDesposeView extends State<ItemDesposeActivity> {
           }
         } else {
           if (data1['msg'].toString() == "Login failed for user") {
-            GlobalWidget.showMyDialog(context, "Error",
-                "Invalid id or password.Please enter correct id psw or contact HR/IT");
+            GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
           } else {
-            GlobalWidget.showMyDialog(
-                context, "Error", data1['msg'].toString());
+            GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
           }
         }
       } catch (e) {
         Dialogs.hideProgressDialog(context);
-        GlobalWidget.showMyDialog(
-            context, "", GlobalConstant.interNetException(e.toString()));
+        GlobalWidget.showMyDialog(context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 }

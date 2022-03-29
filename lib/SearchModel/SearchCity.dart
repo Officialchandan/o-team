@@ -31,10 +31,8 @@ class _SearchCityState extends State<SearchCity> {
   var listdata;
 
   Future<void> UpdateData() async {
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
-    String USER_ID =
-        (await Utility.getStringPreference(GlobalConstant.USER_ID));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String USER_ID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
     Map<String, dynamic> map2() => {
           'dbPassword': userPass,
           'dbUser': USER_ID,
@@ -52,9 +50,7 @@ class _SearchCityState extends State<SearchCity> {
 
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
-      apiController
-          .postsNew(GlobalConstant.SignUp, json.encode(map2()))
-          .then((value) {
+      apiController.postsNew(GlobalConstant.SignUp, json.encode(map2())).then((value) {
         try {
           Dialogs.hideProgressDialog(context);
           var data = value;
@@ -68,11 +64,9 @@ class _SearchCityState extends State<SearchCity> {
             setState(() {});
           } else {
             if (data1['msg'].toString() == "Login failed for user") {
-              GlobalWidget.showMyDialog(context, "Error",
-                  "Invalid id or password.Please enter correct id psw or contact HR/IT");
+              GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
             } else {
-              GlobalWidget.showMyDialog(
-                  context, "Error", data1['msg'].toString());
+              GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
             }
           }
         } catch (e) {
@@ -80,7 +74,7 @@ class _SearchCityState extends State<SearchCity> {
         }
       });
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -111,8 +105,7 @@ class _SearchCityState extends State<SearchCity> {
     setState(() {
       String Name = book['CityLbl'].toString();
       print(Name);
-      duplicateItems
-          .add(new SearchModel(Name.trim(), "${book["CityId"]}", book));
+      duplicateItems.add(new SearchModel(Name.trim(), "${book["CityId"]}", book));
     });
   }
 
@@ -161,8 +154,7 @@ class _SearchCityState extends State<SearchCity> {
                                         flex: 1,
                                         child: new Container(
                                           alignment: Alignment.center,
-                                          child: new Icon(Icons.search,
-                                              color: Colors.black),
+                                          child: new Icon(Icons.search, color: Colors.black),
                                         ),
                                       ),
                                       Expanded(
@@ -174,10 +166,8 @@ class _SearchCityState extends State<SearchCity> {
                                             //  autofocus: true,
                                             controller: controller,
                                             cursorColor: Colors.black,
-                                            decoration: new InputDecoration(
-                                                hintText:
-                                                    GlobalConstant.SearchHint,
-                                                border: InputBorder.none),
+                                            decoration:
+                                                new InputDecoration(hintText: GlobalConstant.SearchHint, border: InputBorder.none),
                                             onChanged: (value) {
                                               subject.add(value);
                                             },
@@ -225,8 +215,7 @@ class _SearchCityState extends State<SearchCity> {
                                 children: [
                                   new Container(
                                     padding: EdgeInsets.all(10.0),
-                                    child:
-                                        new Text(items[index].title.toString()),
+                                    child: new Text(items[index].title.toString()),
                                   ),
                                   Divider(
                                     thickness: 2.0,
@@ -234,35 +223,17 @@ class _SearchCityState extends State<SearchCity> {
                                 ],
                               ),
                               onTap: () {
-                                Utility.setStringPreference(
-                                    GlobalConstant.COCO_CITY_ID,
-                                    items[index].data['CityId'].toString());
-                                Utility.setStringPreference(
-                                    GlobalConstant.COCO_CITY,
-                                    items[index].data['CityLbl'].toString());
-                                Utility.setStringPreference(
-                                    GlobalConstant.COCO_CITY_CODE,
-                                    items[index].data['CityLbl'].toString());
-                                Utility.setStringPreference(
-                                    GlobalConstant.COCO_ADDRESS,
-                                    items[index].data['Address'].toString());
+                                Utility.setStringPreference(GlobalConstant.COCO_CITY_ID, items[index].data['CityId'].toString());
+                                Utility.setStringPreference(GlobalConstant.COCO_CITY, items[index].data['CityLbl'].toString());
+                                Utility.setStringPreference(GlobalConstant.COCO_CITY_CODE, items[index].data['CityLbl'].toString());
+                                Utility.setStringPreference(GlobalConstant.COCO_ADDRESS, items[index].data['Address'].toString());
 
-                                String idValue = ": \"" +
-                                    "${items[index].data['CityId'].toString()}" +
-                                    "\"";
-                                String Name_Value = ": \"" +
-                                    "${items[index].data['CityLbl'].toString()}" +
-                                    "\"";
+                                String idValue = ": \"" + "${items[index].data['CityId'].toString()}" + "\"";
+                                String Name_Value = ": \"" + "${items[index].data['CityLbl'].toString()}" + "\"";
 
                                 String id = "\"id\"";
                                 String name = "\"name\"";
-                                var json = "{" +
-                                    id +
-                                    idValue +
-                                    "," +
-                                    name +
-                                    Name_Value +
-                                    "}";
+                                var json = "{" + id + idValue + "," + name + Name_Value + "}";
                                 Navigator.pop(context, json);
                               },
                             );

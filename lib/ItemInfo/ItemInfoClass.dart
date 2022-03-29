@@ -76,8 +76,7 @@ class ItemView extends State<ItemInfoActivity> {
                           : InkWell(
                               child: GlobalWidget.showItemName(Item_name),
                               onTap: () {
-                                GlobalConstant.OpenZoomImage(
-                                    data1_upd, context);
+                                GlobalConstant.OpenZoomImage(data1_upd, context);
                               },
                             ),
                       SizedBox(
@@ -87,20 +86,14 @@ class ItemView extends State<ItemInfoActivity> {
                         children: [
                           Expanded(
                             child: Text(
-                              "Lg Stock : " +
-                                  data1_upd['ds']['tables'][0]['rowsList'][0]
-                                      ['cols']['Stock'],
+                              "Lg Stock : " + data1_upd['ds']['tables'][0]['rowsList'][0]['cols']['Stock'],
                               style: TextStyle(color: colorPrimary),
                             ),
                           ),
                           SizedBox(width: 10.0),
                           Expanded(
-                            child: Text(
-                                "In Transit : " +
-                                    data1_upd['ds']['tables'][0]['rowsList'][0]
-                                        ['cols']['InTransit'],
-                                style: TextStyle(color: colorPrimary),
-                                textAlign: TextAlign.right),
+                            child: Text("In Transit : " + data1_upd['ds']['tables'][0]['rowsList'][0]['cols']['InTransit'],
+                                style: TextStyle(color: colorPrimary), textAlign: TextAlign.right),
                           ),
                         ],
                       ),
@@ -110,20 +103,13 @@ class ItemView extends State<ItemInfoActivity> {
                       new Row(
                         children: [
                           Expanded(
-                            child: Text("MRP : " +
-                                data1_upd['ds']['tables'][0]['rowsList'][0]
-                                        ['cols']['Mrp']
-                                    .toString()),
+                            child: Text("MRP : " + data1_upd['ds']['tables'][0]['rowsList'][0]['cols']['Mrp'].toString()),
                           ),
                           SizedBox(
                             width: 20.0,
                           ),
                           Expanded(
-                            child: Text(
-                                "ORP: " +
-                                    data1_upd['ds']['tables'][0]['rowsList'][0]
-                                            ['cols']['Orp']
-                                        .toString(),
+                            child: Text("ORP: " + data1_upd['ds']['tables'][0]['rowsList'][0]['cols']['Orp'].toString(),
                                 textAlign: TextAlign.right),
                           ),
                         ],
@@ -207,8 +193,7 @@ class ItemView extends State<ItemInfoActivity> {
           if (Stock.length > 0) {
             // SubmitItemDetail();
           } else {
-            GlobalWidget.GetToast(context,
-                "Logical stock is not available for this item.select item again.");
+            GlobalWidget.showToast(context, "Logical stock is not available for this item.select item again.");
           }
         }
         // Validate returns true if the form is valid, otherwise false.
@@ -263,17 +248,13 @@ class ItemView extends State<ItemInfoActivity> {
   Future getImage() async {
     try {
       // String qrResult = await BarcodeScanner.scan();
-      String qrResult = await FlutterBarcodeScanner.scanBarcode(
-          "#ff6666", "Cancel", false, ScanMode.DEFAULT);
+      String qrResult = await FlutterBarcodeScanner.scanBarcode("#ff6666", "Cancel", false, ScanMode.DEFAULT);
 
       Utility.log("tag", qrResult);
-      var itemDetail =
-          await DatabaseHelper.db.getSingleItemDetailBarCode(qrResult, context);
+      var itemDetail = await DatabaseHelper.db.getSingleItemDetailBarCode(qrResult, context);
       itemDetail = json.decode(itemDetail);
       SelectedListId = itemDetail["ItId"].toString();
-      Item_name = itemDetail["ItId"].toString() +
-          "  " +
-          itemDetail["ItName"].toString();
+      Item_name = itemDetail["ItId"].toString() + "  " + itemDetail["ItName"].toString();
       getstock = false;
       if (SelectedListId.length > 0) {
         GlobalWidget.getItemDetail(context, SelectedListId, getData);
@@ -327,7 +308,7 @@ class ItemView extends State<ItemInfoActivity> {
   void getSearchItems() async {
     List l1 = await DatabaseHelper.db.getAllPendingProducts1();
     if (l1.length < 0) {
-      GlobalWidget.GetToast(context, "Please wait untill data is sync");
+      GlobalWidget.showToast(context, "Please wait untill data is sync");
     } else {
       //SearchItems = loadSearchItems(l1);
       searchItems = GlobalSearchItem.loadSearchItems(l1.toString());
@@ -354,8 +335,7 @@ class ItemView extends State<ItemInfoActivity> {
     print("onSelectItem-$onSelectItem");
     return loading
         ? new Container()
-        : searchTextField = GlobalSearchItem.getAutoSelectionField(
-            key, searchItems, searchTextField, onSelectItem);
+        : searchTextField = GlobalSearchItem.getAutoSelectionField(key, searchItems, searchTextField, onSelectItem);
   }
 
   String TAG = "ITEMINFO";
@@ -378,8 +358,7 @@ class ItemView extends State<ItemInfoActivity> {
 
   Future<void> submitItemDetail() async {
     print("submitItemDetail");
-    String COCO_ID =
-        (await Utility.getStringPreference(GlobalConstant.COCO_ID));
+    String COCO_ID = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
     Map<String, dynamic> map() => {
           'pname': 'Pid',
           'value': COCO_ID,
@@ -445,10 +424,8 @@ class ItemView extends State<ItemInfoActivity> {
           'rowsList': a1,
         };
     var data = map1();
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
-    String USER_ID =
-        (await Utility.getStringPreference(GlobalConstant.USER_ID));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String USER_ID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
     Map<String, dynamic> map2() => {
           'dbPassword': userPass,
           'dbUser': USER_ID,
@@ -466,30 +443,26 @@ class ItemView extends State<ItemInfoActivity> {
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
       try {
-        var data = await apiController.postsNew(
-            GlobalConstant.SignUp, json.encode(map2()));
+        var data = await apiController.postsNew(GlobalConstant.SignUp, json.encode(map2()));
         Dialogs.hideProgressDialog(context);
         var data1 = json.decode(data.body);
         Utility.log(TAG, "Response: " + data1.toString());
         if (data1['status'] == 0) {
-          GlobalWidget.GetToast(context, "Stock Updated Successfully");
+          GlobalWidget.showToast(context, "Stock Updated Successfully");
           updateReset();
         } else {
           if (data1['msg'].toString() == "Login failed for user") {
-            GlobalWidget.showMyDialog(context, "Error",
-                "Invalid id or password.Please enter correct id psw or contact HR/IT");
+            GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
           } else {
-            GlobalWidget.showMyDialog(
-                context, "Error", data1['msg'].toString());
+            GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
           }
         }
       } catch (e) {
         Dialogs.hideProgressDialog(context);
-        GlobalWidget.showMyDialog(
-            context, "", GlobalConstant.interNetException(e.toString()));
+        GlobalWidget.showMyDialog(context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 }

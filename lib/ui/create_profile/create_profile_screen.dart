@@ -242,7 +242,7 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
           var data1 = json.decode(data.body);
           Utility.log(TAG, "Response: " + data1.toString());
           if (data1['status'] == 0) {
-            GlobalWidget.GetToast(context, "Profile Created successfully");
+            GlobalWidget.showToast(context, "Profile Created successfully");
             Utility.setStringPreference(GlobalConstant.USER_ID, userIdController.text.toString());
             Utility.setStringPreference(GlobalConstant.USER_PIN, userPinController.text.toString());
             Utility.setStringPreference(GlobalConstant.USER_PASSWORD, userPasswordController.text.toString());
@@ -260,7 +260,7 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
         }
       });
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 }

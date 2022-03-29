@@ -174,7 +174,7 @@ class DashView extends State<Dashboard> {
         }
       });
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -526,7 +526,7 @@ class DashView extends State<Dashboard> {
     switch (fid) {
       case "1":
         if (COCO_ID == 0) {
-          GlobalWidget.GetToast(context, "Please Seelct a Store/WH to Use this Option");
+          GlobalWidget.showToast(context, "Please Seelct a Store/WH to Use this Option");
           return;
         }
         openActivity(OrderRetrivalActivity());

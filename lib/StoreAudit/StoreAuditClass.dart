@@ -215,7 +215,7 @@ class AuditeView extends State<StoreAuditActivity> {
   void getSearchItems() async {
     List l1 = await DatabaseHelper.db.getAllPendingProducts1();
     if (l1.length < 0) {
-      GlobalWidget.GetToast(context, "Please wait untill data is sync");
+      GlobalWidget.showToast(context, "Please wait untill data is sync");
     } else {
       //SearchItems = loadSearchItems(l1);
       SearchItems = GlobalSearchItem.loadSearchItems(l1.toString());
@@ -408,7 +408,7 @@ class AuditeView extends State<StoreAuditActivity> {
         }
       });
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -433,7 +433,7 @@ class AuditeView extends State<StoreAuditActivity> {
 
   _toggle2() {
     if (City_id == "") {
-      GlobalWidget.GetToast(context, "Please Select City First.");
+      GlobalWidget.showToast(context, "Please Select City First.");
       return;
     }
 
@@ -463,7 +463,7 @@ class AuditeView extends State<StoreAuditActivity> {
           child: GestureDetector(
             onTap: () {
               if (Store_id == "") {
-                GlobalWidget.GetToast(context, "Please Select Store");
+                GlobalWidget.showToast(context, "Please Select Store");
               } else {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => StoreAmbiance_Audit(City_id, Store_id)));
               }
@@ -506,7 +506,7 @@ class AuditeView extends State<StoreAuditActivity> {
                   if (priceController.text.toString().length > 0) {
                     updateData();
                   } else {
-                    GlobalWidget.GetToast(context, "Enter Price");
+                    GlobalWidget.showToast(context, "Enter Price");
                   }
                 }
               }

@@ -1,6 +1,8 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_native_image/flutter_native_image.dart';
@@ -36,6 +38,9 @@ class ShowData extends State<ShowBillDetails> {
   String compressValue = "40";
   bool uploading = false;
   List<ImageModel> imageModelList = [];
+  String COCO_NAME = "";
+  var _image, compressedImage;
+  String path = "";
 
   @override
   void initState() {
@@ -54,7 +59,7 @@ class ShowData extends State<ShowBillDetails> {
         child: Row(
           children: [
             Expanded(
-              child: getUpdateBtn(),
+              child: getUpdateBtn(context),
             ),
             Container(
               width: 2.0,
@@ -62,7 +67,7 @@ class ShowData extends State<ShowBillDetails> {
               height: 40.0,
             ),
             Expanded(
-              child: getCloseBtn(),
+              child: getCloseBtn(context),
             )
           ],
         ),
@@ -224,63 +229,93 @@ class ShowData extends State<ShowBillDetails> {
     );
   }
 
-  var _image, compressedImage;
-  String path = "";
+  clickImage() async {
+    bool permission = await GlobalPermission.checkPermissionsCamera(context);
+    if (permission) {
+      File image = await ImagePicker.pickImage(
+          source: ImageSource.camera /*,maxWidth: 960,maxHeight: 1280,imageQuality: int.parse(compressValue.trim())*/);
 
-  Future loadImageFromGallery() async {
-    var image = await ImagePicker.pickImage(
-        source: ImageSource.camera /*,maxWidth: 960,maxHeight: 1280,imageQuality: int.parse(compressValue.trim())*/);
-
-    setState(() {
-      _image = image;
-      path = image.path;
-      imageModelList.add(ImageModel(0, path));
-    });
-  }
-
-  _toggle3() async {
-    bool data = await GlobalPermission.checkPermissionsCamera(context);
-    if (data == true) {
-      loadImageFromGallery();
+      setState(() {
+        imageModelList.add(ImageModel(0, image.path));
+      });
     }
   }
 
+  Future<bool> uploadImage(String image, int index) async {
+    bool upload = false;
+    debugPrint("image-->$image");
+    String userPass = await Utility.getStringPreference(GlobalConstant.USER_PASSWORD);
+    String userId = await Utility.getStringPreference(GlobalConstant.USER_ID);
+    String url = GlobalConstant.BASE_URL + "data/savePGIImg2";
+
+    Map<String, dynamic> input = {};
+    input["userId"] = "$userId";
+    input["psw"] = "$userPass";
+    input["did"] = "${widget.data["did"]}";
+    input["scanType"] = "${widget.data["scanType"]}";
+    input["seqNo"] = "${index + 1}";
+    input["key"] = "${GlobalConstant.key}";
+
+    if (image.isNotEmpty) {
+      debugPrint("image_path-->$image");
+      input["fileUpload"] = MultipartFile.fromFileSync(image, filename: pathas.basename(image));
+    }
+
+    Map<String, dynamic> res = await ApiController.getInstance().postMultipart(url: url, input: input);
+
+    if (res['status'].toString() == "0") {
+      GlobalWidget.showToast(context, "Success");
+      upload = true;
+    } else {
+      if (EasyLoading.isShow) {
+        EasyLoading.dismiss();
+      }
+      if (res['msg'].toString() == "Login failed for user") {
+        GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
+      } else {
+        GlobalWidget.showMyDialog(context, "Error", res['msg'].toString());
+      }
+    }
+
+    return upload;
+  }
+
   _asyncFileUpload(String imagePath, int index) async {
+    debugPrint("_asyncFileUpload-->$imagePath");
+
     imagePath = path;
+    debugPrint("_asyncFileUpload1-->$imagePath");
 
     if (uploading) return;
-
     uploading = true;
     Dialogs.showProgressDialog(context);
     String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
-    String USER_ID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
+    String userId = (await Utility.getStringPreference(GlobalConstant.USER_ID));
+    String cocoId = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
 
     Map<String, String> requestHeaders = {
       'Content-type': 'application/x-www-form-urlencoded',
       'charset': 'UTF-8',
     };
 
-    Utility.log(TAG, userPass);
-    String COCO_ID = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
     String url = GlobalConstant.BASE_URL + "data/savePGIImg2";
-    Utility.log(TAG, url);
+
     var request = http.MultipartRequest("POST", Uri.parse(url));
     print("request-->$request");
 
     request.headers.addAll(requestHeaders);
     print("headers->${request.headers}");
 
-    request.fields["userId"] = "$USER_ID";
+    request.fields["userId"] = "$userId";
     request.fields["psw"] = "$userPass";
     request.fields["did"] = "${widget.data["did"]}";
     request.fields["scanType"] = "${widget.data["scanType"]}";
     //request.fields["seqNo"] = "${widget.data["DocNo"] + pathas.basename(imagePath.toString().replaceAll(".jpg", "").replaceAll(".png", "").replaceAll(".jpeg", ""))}";
     request.fields["seqNo"] = "${index + 1}";
     request.fields["key"] = "${GlobalConstant.key}";
-    Utility.log(
-        TAG,
-        pathas.basename(
-            pathas.basename(imagePath.toString().replaceAll(".jpg", "").replaceAll(".png", "").replaceAll(".jpeg", ""))));
+    Utility.log(TAG,
+        pathas.basename(pathas.basename(imagePath.toString().replaceAll(".jpg", "").replaceAll(".png", "").replaceAll(".jpeg", ""))));
+
     Utility.log(TAG, request.toString());
     if ("${imagePath.toString()}" != "null") {
       var gumastaupload = await http.MultipartFile.fromPath("fileUpload", imagePath);
@@ -292,11 +327,8 @@ class ShowData extends State<ShowBillDetails> {
       var response = await request.send();
       var responseData = await response.stream.toBytes();
       var responseString = String.fromCharCodes(responseData);
-      //GlobalFile.Showsnackbar(_globalKey, "Document Uploaded");
       Utility.log(TAG, responseString);
-      // print("imagePath --->" + imagePath.toString());
-      //print("responseString --->" + responseString.toString());
-      //GlobalWidget.GetToast(context, json.decode(responseString));
+
       var data1 = json.decode(responseString);
       Utility.log(TAG, data1["status"].toString());
       Dialogs.hideProgressDialog(context);
@@ -305,7 +337,7 @@ class ShowData extends State<ShowBillDetails> {
         imageModelList[index].uploadStatus = 1;
         setState(() {
           uploading = false;
-          GlobalWidget.GetToast(context, "Success");
+          GlobalWidget.showToast(context, "Success");
         });
       } else {
         uploading = false;
@@ -352,7 +384,7 @@ class ShowData extends State<ShowBillDetails> {
     );
   }
 
-  Future<void> submitItemDetail() async {
+  Future<void> submitItemDetail(BuildContext context) async {
     String COCO_ID = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
     List a1 = [];
 
@@ -362,6 +394,7 @@ class ShowData extends State<ShowBillDetails> {
         };
 
     Map<String, dynamic> dmap3 = map3();
+
     Map<String, dynamic> mapobj3() => {
           'cols': dmap3,
         };
@@ -414,54 +447,56 @@ class ShowData extends State<ShowBillDetails> {
         Utility.log(TAG, "Response: " + data1.toString());
 
         if (data1['status'] == 0) {
-          bool checkImage = false;
-          for (ImageModel im in imageModelList) {
-            if (im.uploadStatus == 0) {
-              checkImage = true;
-              break;
-            }
-          }
-          if (checkImage) {
-            Dialogs.ackAlert(
-              context,
-              "Image pending to upload. Upload all images before close",
-            );
-          } else {
-            bool t = await showDialog<bool>(
-                context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    title: Text(
-                      'Confirm',
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                    content: Text("Are you sure?"),
-                    actions: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          MaterialButton(
-                            child: Text('NO'),
-                            onPressed: () {
-                              Navigator.of(context).pop(false);
-                            },
-                          ),
-                          MaterialButton(
-                            child: Text('YES'),
-                            onPressed: () {
-                              GlobalWidget.GetToast(context, "Data Closed Successfully");
-                              Navigator.pop(context, true);
-                            },
-                          ),
-                        ],
-                      ),
-                    ],
-                  );
-                });
-            if (t) {
-              Navigator.pop(context);
-            }
-          }
+          // bool checkImage = false;
+          // for (ImageModel im in imageModelList) {
+          //   if (im.uploadStatus == 0) {
+          //     checkImage = true;
+          //     break;
+          //   }
+          // }
+          // if (checkImage) {
+          //   Dialogs.ackAlert(
+          //     context,
+          //     "Image pending to upload. Upload all images before close",
+          //   );
+          // } else {
+          //   bool t = await showDialog<bool>(
+          //       context: context,
+          //       builder: (BuildContext context) {
+          //         return AlertDialog(
+          //           title: Text(
+          //             'Confirm',
+          //             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          //           ),
+          //           content: Text("Are you sure?"),
+          //           actions: <Widget>[
+          //             Row(
+          //               mainAxisAlignment: MainAxisAlignment.end,
+          //               children: [
+          //                 MaterialButton(
+          //                   child: Text('NO'),
+          //                   onPressed: () {
+          //                     Navigator.of(context).pop(false);
+          //                   },
+          //                 ),
+          //                 MaterialButton(
+          //                   child: Text('YES'),
+          //                   onPressed: () {
+          //                     GlobalWidget.GetToast(context, "Data Closed Successfully");
+          //                     Navigator.pop(context, true);
+          //                   },
+          //                 ),
+          //               ],
+          //             ),
+          //           ],
+          //         );
+          //       });
+          //   if (t) {
+          //     Navigator.pop(context);
+          //   }
+          // }
+
+          Navigator.pop(context);
         } else {
           if (data1['msg'].toString() == "Login failed for user") {
             GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
@@ -475,32 +510,44 @@ class ShowData extends State<ShowBillDetails> {
         GlobalWidget.showMyDialog(context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
   TextEditingController quantityController = TextEditingController();
   String TAG = "ScanAndUpload";
 
-  getUpdateBtn() {
+  getUpdateBtn(BuildContext context) {
     return MaterialButton(
       shape: GlobalWidget.getButtonTheme(),
       color: GlobalWidget.getBtncolor(),
       textColor: GlobalWidget.getBtnTextColor(),
-      onPressed: () {
+      onPressed: () async {
         Utility.log(TAG, _image);
 
-        if (_image == null) {
-          GlobalWidget.GetToast(context, "Take a picture");
+        if (imageModelList.isEmpty) {
+          GlobalWidget.showToast(context, "Please Take a picture...");
         } else {
-          if (imageModelList.length > 0) {
-            for (int i = 0; i < imageModelList.length; i++) {
-              if (imageModelList[i].uploadStatus == 0) {
-                _asyncFileUpload(imageModelList[i].imagePath, i);
+          // EasyLoading.dismiss();
+          EasyLoading.show(status: "Loading...");
 
+          log("imageModelList--->${imageModelList.toString()}");
+
+          for (int i = 0; i < imageModelList.length; i++) {
+            if (imageModelList[i].uploadStatus == 0) {
+              bool upload = await uploadImage(imageModelList[i].imagePath, i);
+              if (upload) {
+                imageModelList[i].uploadStatus = 1;
+              } else {
                 break;
               }
+              // _asyncFileUpload(imageModelList[i].imagePath, i);
+              // break;
             }
+          }
+
+          if (EasyLoading.isShow) {
+            EasyLoading.dismiss();
           }
         }
       },
@@ -511,13 +558,60 @@ class ShowData extends State<ShowBillDetails> {
     );
   }
 
-  getCloseBtn() {
+  getCloseBtn(BuildContext context) {
     return MaterialButton(
       shape: GlobalWidget.getButtonTheme(),
       color: GlobalWidget.getBtncolor(),
       textColor: GlobalWidget.getBtnTextColor(),
-      onPressed: () {
-        submitItemDetail();
+      onPressed: () async {
+        bool checkImage = false;
+        for (ImageModel im in imageModelList) {
+          if (im.uploadStatus == 0) {
+            checkImage = true;
+            break;
+          }
+        }
+        if (checkImage) {
+          Dialogs.ackAlert(
+            context,
+            "Image pending to upload. Upload all images before close",
+          );
+        } else {
+          bool t = await showDialog<bool>(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  title: Text(
+                    'Confirm',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  content: Text("Are you sure?"),
+                  actions: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        MaterialButton(
+                          child: Text('NO'),
+                          onPressed: () {
+                            Navigator.of(context).pop(false);
+                          },
+                        ),
+                        MaterialButton(
+                          child: Text('YES'),
+                          onPressed: () {
+                            Navigator.pop(context, true);
+                          },
+                        ),
+                      ],
+                    ),
+                  ],
+                );
+              });
+
+          if (t) {
+            submitItemDetail(context);
+          }
+        }
       },
       child: Text(
         'CLOSE',
@@ -532,9 +626,9 @@ class ShowData extends State<ShowBillDetails> {
       textColor: GlobalWidget.getBtnTextColor(),
       onPressed: () {
         if (imageModelList.length > 4) {
-          GlobalWidget.GetToast(context, "You can't take more images...");
+          GlobalWidget.showToast(context, "You can't take more images...");
         } else {
-          _toggle3();
+          clickImage();
         }
         setState(() {});
       },
@@ -550,8 +644,6 @@ class ShowData extends State<ShowBillDetails> {
       ),
     );
   }
-
-  String COCO_NAME = "";
 
   Future<void> getData() async {
     COCO_NAME = (await Utility.getStringPreference(GlobalConstant.COCO_NAME));
@@ -585,8 +677,7 @@ class ShowData extends State<ShowBillDetails> {
               child: Text("OK"),
               onPressed: () {
                 if (int.parse(_controller.text.toString().trim()) == 20 || int.parse(_controller.text.toString().trim()) > 20) {
-                  if (int.parse(_controller.text.toString().trim()) == 100 ||
-                      int.parse(_controller.text.toString().trim()) < 100) {
+                  if (int.parse(_controller.text.toString().trim()) == 100 || int.parse(_controller.text.toString().trim()) < 100) {
                     setState(() {
                       Navigator.of(context).pop();
                       compressValue = _controller.text.toString().trim();

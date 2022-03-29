@@ -30,8 +30,7 @@ class VegInwardView extends State<VegInwardActivity> {
         child: Icon(Icons.add),
         backgroundColor: Colors.green,
         onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (BuildContext context) => AddNewVegGrc()));
+          Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => AddNewVegGrc()));
         },
       ),
       appBar: GlobalWidget.getAppbar(GlobalWidget.GetAppName),
@@ -318,11 +317,9 @@ class VegInwardView extends State<VegInwardActivity> {
 
   String TAG = "IndentDetailActivity";
   void getValueData() async {
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
     String userID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
-    String COCO_CITY =
-        (await Utility.getStringPreference(GlobalConstant.COCO_CITY_ID));
+    String COCO_CITY = (await Utility.getStringPreference(GlobalConstant.COCO_CITY_ID));
     Utility.log("tag", COCO_CITY);
 
     Map<String, dynamic> map2() => {
@@ -341,9 +338,7 @@ class VegInwardView extends State<VegInwardActivity> {
     ApiController apiController = new ApiController.internal();
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
-      apiController
-          .postsNew(GlobalConstant.SignUp, json.encode(map2()))
-          .then((value) {
+      apiController.postsNew(GlobalConstant.SignUp, json.encode(map2())).then((value) {
         try {
           Dialogs.hideProgressDialog(context);
           var data = value;
@@ -364,11 +359,9 @@ class VegInwardView extends State<VegInwardActivity> {
             }
           } else {
             if (data1['msg'].toString() == "Login failed for user") {
-              GlobalWidget.showMyDialog(context, "Error",
-                  "Invalid id or password.Please enter correct id psw or contact HR/IT");
+              GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
             } else {
-              GlobalWidget.showMyDialog(
-                  context, "Error", data1['msg'].toString());
+              GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
             }
           }
         } catch (e) {
@@ -376,7 +369,7 @@ class VegInwardView extends State<VegInwardActivity> {
         }
       });
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 }

@@ -51,10 +51,8 @@ class _SearchCityWiseLocState extends State<SearchCityWiseLoc> {
           'rowsList': a1,
         };
 
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
-    String USER_ID =
-        (await Utility.getStringPreference(GlobalConstant.USER_ID));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String USER_ID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
     Map<String, dynamic> map2() => {
           'dbPassword': userPass,
           'dbUser': USER_ID,
@@ -73,9 +71,7 @@ class _SearchCityWiseLocState extends State<SearchCityWiseLoc> {
 
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
-      apiController
-          .postsNew(GlobalConstant.SignUp, json.encode(map2()))
-          .then((value) {
+      apiController.postsNew(GlobalConstant.SignUp, json.encode(map2())).then((value) {
         try {
           Dialogs.hideProgressDialog(context);
           var data = value;
@@ -90,11 +86,9 @@ class _SearchCityWiseLocState extends State<SearchCityWiseLoc> {
             setState(() {});
           } else {
             if (data1['msg'].toString() == "Login failed for user") {
-              GlobalWidget.showMyDialog(context, "Error",
-                  "Invalid id or password.Please enter correct id psw or contact HR/IT");
+              GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
             } else {
-              GlobalWidget.showMyDialog(
-                  context, "Error", data1['msg'].toString());
+              GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
             }
           }
         } catch (e) {
@@ -102,7 +96,7 @@ class _SearchCityWiseLocState extends State<SearchCityWiseLoc> {
         }
       });
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -133,8 +127,7 @@ class _SearchCityWiseLocState extends State<SearchCityWiseLoc> {
     setState(() {
       String Name = book['Location'].toString();
       print(Name);
-      duplicateItems
-          .add(new SearchModel(Name.trim(), "${book["LocId"]}", book));
+      duplicateItems.add(new SearchModel(Name.trim(), "${book["LocId"]}", book));
     });
   }
 
@@ -182,8 +175,7 @@ class _SearchCityWiseLocState extends State<SearchCityWiseLoc> {
                                         flex: 1,
                                         child: new Container(
                                           alignment: Alignment.center,
-                                          child: new Icon(Icons.search,
-                                              color: Colors.black),
+                                          child: new Icon(Icons.search, color: Colors.black),
                                         ),
                                       ),
                                       Expanded(
@@ -195,10 +187,8 @@ class _SearchCityWiseLocState extends State<SearchCityWiseLoc> {
                                             //  autofocus: true,
                                             controller: controller,
                                             cursorColor: Colors.black,
-                                            decoration: new InputDecoration(
-                                                hintText:
-                                                    GlobalConstant.SearchHint,
-                                                border: InputBorder.none),
+                                            decoration:
+                                                new InputDecoration(hintText: GlobalConstant.SearchHint, border: InputBorder.none),
                                             onChanged: (value) {
                                               subject.add(value);
                                             },
@@ -246,8 +236,7 @@ class _SearchCityWiseLocState extends State<SearchCityWiseLoc> {
                                 children: [
                                   new Container(
                                     padding: EdgeInsets.all(10.0),
-                                    child:
-                                        new Text(items[index].title.toString()),
+                                    child: new Text(items[index].title.toString()),
                                   ),
                                   Divider(
                                     thickness: 2.0,
@@ -262,22 +251,12 @@ class _SearchCityWiseLocState extends State<SearchCityWiseLoc> {
 
 */
 
-                                String idValue = ": \"" +
-                                    "${items[index].data['LocId'].toString()}" +
-                                    "\"";
-                                String Name_Value = ": \"" +
-                                    "${items[index].data['Location'].toString()}" +
-                                    "\"";
+                                String idValue = ": \"" + "${items[index].data['LocId'].toString()}" + "\"";
+                                String Name_Value = ": \"" + "${items[index].data['Location'].toString()}" + "\"";
 
                                 String id = "\"id\"";
                                 String name = "\"name\"";
-                                var json = "{" +
-                                    id +
-                                    idValue +
-                                    "," +
-                                    name +
-                                    Name_Value +
-                                    "}";
+                                var json = "{" + id + idValue + "," + name + Name_Value + "}";
                                 Navigator.pop(context, json);
                               },
                             );

@@ -109,7 +109,7 @@ class _SearchItemState extends State<SearchItem> {
         }
       });
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -289,7 +289,7 @@ class _SearchItemState extends State<SearchItem> {
 
     print("lengthdata  ${l1.length}");
     if (l1.length < 0) {
-      GlobalWidget.GetToast(context, "Please wait untill data is sync ");
+      GlobalWidget.showToast(context, "Please wait untill data is sync ");
     }
     print("dblength ${l1.length}");
     //12974

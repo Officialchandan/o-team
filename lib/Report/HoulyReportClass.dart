@@ -16,8 +16,7 @@ import 'ModelClassReportDetail/GrpModel.dart';
 
 class HorlyReprtDetailActivity extends StatefulWidget {
   String city_params, Api_Name, title, date_req;
-  HorlyReprtDetailActivity(
-      this.city_params, this.Api_Name, this.title, this.date_req);
+  HorlyReprtDetailActivity(this.city_params, this.Api_Name, this.title, this.date_req);
   @override
   State<StatefulWidget> createState() {
     return ReoportView();
@@ -36,22 +35,16 @@ class ReoportView extends State<HorlyReprtDetailActivity> {
   List items_first_column = new List();
 
   Future<void> UpdateData() async {
-    String COCO_ID =
-        (await Utility.getStringPreference(GlobalConstant.COCO_ID));
-    String FROM_DATE_HorlyReprt =
-        (await Utility.getStringPreference(GlobalConstant.FROM_DATE_Report));
-    String TO_DATE_HorlyReprt =
-        (await Utility.getStringPreference(GlobalConstant.TO_DATE_Report));
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String COCO_ID = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
+    String FROM_DATE_HorlyReprt = (await Utility.getStringPreference(GlobalConstant.FROM_DATE_Report));
+    String TO_DATE_HorlyReprt = (await Utility.getStringPreference(GlobalConstant.TO_DATE_Report));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
     String userID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
     String AllCityIds;
     if (widget.Api_Name != "rpt_SaleOverall_Mapp") {
-      AllCityIds =
-          (await Utility.getStringPreference(GlobalConstant.AllCityIds));
+      AllCityIds = (await Utility.getStringPreference(GlobalConstant.AllCityIds));
     }
-    var data = GlobalConstant.GetMapForRePortDetail(
-        FROM_DATE_HorlyReprt, TO_DATE_HorlyReprt, AllCityIds, widget.date_req);
+    var data = GlobalConstant.GetMapForRePortDetail(FROM_DATE_HorlyReprt, TO_DATE_HorlyReprt, AllCityIds, widget.date_req);
 
     Map<String, dynamic> map2() => {
           'dbPassword': userPass,
@@ -70,9 +63,7 @@ class ReoportView extends State<HorlyReprtDetailActivity> {
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
 
-      apiController
-          .postsNew(GlobalConstant.SignUp, json.encode(map2()))
-          .then((value) {
+      apiController.postsNew(GlobalConstant.SignUp, json.encode(map2())).then((value) {
         try {
           Dialogs.hideProgressDialog(context);
           var data = value;
@@ -94,16 +85,14 @@ class ReoportView extends State<HorlyReprtDetailActivity> {
               var list = products;
               DateList = new List();
               //dategroup
-              var Grp1Map = groupBy(
-                  list.toList(), (obj) => obj["cols"][header[0]["name"]]);
+              var Grp1Map = groupBy(list.toList(), (obj) => obj["cols"][header[0]["name"]]);
               //start  date loop
 
               Grp1Map.forEach((key_date, value) {
                 TimeList = new List();
                 //  Utility.log(TAG + " vallength1 ", value.length);
                 //timegroup
-                var GrpMap = groupBy(
-                    value.toList(), (obj) => obj["cols"][header[1]["name"]]);
+                var GrpMap = groupBy(value.toList(), (obj) => obj["cols"][header[1]["name"]]);
 
                 //start group time
                 GrpMap.forEach((key, value) {
@@ -116,8 +105,7 @@ class ReoportView extends State<HorlyReprtDetailActivity> {
                     // items.add(data[0]["cols"]);
                   }
 
-                  TimeList.add(new GrpModel(key.toString(), items,
-                      items_column_Heading, items_first_column));
+                  TimeList.add(new GrpModel(key.toString(), items, items_column_Heading, items_first_column));
                 }); //end group time
 
                 DateList.add(new DateModel(key_date, TimeList));
@@ -128,11 +116,9 @@ class ReoportView extends State<HorlyReprtDetailActivity> {
             }
           } else {
             if (data1['msg'].toString() == "Login failed for user") {
-              GlobalWidget.showMyDialog(context, "Error",
-                  "Invalid id or password.Please enter correct id psw or contact HR/IT");
+              GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
             } else {
-              GlobalWidget.showMyDialog(
-                  context, "Error", data1['msg'].toString());
+              GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
             }
           }
         } catch (e) {
@@ -140,7 +126,7 @@ class ReoportView extends State<HorlyReprtDetailActivity> {
         }
       });
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -176,8 +162,7 @@ class ReoportView extends State<HorlyReprtDetailActivity> {
                     child: Text(
                       items_column_Heading[index]["name"].toString() +
                           "\n" +
-                          GlobalConstant.getamtCount(
-                              items_column_Heading[index], items),
+                          GlobalConstant.getamtCount(items_column_Heading[index], items),
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.white,
@@ -193,9 +178,7 @@ class ReoportView extends State<HorlyReprtDetailActivity> {
                     color: Colors.white,
                     // margin: EdgeInsets.all(4.0),
                     child: Text(
-                      GlobalWidget.getstringValue(items[rowcount]
-                              [items_column_Heading[index]["name"].toString()]
-                          .toString()),
+                      GlobalWidget.getstringValue(items[rowcount][items_column_Heading[index]["name"].toString()].toString()),
                       style: TextStyle(fontSize: 14, color: Colors.black),
                       maxLines: 1,
                     )),
@@ -208,9 +191,7 @@ class ReoportView extends State<HorlyReprtDetailActivity> {
               color: rowcount == 0 ? colorPrimary : Colors.white,
               // margin: EdgeInsets.all(4.0),
               child: Text(
-                GlobalWidget.getstringValue(items[rowcount]
-                        [items_column_Heading[index]["name"].toString()]
-                    .toString()),
+                GlobalWidget.getstringValue(items[rowcount][items_column_Heading[index]["name"].toString()].toString()),
                 style: TextStyle(fontSize: 14, color: Colors.black),
                 maxLines: 1,
               )),
@@ -221,8 +202,7 @@ class ReoportView extends State<HorlyReprtDetailActivity> {
     return List.generate(
       no_of_rows,
       (index) {
-        return Row(
-            children: _buildCells(items_column_Heading.length, index, items));
+        return Row(children: _buildCells(items_column_Heading.length, index, items));
       },
     );
   }
@@ -268,9 +248,7 @@ class ReoportView extends State<HorlyReprtDetailActivity> {
                   itemCount: items_column_Heading.length,
                   itemBuilder: (context, index_head) {
                     return GlobalConstant.getDateWiseAmount(
-                        DateList[dateIndex].grp_modelList,
-                        DateList[dateIndex].grp_modelList.length,
-                        items_column_Heading[index_head]);
+                        DateList[dateIndex].grp_modelList, DateList[dateIndex].grp_modelList.length, items_column_Heading[index_head]);
                   },
                   scrollDirection: Axis.horizontal,
                 ),
@@ -283,9 +261,7 @@ class ReoportView extends State<HorlyReprtDetailActivity> {
                     return InkWell(
                       onTap: () {},
                       child: ExpansionTile(
-                        title: Text(DateList[dateIndex]
-                            .grp_modelList[index1]
-                            .TimeGroup),
+                        title: Text(DateList[dateIndex].grp_modelList[index1].TimeGroup),
                         children: [
                           SingleChildScrollView(
                             child: Row(
@@ -294,13 +270,8 @@ class ReoportView extends State<HorlyReprtDetailActivity> {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: GlobalConstant.buildCellsHeding(
-                                      DateList[dateIndex]
-                                          .grp_modelList[index1]
-                                          .items_first_column
-                                          .length,
-                                      DateList[dateIndex]
-                                          .grp_modelList[index1]
-                                          .items_first_column,
+                                      DateList[dateIndex].grp_modelList[index1].items_first_column.length,
+                                      DateList[dateIndex].grp_modelList[index1].items_first_column,
                                       FirstHeadName,
                                       context),
                                 ),
@@ -308,16 +279,9 @@ class ReoportView extends State<HorlyReprtDetailActivity> {
                                   child: SingleChildScrollView(
                                     scrollDirection: Axis.horizontal,
                                     child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: _buildRows(
-                                          DateList[dateIndex]
-                                              .grp_modelList[index1]
-                                              .items_first_column
-                                              .length,
-                                          DateList[dateIndex]
-                                              .grp_modelList[index1]
-                                              .items),
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: _buildRows(DateList[dateIndex].grp_modelList[index1].items_first_column.length,
+                                          DateList[dateIndex].grp_modelList[index1].items),
                                     ),
                                   ),
                                 )
@@ -347,8 +311,7 @@ class ReoportView extends State<HorlyReprtDetailActivity> {
                   child: new ListView.builder(
                     itemCount: items_column_Heading.length,
                     itemBuilder: (context, index_head) {
-                      return getAllAmount(
-                          DateList, items_column_Heading[index_head]);
+                      return getAllAmount(DateList, items_column_Heading[index_head]);
                     },
                     scrollDirection: Axis.horizontal,
                   ),

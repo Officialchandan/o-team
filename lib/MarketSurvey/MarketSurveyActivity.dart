@@ -69,8 +69,7 @@ class MarketSurveyView extends State<MarketSurveyClass> {
             new Row(children: [
               Expanded(
                 flex: 2,
-                child: Text("City",
-                    style: TextStyle(fontSize: 12.0, color: Colors.black)),
+                child: Text("City", style: TextStyle(fontSize: 12.0, color: Colors.black)),
               ),
               SizedBox(
                 width: 14.0,
@@ -92,9 +91,7 @@ class MarketSurveyView extends State<MarketSurveyClass> {
                 ? new Row(children: [
                     Expanded(
                       flex: 2,
-                      child: Text("M. Loc",
-                          style:
-                              TextStyle(fontSize: 12.0, color: Colors.black)),
+                      child: Text("M. Loc", style: TextStyle(fontSize: 12.0, color: Colors.black)),
                     ),
                     SizedBox(
                       width: 14.0,
@@ -108,8 +105,7 @@ class MarketSurveyView extends State<MarketSurveyClass> {
             new Row(children: [
               Expanded(
                 flex: 2,
-                child: Text("Item",
-                    style: TextStyle(fontSize: 12.0, color: Colors.black)),
+                child: Text("Item", style: TextStyle(fontSize: 12.0, color: Colors.black)),
               ),
               SizedBox(
                 width: 14.0,
@@ -125,8 +121,7 @@ class MarketSurveyView extends State<MarketSurveyClass> {
             new Row(children: [
               Expanded(
                 flex: 2,
-                child: Text("Mkt. Price",
-                    style: TextStyle(fontSize: 12.0, color: Colors.black)),
+                child: Text("Mkt. Price", style: TextStyle(fontSize: 12.0, color: Colors.black)),
               ),
               SizedBox(
                 width: 14.0,
@@ -142,8 +137,7 @@ class MarketSurveyView extends State<MarketSurveyClass> {
             new Row(children: [
               Expanded(
                 flex: 2,
-                child: Text("Mkt. MRP",
-                    style: TextStyle(fontSize: 12.0, color: Colors.black)),
+                child: Text("Mkt. MRP", style: TextStyle(fontSize: 12.0, color: Colors.black)),
               ),
               SizedBox(
                 width: 14.0,
@@ -159,8 +153,7 @@ class MarketSurveyView extends State<MarketSurveyClass> {
             new Row(children: [
               Expanded(
                 flex: 2,
-                child: Text("Remark",
-                    style: TextStyle(fontSize: 12.0, color: Colors.black)),
+                child: Text("Remark", style: TextStyle(fontSize: 12.0, color: Colors.black)),
               ),
               SizedBox(
                 width: 14.0,
@@ -198,7 +191,7 @@ class MarketSurveyView extends State<MarketSurveyClass> {
                   if (mrpController.text.toString().length > 0) {
                     UpdateData();
                   } else {
-                    GlobalWidget.GetToast(context, "Enter MRP");
+                    GlobalWidget.showToast(context, "Enter MRP");
                   }
                 }
               },
@@ -300,10 +293,8 @@ class MarketSurveyView extends State<MarketSurveyClass> {
           'rowsList': a1,
         };
 
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
-    String USER_ID =
-        (await Utility.getStringPreference(GlobalConstant.USER_ID));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String USER_ID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
     Map<String, dynamic> map_submit() => {
           'dbPassword': userPass,
           'dbUser': USER_ID.toString(),
@@ -321,8 +312,7 @@ class MarketSurveyView extends State<MarketSurveyClass> {
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
       try {
-        var data = await apiController.postsNew(
-            GlobalConstant.SignUp, json.encode(map_submit()));
+        var data = await apiController.postsNew(GlobalConstant.SignUp, json.encode(map_submit()));
         Dialogs.hideProgressDialog(context);
         var data1 = json.decode(data.body);
         Utility.log(TAG, data1);
@@ -333,20 +323,17 @@ class MarketSurveyView extends State<MarketSurveyClass> {
           remarkController.clear();
         } else {
           if (data1['msg'].toString() == "Login failed for user") {
-            GlobalWidget.showMyDialog(context, "Error",
-                "Invalid id or password.Please enter correct id psw or contact HR/IT");
+            GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
           } else {
-            GlobalWidget.showMyDialog(
-                context, "Error", data1['msg'].toString());
+            GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
           }
         }
       } catch (e) {
         Dialogs.hideProgressDialog(context);
-        GlobalWidget.showMyDialog(
-            context, "", GlobalConstant.interNetException(e.toString()));
+        GlobalWidget.showMyDialog(context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -357,8 +344,7 @@ class MarketSurveyView extends State<MarketSurveyClass> {
       maxLines: 5,
       focusNode: _FRemarkFocus,
       //textInputAction: TextInputAction.done,
-      onFieldSubmitted: (_) =>
-          GlobalWidget.fieldFocusChangeOnlyUnfouc(context, _FRemarkFocus),
+      onFieldSubmitted: (_) => GlobalWidget.fieldFocusChangeOnlyUnfouc(context, _FRemarkFocus),
       controller: remarkController,
       decoration: GlobalWidget.TextFeildDecoration("Enter Remark"),
       validator: (value) {
@@ -383,8 +369,7 @@ class MarketSurveyView extends State<MarketSurveyClass> {
             maxLength: 10,
             focusNode: _FMKTPriceFocus,
             //textInputAction: TextInputAction.done,
-            onFieldSubmitted: (_) => GlobalWidget.fieldFocusChange(
-                context, _FMKTPriceFocus, _FMRPFocus),
+            onFieldSubmitted: (_) => GlobalWidget.fieldFocusChange(context, _FMKTPriceFocus, _FMRPFocus),
             controller: priceController,
             decoration: GlobalWidget.TextFeildDecoration("Enter"),
             validator: (value) {
@@ -415,8 +400,7 @@ class MarketSurveyView extends State<MarketSurveyClass> {
             maxLength: 10,
             //textInputAction: TextInputAction.done,
             focusNode: _FMRPFocus,
-            onFieldSubmitted: (_) => GlobalWidget.fieldFocusChange(
-                context, _FMRPFocus, _FRemarkFocus),
+            onFieldSubmitted: (_) => GlobalWidget.fieldFocusChange(context, _FMRPFocus, _FRemarkFocus),
             controller: mrpController,
             decoration: GlobalWidget.TextFeildDecoration("Enter"),
             validator: (value) {
@@ -437,7 +421,7 @@ class MarketSurveyView extends State<MarketSurveyClass> {
 
   _toggle2() {
     if (City_id == "") {
-      GlobalWidget.GetToast(context, "Please Select City First.");
+      GlobalWidget.showToast(context, "Please Select City First.");
       return;
     }
     Navigator.of(context)
@@ -460,8 +444,7 @@ class MarketSurveyView extends State<MarketSurveyClass> {
   }
 
   final StoreClick = TextEditingController();
-  GlobalKey<AutoCompleteTextFieldState<ModelSearchCity>> keyCity =
-      new GlobalKey();
+  GlobalKey<AutoCompleteTextFieldState<ModelSearchCity>> keyCity = new GlobalKey();
   AutoCompleteTextField searchCityField;
   static List<ModelSearchCity> SearchCityItems = new List<ModelSearchCity>();
   bool loading_city = true;
@@ -470,19 +453,16 @@ class MarketSurveyView extends State<MarketSurveyClass> {
     setState(() {
       searchCityField.textField.controller.text = item.name;
       City_id = item.id;
-      GlobalSearchCityStore.getSearchItems(
-          FunctionCityStoreLoad, context, City_id);
+      GlobalSearchCityStore.getSearchItems(FunctionCityStoreLoad, context, City_id);
       setState(() {
         Store_id = "";
       });
     });
   }
 
-  GlobalKey<AutoCompleteTextFieldState<ModelSearchCityStore>> keyCityStore =
-      new GlobalKey();
+  GlobalKey<AutoCompleteTextFieldState<ModelSearchCityStore>> keyCityStore = new GlobalKey();
   AutoCompleteTextField searchCityStoreField;
-  static List<ModelSearchCityStore> SearchCityStoreItems =
-      new List<ModelSearchCityStore>();
+  static List<ModelSearchCityStore> SearchCityStoreItems = new List<ModelSearchCityStore>();
   bool loading_citystore = true;
   void onSelectItemCityStore(ModelSearchCityStore item) {
     Utility.log("tag", item.name);
@@ -516,7 +496,7 @@ class MarketSurveyView extends State<MarketSurveyClass> {
   void getSearchItems() async {
     List l1 = await DatabaseHelper.db.getAllPendingProducts1();
     if (l1.length < 0) {
-      GlobalWidget.GetToast(context, "Please wait untill data is sync");
+      GlobalWidget.showToast(context, "Please wait untill data is sync");
     } else {
       //SearchItems = loadSearchItems(l1);
       SearchItems = GlobalSearchItem.loadSearchItems(l1.toString());
@@ -553,8 +533,7 @@ class MarketSurveyView extends State<MarketSurveyClass> {
       children: [
         loading
             ? new Container()
-            : searchTextField = GlobalSearchItem.getAutoSelectionField(
-                key, SearchItems, searchTextField, onSelectItem),
+            : searchTextField = GlobalSearchItem.getAutoSelectionField(key, SearchItems, searchTextField, onSelectItem),
         Item_name == ""
             ? new Container()
             : InkWell(
@@ -602,10 +581,7 @@ class MarketSurveyView extends State<MarketSurveyClass> {
     return loading_citystore
         ? new Container()
         : searchCityStoreField = GlobalSearchCityStore.getAutoSelectionfeild(
-            keyCityStore,
-            SearchCityStoreItems,
-            searchCityStoreField,
-            onSelectItemCityStore);
+            keyCityStore, SearchCityStoreItems, searchCityStoreField, onSelectItemCityStore);
   }
 
   CityClickFeild() {
@@ -645,8 +621,7 @@ class MarketSurveyView extends State<MarketSurveyClass> {
 
     return loading_city
         ? new Container()
-        : searchCityField = GlobalSearchCity.getAutoSelectionfeild(
-            keyCity, SearchCityItems, searchCityField, onSelectItemCity);
+        : searchCityField = GlobalSearchCity.getAutoSelectionfeild(keyCity, SearchCityItems, searchCityField, onSelectItemCity);
   }
 
   String TAG = "AllendenceClasss";

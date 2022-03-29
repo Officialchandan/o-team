@@ -25,8 +25,7 @@ class ApiService {
     } catch (exception) {
       print("exception--->$exception");
 
-      return ResponseModel(
-          msg: "$exception", data: "", dataTable: null, status: 100);
+      return ResponseModel(msg: "$exception", data: "", dataTable: null, status: 100);
     }
   }
 
@@ -46,8 +45,27 @@ class ApiService {
     } catch (exception) {
       print("exception--->$exception");
 
-      return ResponseModel(
-          msg: "$exception", data: "", dataTable: null, status: 100);
+      return ResponseModel(msg: "$exception", data: "", dataTable: null, status: 100);
+    }
+  }
+
+  Future postMultipart(Map<String, dynamic> input) async {
+    try {
+      Response response = await dio.post(
+        GlobalConstant.SIGNIN,
+        data: input,
+        options: Options(headers: {
+          'Content-Type': 'application/json',
+          'User-Agent': 'Mozilla/5.0 ( compatible )',
+          'Accept': '*/*',
+        }),
+      );
+
+      return ResponseModel.fromJson(response.toString());
+    } catch (exception) {
+      print("exception--->$exception");
+
+      return ResponseModel(msg: "$exception", data: "", dataTable: null, status: 100);
     }
   }
 }

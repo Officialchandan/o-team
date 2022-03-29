@@ -51,10 +51,8 @@ class _SearchCityWiseStoreState extends State<SearchCityWiseStore> {
           'rowsList': a1,
         };
 
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
-    String USER_ID =
-        (await Utility.getStringPreference(GlobalConstant.USER_ID));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String USER_ID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
     Map<String, dynamic> map2() => {
           'dbPassword': userPass,
           'dbUser': USER_ID,
@@ -73,9 +71,7 @@ class _SearchCityWiseStoreState extends State<SearchCityWiseStore> {
 
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
-      apiController
-          .postsNew(GlobalConstant.SignUp, json.encode(map2()))
-          .then((value) {
+      apiController.postsNew(GlobalConstant.SignUp, json.encode(map2())).then((value) {
         try {
           Dialogs.hideProgressDialog(context);
           var data = value;
@@ -89,11 +85,9 @@ class _SearchCityWiseStoreState extends State<SearchCityWiseStore> {
             setState(() {});
           } else {
             if (data1['msg'].toString() == "Login failed for user") {
-              GlobalWidget.showMyDialog(context, "Error",
-                  "Invalid id or password.Please enter correct id psw or contact HR/IT");
+              GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
             } else {
-              GlobalWidget.showMyDialog(
-                  context, "Error", data1['msg'].toString());
+              GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
             }
           }
         } catch (e) {
@@ -101,7 +95,7 @@ class _SearchCityWiseStoreState extends State<SearchCityWiseStore> {
         }
       });
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -180,8 +174,7 @@ class _SearchCityWiseStoreState extends State<SearchCityWiseStore> {
                                         flex: 1,
                                         child: new Container(
                                           alignment: Alignment.center,
-                                          child: new Icon(Icons.search,
-                                              color: Colors.black),
+                                          child: new Icon(Icons.search, color: Colors.black),
                                         ),
                                       ),
                                       Expanded(
@@ -193,10 +186,8 @@ class _SearchCityWiseStoreState extends State<SearchCityWiseStore> {
                                             //  autofocus: true,
                                             controller: controller,
                                             cursorColor: Colors.black,
-                                            decoration: new InputDecoration(
-                                                hintText:
-                                                    GlobalConstant.SearchHint,
-                                                border: InputBorder.none),
+                                            decoration:
+                                                new InputDecoration(hintText: GlobalConstant.SearchHint, border: InputBorder.none),
                                             onChanged: (value) {
                                               subject.add(value);
                                             },
@@ -244,8 +235,7 @@ class _SearchCityWiseStoreState extends State<SearchCityWiseStore> {
                                 children: [
                                   new Container(
                                     padding: EdgeInsets.all(10.0),
-                                    child:
-                                        new Text(items[index].title.toString()),
+                                    child: new Text(items[index].title.toString()),
                                   ),
                                   Divider(
                                     thickness: 2.0,
@@ -253,35 +243,17 @@ class _SearchCityWiseStoreState extends State<SearchCityWiseStore> {
                                 ],
                               ),
                               onTap: () {
-                                Utility.setStringPreference(
-                                    GlobalConstant.COCO_CITY_ID,
-                                    items[index].data['PID'].toString());
-                                Utility.setStringPreference(
-                                    GlobalConstant.COCO_CITY,
-                                    items[index].data['Pname'].toString());
-                                Utility.setStringPreference(
-                                    GlobalConstant.COCO_CITY_CODE,
-                                    items[index].data['Pname'].toString());
-                                Utility.setStringPreference(
-                                    GlobalConstant.COCO_ADDRESS,
-                                    items[index].data['Address'].toString());
+                                Utility.setStringPreference(GlobalConstant.COCO_CITY_ID, items[index].data['PID'].toString());
+                                Utility.setStringPreference(GlobalConstant.COCO_CITY, items[index].data['Pname'].toString());
+                                Utility.setStringPreference(GlobalConstant.COCO_CITY_CODE, items[index].data['Pname'].toString());
+                                Utility.setStringPreference(GlobalConstant.COCO_ADDRESS, items[index].data['Address'].toString());
 
-                                String idValue = ": \"" +
-                                    "${items[index].data['PID'].toString()}" +
-                                    "\"";
-                                String Name_Value = ": \"" +
-                                    "${items[index].data['Pname'].toString()}" +
-                                    "\"";
+                                String idValue = ": \"" + "${items[index].data['PID'].toString()}" + "\"";
+                                String Name_Value = ": \"" + "${items[index].data['Pname'].toString()}" + "\"";
 
                                 String id = "\"id\"";
                                 String name = "\"name\"";
-                                var json = "{" +
-                                    id +
-                                    idValue +
-                                    "," +
-                                    name +
-                                    Name_Value +
-                                    "}";
+                                var json = "{" + id + idValue + "," + name + Name_Value + "}";
                                 Navigator.pop(context, json);
                               },
                             );

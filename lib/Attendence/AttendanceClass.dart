@@ -59,8 +59,7 @@ class AttendanceView extends State<AttendanceActivity> {
             children: [
               Expanded(
                 flex: 3,
-                child: Text("Attd. Type",
-                    style: TextStyle(fontSize: 14.0, color: Colors.black)),
+                child: Text("Attd. Type", style: TextStyle(fontSize: 14.0, color: Colors.black)),
               ),
               Expanded(
                 flex: 7,
@@ -81,8 +80,7 @@ class AttendanceView extends State<AttendanceActivity> {
                           children: [
                             Icon(
                               Icons.radio_button_checked,
-                              color:
-                                  attd_type == 1 ? colorPrimary : Colors.grey,
+                              color: attd_type == 1 ? colorPrimary : Colors.grey,
                             ),
                             SizedBox(
                               width: 10.0,
@@ -90,9 +88,7 @@ class AttendanceView extends State<AttendanceActivity> {
                             Text("Sign IN",
                                 style: TextStyle(
                                   fontSize: 14.0,
-                                  color: attd_type == 1
-                                      ? colorPrimary
-                                      : Colors.grey,
+                                  color: attd_type == 1 ? colorPrimary : Colors.grey,
                                 )),
                           ],
                         ),
@@ -107,8 +103,7 @@ class AttendanceView extends State<AttendanceActivity> {
                           children: [
                             Icon(
                               Icons.radio_button_checked,
-                              color:
-                                  attd_type == 2 ? colorPrimary : Colors.grey,
+                              color: attd_type == 2 ? colorPrimary : Colors.grey,
                             ),
                             SizedBox(
                               width: 10.0,
@@ -116,9 +111,7 @@ class AttendanceView extends State<AttendanceActivity> {
                             Text("Sign Out",
                                 style: TextStyle(
                                   fontSize: 14.0,
-                                  color: attd_type == 2
-                                      ? colorPrimary
-                                      : Colors.grey,
+                                  color: attd_type == 2 ? colorPrimary : Colors.grey,
                                 )),
                           ],
                         ),
@@ -141,8 +134,7 @@ class AttendanceView extends State<AttendanceActivity> {
           new Row(children: [
             Expanded(
               flex: 3,
-              child: Text("Location",
-                  style: TextStyle(fontSize: 14.0, color: Colors.black)),
+              child: Text("Location", style: TextStyle(fontSize: 14.0, color: Colors.black)),
             ),
             SizedBox(
               width: 40.0,
@@ -155,8 +147,7 @@ class AttendanceView extends State<AttendanceActivity> {
           new Row(children: [
             Expanded(
               flex: 3,
-              child: Text("GPS CORD",
-                  style: TextStyle(fontSize: 14.0, color: Colors.black)),
+              child: Text("GPS CORD", style: TextStyle(fontSize: 14.0, color: Colors.black)),
             ),
             SizedBox(
               width: 40.0,
@@ -181,14 +172,11 @@ class AttendanceView extends State<AttendanceActivity> {
   Position position;
   String geocords;
   Future<String> _getId() async {
-    position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high);
+    position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
 
     setState(() {
-      GPSCORDSClick.text =
-          position.latitude.toString() + "," + position.longitude.toString();
-      geocords =
-          position.latitude.toString() + "," + position.longitude.toString();
+      GPSCORDSClick.text = position.latitude.toString() + "," + position.longitude.toString();
+      geocords = position.latitude.toString() + "," + position.longitude.toString();
     });
     DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
     if (Platform.isIOS) {
@@ -203,18 +191,14 @@ class AttendanceView extends State<AttendanceActivity> {
       return iosDeviceInfo.identifierForVendor; // unique ID on iOS
     } else {
       AndroidDeviceInfo androidDeviceInfo = await deviceInfo.androidInfo;
-      Deviceid = androidDeviceInfo.androidId.toString() +
-          "|" +
-          androidDeviceInfo.brand.toString() +
-          "|" +
-          androidDeviceInfo.id.toString();
+      Deviceid =
+          androidDeviceInfo.androidId.toString() + "|" + androidDeviceInfo.brand.toString() + "|" + androidDeviceInfo.id.toString();
       return androidDeviceInfo.androidId; // unique ID on Android
     }
   }
 
   Future<void> SubmitAttendenceDetail() async {
-    String USER_ID =
-        (await Utility.getStringPreference(GlobalConstant.USER_ID));
+    String USER_ID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
     Map<String, dynamic> map() => {
           'pname': 'EmpId',
           'value': USER_ID,
@@ -311,10 +295,8 @@ class AttendanceView extends State<AttendanceActivity> {
 
     var data = map1();
     Utility.log(TAG, map1());
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
-    String Item_Id =
-        (await Utility.getStringPreference(GlobalConstant.USER_ID));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String Item_Id = (await Utility.getStringPreference(GlobalConstant.USER_ID));
 
     Map<String, dynamic> map2_final() => {
           'dbPassword': userPass,
@@ -332,8 +314,7 @@ class AttendanceView extends State<AttendanceActivity> {
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
       try {
-        var data = await apiController.postsNew(
-            GlobalConstant.SignUp, json.encode(map2_final()));
+        var data = await apiController.postsNew(GlobalConstant.SignUp, json.encode(map2_final()));
         Dialogs.hideProgressDialog(context);
         var data1 = json.decode(data.body);
         Utility.log(TAG, "Response: " + data1.toString());
@@ -349,20 +330,17 @@ class AttendanceView extends State<AttendanceActivity> {
           }
         } else {
           if (data1['msg'].toString() == "Login failed for user") {
-            GlobalWidget.showMyDialog(context, "Error",
-                "Invalid id or password.Please enter correct id psw or contact HR/IT");
+            GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
           } else {
-            GlobalWidget.showMyDialog(
-                context, "Error", data1['msg'].toString());
+            GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
           }
         }
       } catch (e) {
         Dialogs.hideProgressDialog(context);
-        GlobalWidget.showMyDialog(
-            context, "", GlobalConstant.interNetException(e.toString()));
+        GlobalWidget.showMyDialog(context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -402,8 +380,7 @@ class AttendanceView extends State<AttendanceActivity> {
     );*/
     return loading
         ? new Container()
-        : searchTextField = GlobalSearchStore.getAutoSelectionfeild(
-            key, SearchItems, searchTextField, onSelectItem);
+        : searchTextField = GlobalSearchStore.getAutoSelectionfeild(key, SearchItems, searchTextField, onSelectItem);
   }
 
   GPSClickFeild() {
@@ -442,8 +419,7 @@ class AttendanceView extends State<AttendanceActivity> {
         if (LOC_NAME.toString().length > 0) {
           SubmitAttendenceDetail();
         } else {
-          GlobalWidget.showMyDialog(
-              context, GlobalWidget.GetAppName, "Please Select Location.");
+          GlobalWidget.showMyDialog(context, GlobalWidget.GetAppName, "Please Select Location.");
         }
       },
       child: Text(
@@ -491,21 +467,15 @@ class AttendanceView extends State<AttendanceActivity> {
 
   _toggle2() async {
     try {
-      LocationResult result =
-          await Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => PlacePicker(
-                    "AIzaSyDBkO85LxHsC9NCNZJviJhQd2inA2MTG9A",
-                    displayLocation:
-                        LatLng(position.latitude, position.longitude),
-                  )));
+      LocationResult result = await Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => PlacePicker(
+                "AIzaSyDBkO85LxHsC9NCNZJviJhQd2inA2MTG9A",
+                displayLocation: LatLng(position.latitude, position.longitude),
+              )));
 
       if (result != null) {
-        GPSCORDSClick.text = result.latLng.latitude.toString() +
-            "," +
-            result.latLng.longitude.toString();
-        geocords = result.latLng.latitude.toString() +
-            "," +
-            result.latLng.longitude.toString();
+        GPSCORDSClick.text = result.latLng.latitude.toString() + "," + result.latLng.longitude.toString();
+        geocords = result.latLng.latitude.toString() + "," + result.latLng.longitude.toString();
         setState(() {
           print(geocords);
         });

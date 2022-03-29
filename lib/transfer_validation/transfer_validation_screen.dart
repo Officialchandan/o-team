@@ -473,7 +473,7 @@ class _TransferValidationScreenState extends State<TransferValidationScreen> {
     List l1 = await DatabaseHelper.db.getAllPendingProducts1();
 
     if (l1.length < 0) {
-      GlobalWidget.GetToast(context, "Please wait untill data is sync");
+      GlobalWidget.showToast(context, "Please wait untill data is sync");
     } else {
       searchItems = GlobalSearchItem1.loadSearchItems(l1.toString());
       setState(() {});
@@ -613,10 +613,7 @@ class _TransferValidationScreenState extends State<TransferValidationScreen> {
           }
         } else {
           showAlertDialog(
-              title: "Product quantity mismatch!!\nInput Quantity: " +
-                  qty.toString() +
-                  "\nRequired Quantity: " +
-                  availQty.toString(),
+              title: "Product quantity mismatch!!\nInput Quantity: " + qty.toString() + "\nRequired Quantity: " + availQty.toString(),
               buttonText: "OK");
         }
       } catch (e) {

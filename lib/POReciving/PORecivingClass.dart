@@ -228,36 +228,23 @@ class RecivingView extends State<POReciving> {
                                       Expanded(
                                         flex: 3,
                                         child: Text(
-                                          history[index]['cols']['PoId'] == null
-                                              ? ""
-                                              : history[index]['cols']['PoId'],
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              color: Colors.black),
+                                          history[index]['cols']['PoId'] == null ? "" : history[index]['cols']['PoId'],
+                                          style: TextStyle(fontSize: 12, color: Colors.black),
                                         ),
                                       ),
                                       Expanded(
                                         flex: 3,
                                         child: Text(
-                                          history[index]['cols']['Billno'] ==
-                                                  null
-                                              ? ""
-                                              : history[index]['cols']
-                                                  ['Billno'],
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              color: Colors.black),
+                                          history[index]['cols']['Billno'] == null ? "" : history[index]['cols']['Billno'],
+                                          style: TextStyle(fontSize: 12, color: Colors.black),
                                           textAlign: TextAlign.right,
                                         ),
                                       ),
                                       Expanded(
                                         flex: 3,
                                         child: Text(
-                                          history[index]['cols']['Amt'] == null
-                                              ? ""
-                                              : history[index]['cols']['Amt'],
-                                          style: TextStyle(
-                                              fontSize: 12, color: Colors.red),
+                                          history[index]['cols']['Amt'] == null ? "" : history[index]['cols']['Amt'],
+                                          style: TextStyle(fontSize: 12, color: Colors.red),
                                           textAlign: TextAlign.right,
                                         ),
                                       )
@@ -273,20 +260,11 @@ class RecivingView extends State<POReciving> {
                                           children: [
                                             Text(
                                               "RcmTm : ",
-                                              style: TextStyle(
-                                                  fontSize: 12,
-                                                  color: Colors.black),
+                                              style: TextStyle(fontSize: 12, color: Colors.black),
                                             ),
                                             Text(
-                                              history[index]['cols']
-                                                          ['GtRcvTm'] ==
-                                                      null
-                                                  ? ""
-                                                  : history[index]['cols']
-                                                      ['GtRcvTm'],
-                                              style: TextStyle(
-                                                  fontSize: 12,
-                                                  color: Colors.black),
+                                              history[index]['cols']['GtRcvTm'] == null ? "" : history[index]['cols']['GtRcvTm'],
+                                              style: TextStyle(fontSize: 12, color: Colors.black),
                                               textAlign: TextAlign.right,
                                             ),
                                           ],
@@ -298,15 +276,11 @@ class RecivingView extends State<POReciving> {
                                           children: [
                                             Text(
                                               "InsDt : ",
-                                              style: TextStyle(
-                                                  fontSize: 12,
-                                                  color: Colors.black),
+                                              style: TextStyle(fontSize: 12, color: Colors.black),
                                             ),
                                             Text(
                                               "",
-                                              style: TextStyle(
-                                                  fontSize: 12,
-                                                  color: Colors.black),
+                                              style: TextStyle(fontSize: 12, color: Colors.black),
                                               textAlign: TextAlign.right,
                                             )
                                           ],
@@ -410,7 +384,7 @@ class RecivingView extends State<POReciving> {
         if (PONumberController.text.toString().length >= 3) {
           GetPoItemData(PONumberController.text.toString());
         } else {
-          GlobalWidget.GetToast(context, "Enter PO Number");
+          GlobalWidget.showToast(context, "Enter PO Number");
         }
       },
       child: Text(
@@ -485,7 +459,7 @@ class RecivingView extends State<POReciving> {
 
           GlobalWidget.fieldFocusChange(context, _FPoNoFocus, _FBillNoFocus);
         } else {
-          GlobalWidget.GetToast(context, "Enter PO Number");
+          GlobalWidget.showToast(context, "Enter PO Number");
         }
       },
       controller: PONumberController,
@@ -508,8 +482,7 @@ class RecivingView extends State<POReciving> {
       minLines: 1,
       focusNode: _FRemarkFocus,
       //textInputAction: TextInputAction.done,
-      onFieldSubmitted: (_) =>
-          GlobalWidget.fieldFocusChangeOnlyUnfouc(context, _FRemarkFocus),
+      onFieldSubmitted: (_) => GlobalWidget.fieldFocusChangeOnlyUnfouc(context, _FRemarkFocus),
       controller: PORemarkController,
       decoration: GlobalWidget.TextFeildDecoration("Remark"),
     );
@@ -525,8 +498,7 @@ class RecivingView extends State<POReciving> {
       obscureText: _obscureText3,
       //textInputAction: TextInputAction.done,
       focusNode: _FAmtFocus,
-      onFieldSubmitted: (_) =>
-          GlobalWidget.fieldFocusChange(context, _FAmtFocus, _FCAmtFocus),
+      onFieldSubmitted: (_) => GlobalWidget.fieldFocusChange(context, _FAmtFocus, _FCAmtFocus),
       controller: POAmountController,
       decoration: InputDecoration(
         contentPadding: GlobalWidget.getContentPadding(),
@@ -554,8 +526,7 @@ class RecivingView extends State<POReciving> {
       ////textInputAction: TextInputAction.done,
       obscureText: _obscureText4,
       focusNode: _FCAmtFocus,
-      onFieldSubmitted: (_) =>
-          GlobalWidget.fieldFocusChange(context, _FCAmtFocus, _FRemarkFocus),
+      onFieldSubmitted: (_) => GlobalWidget.fieldFocusChange(context, _FCAmtFocus, _FRemarkFocus),
       controller: POAmountController_con,
 
       decoration: InputDecoration(
@@ -570,8 +541,7 @@ class RecivingView extends State<POReciving> {
         if (value.isEmpty) {
           return 'Please enter amount';
         } else if (value.toString() != POAmountController.text.toString()) {
-          GlobalWidget.GetToast(
-              context, "Amount and confirm amount should be same");
+          GlobalWidget.showToast(context, "Amount and confirm amount should be same");
           return 'not match';
         }
         return null;
@@ -588,8 +558,7 @@ class RecivingView extends State<POReciving> {
       obscureText: _obscureText1,
       focusNode: _FBillNoFocus,
       //textInputAction: TextInputAction.done,
-      onFieldSubmitted: (_) => GlobalWidget.fieldFocusChange(
-          context, _FBillNoFocus, _FBillCBillNoFocus),
+      onFieldSubmitted: (_) => GlobalWidget.fieldFocusChange(context, _FBillNoFocus, _FBillCBillNoFocus),
       controller: BILLNumberController,
       decoration: InputDecoration(
         contentPadding: GlobalWidget.getContentPadding(),
@@ -614,8 +583,7 @@ class RecivingView extends State<POReciving> {
       //textInputAction: TextInputAction.done,
       obscureText: _obscureText2,
       focusNode: _FBillCBillNoFocus,
-      onFieldSubmitted: (_) => GlobalWidget.fieldFocusChange(
-          context, _FBillCBillNoFocus, _FAmtFocus),
+      onFieldSubmitted: (_) => GlobalWidget.fieldFocusChange(context, _FBillCBillNoFocus, _FAmtFocus),
       controller: BILLNumberController_con,
       decoration: InputDecoration(
         contentPadding: GlobalWidget.getContentPadding(),
@@ -629,8 +597,7 @@ class RecivingView extends State<POReciving> {
         if (value.isEmpty) {
           return 'Please enter confirm bill number';
         } else if (value.toString() != BILLNumberController.text.toString()) {
-          GlobalWidget.GetToast(
-              context, "Bill No and Confirm bill No should be same");
+          GlobalWidget.showToast(context, "Bill No and Confirm bill No should be same");
 
           return 'not match';
         }
@@ -640,10 +607,8 @@ class RecivingView extends State<POReciving> {
   }
 
   _GetSuppliers(String trim) async {
-    var data = GlobalConstant.GetMapForInwardGrcPOParty(
-        PONumberController.text.trim());
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    var data = GlobalConstant.GetMapForInwardGrcPOParty(PONumberController.text.trim());
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
     userID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
     Map<String, dynamic> map2() => {
           'dbPassword': userPass,
@@ -664,8 +629,7 @@ class RecivingView extends State<POReciving> {
       Dialogs.showProgressDialog(context);
 
       try {
-        var data = await apiController.postsNew(
-            GlobalConstant.SignUp, json.encode(map2()));
+        var data = await apiController.postsNew(GlobalConstant.SignUp, json.encode(map2()));
         Dialogs.hideProgressDialog(context);
         var data1 = json.decode(data.body);
         if (data1['status'] == 0) {
@@ -677,27 +641,23 @@ class RecivingView extends State<POReciving> {
           }
         } else {
           if (data1['msg'].toString() == "Login failed for user") {
-            GlobalWidget.showMyDialog(context, "Error",
-                "Invalid id or password.Please enter correct id psw or contact HR/IT");
+            GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
           } else {
-            GlobalWidget.showMyDialog(
-                context, "Error", data1['msg'].toString());
+            GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
           }
         }
       } catch (e) {
         Dialogs.hideProgressDialog(context);
-        GlobalWidget.showMyDialog(
-            context, "", GlobalConstant.interNetException(e.toString()));
+        GlobalWidget.showMyDialog(context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
   Future<void> loadHistory() async {
     List a1 = new List();
-    String COCO_ID =
-        (await Utility.getStringPreference(GlobalConstant.COCO_ID));
+    String COCO_ID = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
 
     Map<String, dynamic> map() => {
           'pname': 'CocoPid',
@@ -727,8 +687,7 @@ class RecivingView extends State<POReciving> {
         };
 
     var data = map_final();
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
     String userID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
 
     Map<String, dynamic> mapdata() => {
@@ -750,8 +709,7 @@ class RecivingView extends State<POReciving> {
       Dialogs.showProgressDialog(context);
 
       try {
-        var data = await apiController.postsNew(
-            GlobalConstant.SignUp, json.encode(mapdata()));
+        var data = await apiController.postsNew(GlobalConstant.SignUp, json.encode(mapdata()));
         Dialogs.hideProgressDialog(context);
         var data1 = json.decode(data.body);
         if (data1['status'] == 0) {
@@ -761,20 +719,17 @@ class RecivingView extends State<POReciving> {
           }
         } else {
           if (data1['msg'].toString() == "Login failed for user") {
-            GlobalWidget.showMyDialog(context, "Error",
-                "Invalid id or password.Please enter correct id psw or contact HR/IT");
+            GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
           } else {
-            GlobalWidget.showMyDialog(
-                context, "Error", data1['msg'].toString());
+            GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
           }
         }
       } catch (e) {
         Dialogs.hideProgressDialog(context);
-        GlobalWidget.showMyDialog(
-            context, "", GlobalConstant.interNetException(e.toString()));
+        GlobalWidget.showMyDialog(context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -782,8 +737,7 @@ class RecivingView extends State<POReciving> {
 
   Future<void> GetPoItemData(String POID) async {
     List a1 = new List();
-    String COCO_ID =
-        (await Utility.getStringPreference(GlobalConstant.COCO_ID));
+    String COCO_ID = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
 
     Map<String, dynamic> map() => {
           'pname': 'CocoPID',
@@ -825,8 +779,7 @@ class RecivingView extends State<POReciving> {
         };
 
     var data = map_final();
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
     String userID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
 
     Map<String, dynamic> mapdata() => {
@@ -848,8 +801,7 @@ class RecivingView extends State<POReciving> {
       Dialogs.showProgressDialog(context);
 
       try {
-        var data = await apiController.postsNew(
-            GlobalConstant.SignUp, json.encode(mapdata()));
+        var data = await apiController.postsNew(GlobalConstant.SignUp, json.encode(mapdata()));
         Dialogs.hideProgressDialog(context);
         var data1 = json.decode(data.body);
         Utility.log(TAG, "GetPoItemData Response: " + data1.toString());
@@ -879,21 +831,18 @@ class RecivingView extends State<POReciving> {
           }
         } else {
           if (data1['msg'].toString() == "Login failed for user") {
-            GlobalWidget.showMyDialog(context, "Error",
-                "Invalid id or password.Please enter correct id psw or contact HR/IT");
+            GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
           } else {
             Utility.log("GetPoItemData Error --> ", data1['msg'].toString());
-            GlobalWidget.showMyDialog(
-                context, "Error", data1['msg'].toString());
+            GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
           }
         }
       } catch (e) {
         Dialogs.hideProgressDialog(context);
-        GlobalWidget.showMyDialog(
-            context, "", GlobalConstant.interNetException(e.toString()));
+        GlobalWidget.showMyDialog(context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -909,11 +858,10 @@ class RecivingView extends State<POReciving> {
                     children: [
                       Expanded(
                         flex: 4,
-                        child:
-                            Text("POID : " + AlertDetailPo["PONo"].toString(),
-                                style: TextStyle(
-                                  fontSize: 14,
-                                )),
+                        child: Text("POID : " + AlertDetailPo["PONo"].toString(),
+                            style: TextStyle(
+                              fontSize: 14,
+                            )),
                       ),
                       // SizedBox(width: 20),
                       Expanded(
@@ -970,10 +918,8 @@ class RecivingView extends State<POReciving> {
 
   Widget setupAlertDialoadContainer() {
     return Container(
-      height:
-          MediaQuery.of(context).size.height, // Change as per your requirement
-      width:
-          MediaQuery.of(context).size.width, // Change as per your requirement
+      height: MediaQuery.of(context).size.height, // Change as per your requirement
+      width: MediaQuery.of(context).size.width, // Change as per your requirement
       child: ListView.builder(
         // shrinkWrap: true,
         physics: ClampingScrollPhysics(),
@@ -1012,8 +958,7 @@ class RecivingView extends State<POReciving> {
                         new Row(
                           children: [
                             Expanded(
-                              child: Text(
-                                  products2[index]["cols"]["ItId"].toString()),
+                              child: Text(products2[index]["cols"]["ItId"].toString()),
                             ),
                             Expanded(
                               child: new Row(
@@ -1021,8 +966,7 @@ class RecivingView extends State<POReciving> {
                                 children: [
                                   Text(
                                     "Item QTY : ",
-                                    style: TextStyle(
-                                        color: colorPrimary, fontSize: 12),
+                                    style: TextStyle(color: colorPrimary, fontSize: 12),
                                   ),
                                   Text(
                                     products2[index]["cols"]["Qty"],
@@ -1044,8 +988,7 @@ class RecivingView extends State<POReciving> {
                                 children: [
                                   Text(
                                     "Inw St: ",
-                                    style: TextStyle(
-                                        color: Colors.blue, fontSize: 12),
+                                    style: TextStyle(color: Colors.blue, fontSize: 12),
                                   ),
                                   Text(
                                     products2[index]["cols"]["InwSt"],
@@ -1060,8 +1003,7 @@ class RecivingView extends State<POReciving> {
                                 children: [
                                   Text(
                                     "Inw Qty: ",
-                                    style: TextStyle(
-                                        color: Colors.blue, fontSize: 12),
+                                    style: TextStyle(color: Colors.blue, fontSize: 12),
                                   ),
                                   Text(
                                     products2[index]["cols"]["InwQty"],
@@ -1092,8 +1034,7 @@ class RecivingView extends State<POReciving> {
 
   Future<void> SubmitPoItemData() async {
     List a1 = new List();
-    String COCO_ID =
-        (await Utility.getStringPreference(GlobalConstant.COCO_ID));
+    String COCO_ID = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
 
     Map<String, dynamic> map() => {
           'pname': 'CocoPID',
@@ -1168,8 +1109,7 @@ class RecivingView extends State<POReciving> {
         };
 
     var data = map_final();
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
     String userID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
 
     Map<String, dynamic> mapdata() => {
@@ -1188,32 +1128,27 @@ class RecivingView extends State<POReciving> {
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
       try {
-        var value = await apiController.postsNew(
-            GlobalConstant.SignUp, json.encode(mapdata()));
+        var value = await apiController.postsNew(GlobalConstant.SignUp, json.encode(mapdata()));
         Dialogs.hideProgressDialog(context);
         var data = value;
         var data1 = json.decode(data.body);
         Utility.log(TAG, "Response: " + data1.toString());
         if (data1['status'] == 0) {
-          GlobalWidget.GetToast(context, "Data Save Successfilly");
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => GrcInwardActivity()));
+          GlobalWidget.showToast(context, "Data Save Successfilly");
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => GrcInwardActivity()));
         } else {
           if (data1['msg'].toString() == "Login failed for user") {
-            GlobalWidget.showMyDialog(context, "Error",
-                "Invalid id or password.Please enter correct id psw or contact HR/IT");
+            GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
           } else {
-            GlobalWidget.showMyDialog(
-                context, "Error", data1['msg'].toString());
+            GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
           }
         }
       } catch (e) {
         Dialogs.hideProgressDialog(context);
-        GlobalWidget.showMyDialog(
-            context, "", GlobalConstant.interNetException(e.toString()));
+        GlobalWidget.showMyDialog(context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 

@@ -43,8 +43,7 @@ class _MyAppReportNewState extends State<MyAppReportNew> {
                     child: new ListView.builder(
                       itemCount: items_column_Heading.length,
                       itemBuilder: (context, index_head) {
-                        return GlobalConstant.getAllAmount(
-                            city_modelList, items_column_Heading[index_head]);
+                        return GlobalConstant.getAllAmount(city_modelList, items_column_Heading[index_head]);
                       },
                       scrollDirection: Axis.horizontal,
                     ),
@@ -64,10 +63,8 @@ class _MyAppReportNewState extends State<MyAppReportNew> {
                             child: new ListView.builder(
                               itemCount: items_column_Heading.length,
                               itemBuilder: (context, index_head) {
-                                return GlobalConstant.getCityWiseAmount(
-                                    city_modelList[cityIndex].DateList,
-                                    city_modelList[cityIndex].DateList.length,
-                                    items_column_Heading[index_head]);
+                                return GlobalConstant.getCityWiseAmount(city_modelList[cityIndex].DateList,
+                                    city_modelList[cityIndex].DateList.length, items_column_Heading[index_head]);
                               },
                               scrollDirection: Axis.horizontal,
                             ),
@@ -131,19 +128,12 @@ class _MyAppReportNewState extends State<MyAppReportNew> {
         // margin: EdgeInsets.all(4.0),
         child: rowcount == 0
             ? Text(
-                items_column_Heading[index]["name"].toString() +
-                    "\n" +
-                    GlobalConstant.getamtCount(
-                        items_column_Heading[index], items),
-                style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold),
+                items_column_Heading[index]["name"].toString() + "\n" + GlobalConstant.getamtCount(items_column_Heading[index], items),
+                style: TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
                 maxLines: 2,
               )
             : Text(
-                items[rowcount][items_column_Heading[index]["name"].toString()]
-                    .toString(),
+                items[rowcount][items_column_Heading[index]["name"].toString()].toString(),
                 style: TextStyle(fontSize: 14, color: Colors.black),
                 maxLines: 1,
               ),
@@ -165,15 +155,11 @@ class _MyAppReportNewState extends State<MyAppReportNew> {
         child: rowcount == 0
             ? Text(
                 "" + amt_header_list[index],
-                style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
                 maxLines: 2,
               )
             : Text(
-                GlobalConstant.GetAmountVal(city_modelList,
-                    items1[rowcount].Header.toString(), amt_header_list[index]),
+                GlobalConstant.GetAmountVal(city_modelList, items1[rowcount].Header.toString(), amt_header_list[index]),
                 //amt_header_list[index],
                 style: TextStyle(fontSize: 14, color: Colors.black),
                 maxLines: 1,
@@ -195,10 +181,7 @@ class _MyAppReportNewState extends State<MyAppReportNew> {
         child: index == 0
             ? Text(
                 "COCO\n",
-                style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
                 maxLines: 2,
               )
             : Text(
@@ -223,10 +206,7 @@ class _MyAppReportNewState extends State<MyAppReportNew> {
         child: index == 0
             ? Text(
                 "COCO",
-                style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
                 maxLines: 1,
               )
             : Text(
@@ -242,8 +222,7 @@ class _MyAppReportNewState extends State<MyAppReportNew> {
     return List.generate(
       no_of_rows,
       (index) {
-        return Row(
-            children: _buildCells(items_column_Heading.length, index, items));
+        return Row(children: _buildCells(items_column_Heading.length, index, items));
       },
     );
   }
@@ -252,8 +231,7 @@ class _MyAppReportNewState extends State<MyAppReportNew> {
     return List.generate(
       no_of_rows,
       (index) {
-        return Row(
-            children: _buildCellsAmt(amt_header_list.length, index, items));
+        return Row(children: _buildCellsAmt(amt_header_list.length, index, items));
       },
     );
   }
@@ -261,22 +239,16 @@ class _MyAppReportNewState extends State<MyAppReportNew> {
   String TAG = "TAG";
 
   Future<void> UpdateData() async {
-    String COCO_ID =
-        (await Utility.getStringPreference(GlobalConstant.COCO_ID));
-    String FROM_DATE_Report =
-        (await Utility.getStringPreference(GlobalConstant.FROM_DATE_Report));
-    String TO_DATE_Report =
-        (await Utility.getStringPreference(GlobalConstant.TO_DATE_Report));
-    String AllCityIds =
-        (await Utility.getStringPreference(GlobalConstant.AllCityIds));
+    String COCO_ID = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
+    String FROM_DATE_Report = (await Utility.getStringPreference(GlobalConstant.FROM_DATE_Report));
+    String TO_DATE_Report = (await Utility.getStringPreference(GlobalConstant.TO_DATE_Report));
+    String AllCityIds = (await Utility.getStringPreference(GlobalConstant.AllCityIds));
 
     /* var data = GlobalConstant.GetMapForRePortDetail(
         "2020-12-28", TO_DATE_Report, AllCityIds, "1");*/
-    var data = GlobalConstant.GetMapForRePortDetail(
-        FROM_DATE_Report, TO_DATE_Report, AllCityIds, "1");
+    var data = GlobalConstant.GetMapForRePortDetail(FROM_DATE_Report, TO_DATE_Report, AllCityIds, "1");
 
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
     String userID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
 
     Map<String, dynamic> map2() => {
@@ -296,8 +268,7 @@ class _MyAppReportNewState extends State<MyAppReportNew> {
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
       try {
-        var data = await apiController.postsNew(
-            GlobalConstant.SignUp, json.encode(map2()));
+        var data = await apiController.postsNew(GlobalConstant.SignUp, json.encode(map2()));
         Dialogs.hideProgressDialog(context);
         var data1 = json.decode(data.body);
         Utility.log(TAG, "Response: " + data1.toString());
@@ -317,16 +288,14 @@ class _MyAppReportNewState extends State<MyAppReportNew> {
             Grp2Map.forEach((key_city, city_value) {
               DateList = new List();
               //dategroup
-              var Grp1Map =
-                  groupBy(city_value.toList(), (obj) => obj["cols"]['grp1']);
+              var Grp1Map = groupBy(city_value.toList(), (obj) => obj["cols"]['grp1']);
               //start  date loop
 
               Grp1Map.forEach((key_date, value) {
                 TimeList = new List();
                 //  Utility.log(TAG + " vallength1 ", value.length);
                 //timegroup
-                var GrpMap =
-                    groupBy(value.toList(), (obj) => obj["cols"]['grp']);
+                var GrpMap = groupBy(value.toList(), (obj) => obj["cols"]['grp']);
 
                 //start group time
                 GrpMap.forEach((key, value) {
@@ -339,8 +308,7 @@ class _MyAppReportNewState extends State<MyAppReportNew> {
                     // items.add(data[0]["cols"]);
                   }
 
-                  TimeList.add(new GrpModel(key.toString(), items,
-                      items_column_Heading, items_first_column));
+                  TimeList.add(new GrpModel(key.toString(), items, items_column_Heading, items_first_column));
                 }); //end group time
 
                 DateList.add(new DateModel(key_date, TimeList));
@@ -355,20 +323,17 @@ class _MyAppReportNewState extends State<MyAppReportNew> {
           }
         } else {
           if (data1['msg'].toString() == "Login failed for user") {
-            GlobalWidget.showMyDialog(context, "Error",
-                "Invalid id or password.Please enter correct id psw or contact HR/IT");
+            GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
           } else {
-            GlobalWidget.showMyDialog(
-                context, "Error", data1['msg'].toString());
+            GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
           }
         }
       } catch (e) {
         Dialogs.hideProgressDialog(context);
-        GlobalWidget.showMyDialog(
-            context, "", GlobalConstant.interNetException(e.toString()));
+        GlobalWidget.showMyDialog(context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -379,42 +344,28 @@ class _MyAppReportNewState extends State<MyAppReportNew> {
         shrinkWrap: true,
         itemBuilder: (context, dateIndex) {
           return ExpansionTile(
-            title:
-                Text(city_modelList[cityindex].DateList[dateIndex].DateString),
+            title: Text(city_modelList[cityindex].DateList[dateIndex].DateString),
             children: [
               new Container(
                 height: 60.0,
                 child: new ListView.builder(
                   itemCount: items_column_Heading.length,
                   itemBuilder: (context, index_head) {
-                    return GlobalConstant.getDateWiseAmount(
-                        city_modelList[cityindex]
-                            .DateList[dateIndex]
-                            .grp_modelList,
-                        city_modelList[cityindex]
-                            .DateList[dateIndex]
-                            .grp_modelList
-                            .length,
-                        items_column_Heading[index_head]);
+                    return GlobalConstant.getDateWiseAmount(city_modelList[cityindex].DateList[dateIndex].grp_modelList,
+                        city_modelList[cityindex].DateList[dateIndex].grp_modelList.length, items_column_Heading[index_head]);
                   },
                   scrollDirection: Axis.horizontal,
                 ),
               ),
               ListView.builder(
-                  itemCount: city_modelList[cityindex]
-                      .DateList[dateIndex]
-                      .grp_modelList
-                      .length,
+                  itemCount: city_modelList[cityindex].DateList[dateIndex].grp_modelList.length,
                   physics: ClampingScrollPhysics(),
                   shrinkWrap: true,
                   itemBuilder: (BuildContext context, int index1) {
                     return InkWell(
                       onTap: () {},
                       child: ExpansionTile(
-                        title: Text(city_modelList[cityindex]
-                            .DateList[dateIndex]
-                            .grp_modelList[index1]
-                            .TimeGroup),
+                        title: Text(city_modelList[cityindex].DateList[dateIndex].grp_modelList[index1].TimeGroup),
                         children: [
                           SingleChildScrollView(
                             child: Row(
@@ -423,32 +374,21 @@ class _MyAppReportNewState extends State<MyAppReportNew> {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: _buildCellsHeding(
-                                      city_modelList[cityindex]
-                                          .DateList[dateIndex]
-                                          .grp_modelList[index1]
-                                          .items_first_column
-                                          .length,
-                                      city_modelList[cityindex]
-                                          .DateList[dateIndex]
-                                          .grp_modelList[index1]
-                                          .items_first_column),
+                                      city_modelList[cityindex].DateList[dateIndex].grp_modelList[index1].items_first_column.length,
+                                      city_modelList[cityindex].DateList[dateIndex].grp_modelList[index1].items_first_column),
                                 ),
                                 Flexible(
                                   child: SingleChildScrollView(
                                     scrollDirection: Axis.horizontal,
                                     child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: _buildRows(
                                           city_modelList[cityindex]
                                               .DateList[dateIndex]
                                               .grp_modelList[index1]
                                               .items_first_column
                                               .length,
-                                          city_modelList[cityindex]
-                                              .DateList[dateIndex]
-                                              .grp_modelList[index1]
-                                              .items),
+                                          city_modelList[cityindex].DateList[dateIndex].grp_modelList[index1].items),
                                     ),
                                   ),
                                 )
@@ -494,15 +434,12 @@ class _MyAppReportNewState extends State<MyAppReportNew> {
       amt_firstcolumn_list.add(new RowFirstListVal("city", "", new List()));
 
       for (var items in city_modelList) {
-        amt_firstcolumn_list
-            .add(new RowFirstListVal("city", items.CityName, new List()));
+        amt_firstcolumn_list.add(new RowFirstListVal("city", items.CityName, new List()));
 
         for (var dates in items.DateList) {
-          amt_firstcolumn_list
-              .add(new RowFirstListVal("date", dates.DateString, new List()));
+          amt_firstcolumn_list.add(new RowFirstListVal("date", dates.DateString, new List()));
           for (var times in dates.grp_modelList) {
-            amt_firstcolumn_list
-                .add(new RowFirstListVal("time", times.TimeGroup, new List()));
+            amt_firstcolumn_list.add(new RowFirstListVal("time", times.TimeGroup, new List()));
           }
         }
       }

@@ -25,8 +25,7 @@ class ViewData extends State<DistributeActivity> {
   List<PendingModel> litems = new List();
   var Popdone;
   int current_index = 0;
-  final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
-      new GlobalKey<RefreshIndicatorState>();
+  final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey = new GlobalKey<RefreshIndicatorState>();
 
   GetUpdateBtn() {
     return RaisedButton(
@@ -40,13 +39,7 @@ class ViewData extends State<DistributeActivity> {
           if (litems[i].flag_RT == false) {
             falg = true;
             GlobalWidget.showMyDialog(
-                context,
-                "Please mark rtv for " +
-                    litems[i].data["Coco"] +
-                    "(" +
-                    litems[i].data["Pid"] +
-                    ")",
-                "");
+                context, "Please mark rtv for " + litems[i].data["Coco"] + "(" + litems[i].data["Pid"] + ")", "");
             break;
           }
         }
@@ -125,8 +118,7 @@ class ViewData extends State<DistributeActivity> {
     Utility.log(TAG, widget.data);
 */
     litems = new List();
-    String COCO_ID =
-        (await Utility.getStringPreference(GlobalConstant.COCO_ID));
+    String COCO_ID = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
     Map<String, dynamic> map() => {
           'pname': 'itid',
           'value': widget.data["ItId"],
@@ -156,8 +148,7 @@ class ViewData extends State<DistributeActivity> {
           'rowsList': a1,
         };
     var data = mapfinal();
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
     userID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
 
     Map<String, dynamic> mapdata() => {
@@ -177,8 +168,7 @@ class ViewData extends State<DistributeActivity> {
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
       try {
-        var data = await apiController.postsNew(
-            GlobalConstant.SignUp, json.encode(mapdata()));
+        var data = await apiController.postsNew(GlobalConstant.SignUp, json.encode(mapdata()));
         Dialogs.hideProgressDialog(context);
         var data1 = json.decode(data.body);
         Utility.log(TAG, "Response: " + data1.toString());
@@ -190,20 +180,17 @@ class ViewData extends State<DistributeActivity> {
           }
         } else {
           if (data1['msg'].toString() == "Login failed for user") {
-            GlobalWidget.showMyDialog(context, "Error",
-                "Invalid id or password.Please enter correct id psw or contact HR/IT");
+            GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
           } else {
-            GlobalWidget.showMyDialog(
-                context, "Error", data1['msg'].toString());
+            GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
           }
         }
       } catch (e) {
         Dialogs.hideProgressDialog(context);
-        GlobalWidget.showMyDialog(
-            context, "", GlobalConstant.interNetException(e.toString()));
+        GlobalWidget.showMyDialog(context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -212,9 +199,7 @@ class ViewData extends State<DistributeActivity> {
       String imagpath = "";
       try {
         String img = list[i]['cols']['Imgpath'];
-        imagpath = img.toString().substring(
-                img.lastIndexOf('\\') + 1, img.toString().lastIndexOf('.')) +
-            "-100x100.jpg";
+        imagpath = img.toString().substring(img.lastIndexOf('\\') + 1, img.toString().lastIndexOf('.')) + "-100x100.jpg";
         Utility.log(TAG, imagpath);
       } catch (e) {}
       Utility.log(TAG, list[i]['cols']["Qty"]);
@@ -233,8 +218,7 @@ class ViewData extends State<DistributeActivity> {
         srt_qty = 0.0;
       }
 
-      PendingModel p1 =
-          new PendingModel(list[i]['cols'], imagpath, false, qty, srt_qty);
+      PendingModel p1 = new PendingModel(list[i]['cols'], imagpath, false, qty, srt_qty);
       litems.add(p1);
     }
     setState(() {
@@ -273,11 +257,9 @@ class ViewData extends State<DistributeActivity> {
     }
   }
 
-  Future<void> UpdateStatusOfItem(double qty, String status, String ItId,
-      String Citid, int index, var DataOfList) async {
+  Future<void> UpdateStatusOfItem(double qty, String status, String ItId, String Citid, int index, var DataOfList) async {
     List a1 = new List();
-    String COCO_ID =
-        (await Utility.getStringPreference(GlobalConstant.COCO_ID));
+    String COCO_ID = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
 
     Map<String, dynamic> map03() => {
           'pname': 'Itemid',
@@ -341,8 +323,7 @@ class ViewData extends State<DistributeActivity> {
         };
 
     var data = map1();
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
     String userID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
     Map<String, dynamic> map2() => {
           'dbPassword': userPass,
@@ -361,8 +342,7 @@ class ViewData extends State<DistributeActivity> {
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
       try {
-        var data = await apiController.postsNew(
-            GlobalConstant.SignUp, json.encode(map2()));
+        var data = await apiController.postsNew(GlobalConstant.SignUp, json.encode(map2()));
         Dialogs.hideProgressDialog(context);
         var data1 = json.decode(data.body);
         if (data1['status'] == 0) {
@@ -378,20 +358,17 @@ class ViewData extends State<DistributeActivity> {
           setState(() {});
         } else {
           if (data1['msg'].toString() == "Login failed for user") {
-            GlobalWidget.showMyDialog(context, "Error",
-                "Invalid id or password.Please enter correct id psw or contact HR/IT");
+            GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
           } else {
-            GlobalWidget.showMyDialog(
-                context, "Error", data1['msg'].toString());
+            GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
           }
         }
       } catch (e) {
         Dialogs.hideProgressDialog(context);
-        GlobalWidget.showMyDialog(
-            context, "", GlobalConstant.interNetException(e.toString()));
+        GlobalWidget.showMyDialog(context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -417,12 +394,8 @@ class ViewData extends State<DistributeActivity> {
                         Expanded(
                           flex: 6,
                           child: new Text(
-                            dataval.data['Coco'].toString() +
-                                "(" +
-                                dataval.data['Pid'].toString() +
-                                ")",
-                            style:
-                                TextStyle(color: Colors.black, fontSize: 16.0),
+                            dataval.data['Coco'].toString() + "(" + dataval.data['Pid'].toString() + ")",
+                            style: TextStyle(color: Colors.black, fontSize: 16.0),
                             textAlign: TextAlign.left,
                           ),
                         ),
@@ -438,16 +411,13 @@ class ViewData extends State<DistributeActivity> {
                             child: new Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                Icon(dataval.flag_RT == true
-                                    ? Icons.check_box
-                                    : Icons.check_box_outline_blank),
+                                Icon(dataval.flag_RT == true ? Icons.check_box : Icons.check_box_outline_blank),
                                 SizedBox(
                                   width: 2,
                                 ),
                                 new Text(
                                   "Done",
-                                  style: TextStyle(
-                                      color: Colors.black, fontSize: 16.0),
+                                  style: TextStyle(color: Colors.black, fontSize: 16.0),
                                   textAlign: TextAlign.right,
                                 )
                               ],
@@ -462,16 +432,14 @@ class ViewData extends State<DistributeActivity> {
                         Expanded(
                           child: new Text(
                             "Barcode : " + dataval.data['Barcode'].toString(),
-                            style:
-                                TextStyle(color: Colors.black, fontSize: 11.0),
+                            style: TextStyle(color: Colors.black, fontSize: 11.0),
                             textAlign: TextAlign.left,
                           ),
                         ),
                         Expanded(
                           child: new Text(
                             "Stk : " + dataval.data['Stock'].toString(),
-                            style:
-                                TextStyle(color: Colors.black, fontSize: 11.0),
+                            style: TextStyle(color: Colors.black, fontSize: 11.0),
                             textAlign: TextAlign.right,
                           ),
                         ),
@@ -515,8 +483,7 @@ class ViewData extends State<DistributeActivity> {
                               ),
                               InkWell(
                                 onTap: () {
-                                  if (dataval.qty <
-                                      double.parse(dataval.data["Qty"])) {
+                                  if (dataval.qty < double.parse(dataval.data["Qty"])) {
                                     dataval.qty = dataval.qty + 1;
                                     dataval.srt_qty = dataval.srt_qty - 1;
                                   }
@@ -566,11 +533,7 @@ class ViewData extends State<DistributeActivity> {
     var img = widget.data["ImgPath"];
     var showImage = "";
     try {
-      showImage = GlobalConstant.PhotoUrl +
-          img
-              .toString()
-              .substring(img.lastIndexOf('\\') + 1, img.lastIndexOf('.')) +
-          "-100x100.jpg";
+      showImage = GlobalConstant.PhotoUrl + img.toString().substring(img.lastIndexOf('\\') + 1, img.lastIndexOf('.')) + "-100x100.jpg";
     } catch (e) {}
     return new ListView(
         // padding: EdgeInsets.all(8.0),
@@ -617,12 +580,10 @@ class ViewData extends State<DistributeActivity> {
                         ),
                         new Row(
                           children: [
-                            Expanded(
-                                child: Text("Qty : " + widget.data["Qty"])),
+                            Expanded(child: Text("Qty : " + widget.data["Qty"])),
                             Expanded(
                               child: Text(
-                                "PackSize : " +
-                                    widget.data["PackSize"].toString(),
+                                "PackSize : " + widget.data["PackSize"].toString(),
                                 textAlign: TextAlign.right,
                               ),
                             )
@@ -651,12 +612,9 @@ class ViewData extends State<DistributeActivity> {
   }
 
   LockOrder(String text) async {
-    String COCO_ID =
-        (await Utility.getStringPreference(GlobalConstant.COCO_ID));
-    String COCO_CITY_ID =
-        (await Utility.getStringPreference(GlobalConstant.COCO_CITY_ID));
-    String EMPCODE =
-        (await Utility.getStringPreference(GlobalConstant.USER_ID));
+    String COCO_ID = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
+    String COCO_CITY_ID = (await Utility.getStringPreference(GlobalConstant.COCO_CITY_ID));
+    String EMPCODE = (await Utility.getStringPreference(GlobalConstant.USER_ID));
 
     List a1 = new List();
 
@@ -710,10 +668,8 @@ class ViewData extends State<DistributeActivity> {
         };
 
     var data = mapfianl();
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
-    String Item_Id =
-        (await Utility.getStringPreference(GlobalConstant.USER_ID));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String Item_Id = (await Utility.getStringPreference(GlobalConstant.USER_ID));
 
     Map<String, dynamic> map2() => {
           'dbPassword': userPass,
@@ -732,9 +688,7 @@ class ViewData extends State<DistributeActivity> {
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
 
-      apiController
-          .postsNew(GlobalConstant.SignUp, json.encode(map2()))
-          .then((value) {
+      apiController.postsNew(GlobalConstant.SignUp, json.encode(map2())).then((value) {
         try {
           Dialogs.hideProgressDialog(context);
           var data = value;
@@ -745,8 +699,7 @@ class ViewData extends State<DistributeActivity> {
             Popdone = true;
             if (data1['ds']['tables'].length > 0) {
               var msg = data1['ds']['tables'][0]['rowsList'][0]["cols"]["Msg"];
-              var status =
-                  data1['ds']['tables'][0]['rowsList'][0]["cols"]["status"];
+              var status = data1['ds']['tables'][0]['rowsList'][0]["cols"]["status"];
               if (msg != "") {
                 GlobalWidget.showMyDialog(context, "", msg);
               }
@@ -757,11 +710,9 @@ class ViewData extends State<DistributeActivity> {
             setState(() {});
           } else {
             if (data1['msg'].toString() == "Login failed for user") {
-              GlobalWidget.showMyDialog(context, "Error",
-                  "Invalid id or password.Please enter correct id psw or contact HR/IT");
+              GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
             } else {
-              GlobalWidget.showMyDialog(
-                  context, "Error", data1['msg'].toString());
+              GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
             }
           }
         } catch (e) {
@@ -769,7 +720,7 @@ class ViewData extends State<DistributeActivity> {
         }
       });
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -793,10 +744,8 @@ class ViewData extends State<DistributeActivity> {
   Future<void> CompleteRetriveOrder() async {
     List a1 = new List();
 
-    String COCO_ID =
-        (await Utility.getStringPreference(GlobalConstant.COCO_ID));
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String COCO_ID = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
 
     Map<String, dynamic> map7() => {
           'pname': 'Str',
@@ -832,9 +781,7 @@ class ViewData extends State<DistributeActivity> {
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
 
-      apiController
-          .postsNew(GlobalConstant.SignUp, json.encode(mapdata()))
-          .then((value) {
+      apiController.postsNew(GlobalConstant.SignUp, json.encode(mapdata())).then((value) {
         try {
           Dialogs.hideProgressDialog(context);
           var data = value;
@@ -848,11 +795,9 @@ class ViewData extends State<DistributeActivity> {
             Popdone = true;
           } else {
             if (data1['msg'].toString() == "Login failed for user") {
-              GlobalWidget.showMyDialog(context, "Error",
-                  "Invalid id or password.Please enter correct id psw or contact HR/IT");
+              GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
             } else {
-              GlobalWidget.showMyDialog(
-                  context, "Error", data1['msg'].toString());
+              GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
             }
           }
         } catch (e) {
@@ -860,7 +805,7 @@ class ViewData extends State<DistributeActivity> {
         }
       });
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 

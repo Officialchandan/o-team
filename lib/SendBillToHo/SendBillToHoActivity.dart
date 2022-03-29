@@ -184,9 +184,7 @@ class SendBillToHoView extends State<SendBillToHoActivity> {
                       minLines: 1,
                       decoration: InputDecoration(
                           hintText: "Enter Remark",
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(25),
-                              borderSide: BorderSide())),
+                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(25), borderSide: BorderSide())),
                     ),
                   ),
                   Expanded(
@@ -201,8 +199,7 @@ class SendBillToHoView extends State<SendBillToHoActivity> {
                             if (IwId != "") {
                               _SendBill();
                             } else {
-                              GlobalWidget.GetToast(
-                                  context, "Please select any one bill...");
+                              GlobalWidget.showToast(context, "Please select any one bill...");
                             }
                           },
                           child: Text(
@@ -223,12 +220,10 @@ class SendBillToHoView extends State<SendBillToHoActivity> {
   Future<void> UpdateData() async {
     duplicateItems = new List();
     items = new List();
-    String COCO_ID =
-        (await Utility.getStringPreference(GlobalConstant.COCO_ID));
+    String COCO_ID = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
     // COCO_ID="14143";
     var data = GlobalConstant.GetMapForCPID(COCO_ID);
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
     userID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
     Map<String, dynamic> map2() => {
           'dbPassword': userPass,
@@ -246,9 +241,7 @@ class SendBillToHoView extends State<SendBillToHoActivity> {
     ApiController apiController = new ApiController.internal();
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
-      apiController
-          .postsNew(GlobalConstant.SignUp, json.encode(map2()))
-          .then((value) {
+      apiController.postsNew(GlobalConstant.SignUp, json.encode(map2())).then((value) {
         try {
           Dialogs.hideProgressDialog(context);
           var data = value;
@@ -269,11 +262,9 @@ class SendBillToHoView extends State<SendBillToHoActivity> {
             }
           } else {
             if (data1['msg'].toString() == "Login failed for user") {
-              GlobalWidget.showMyDialog(context, "Error",
-                  "Invalid id or password.Please enter correct id psw or contact HR/IT");
+              GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
             } else {
-              GlobalWidget.showMyDialog(
-                  context, "Error", data1['msg'].toString());
+              GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
             }
           }
         } catch (e) {
@@ -281,7 +272,7 @@ class SendBillToHoView extends State<SendBillToHoActivity> {
         }
       });
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -303,13 +294,10 @@ class SendBillToHoView extends State<SendBillToHoActivity> {
   Future<void> _SendBill() async {
     duplicateItems = new List();
     items = new List();
-    String COCO_ID =
-        (await Utility.getStringPreference(GlobalConstant.COCO_ID));
+    String COCO_ID = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
     // COCO_ID="14143";
-    var data = GlobalConstant.GetMapToSendBill(
-        IwId, _remarkController.text.toString().trim());
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    var data = GlobalConstant.GetMapToSendBill(IwId, _remarkController.text.toString().trim());
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
     userID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
     Map<String, dynamic> map2() => {
           'dbPassword': userPass,
@@ -327,24 +315,20 @@ class SendBillToHoView extends State<SendBillToHoActivity> {
     ApiController apiController = new ApiController.internal();
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
-      apiController
-          .postsNew(GlobalConstant.SignUp, json.encode(map2()))
-          .then((value) {
+      apiController.postsNew(GlobalConstant.SignUp, json.encode(map2())).then((value) {
         try {
           Dialogs.hideProgressDialog(context);
           var data = value;
           var data1 = json.decode(data.body);
           if (data1['status'] == 0) {
-            GlobalWidget.GetToast(context, "Sent Successfully...");
+            GlobalWidget.showToast(context, "Sent Successfully...");
             _remarkController.text = "";
             UpdateData();
           } else {
             if (data1['msg'].toString() == "Login failed for user") {
-              GlobalWidget.showMyDialog(context, "Error",
-                  "Invalid id or password.Please enter correct id psw or contact HR/IT");
+              GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
             } else {
-              GlobalWidget.showMyDialog(
-                  context, "Error", data1['msg'].toString());
+              GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
             }
           }
         } catch (e) {
@@ -352,7 +336,7 @@ class SendBillToHoView extends State<SendBillToHoActivity> {
         }
       });
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 }

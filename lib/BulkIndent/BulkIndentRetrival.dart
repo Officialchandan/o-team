@@ -39,8 +39,7 @@ class BulkIndentView extends State<BulkIndentRetrival> {
   List<DropdownMenuItem<String>> _dropDownMenuItems;
   String _currentStatus;
 
-  List<BulkIndentRetrivalModel> duplicateItems =
-      List<BulkIndentRetrivalModel>();
+  List<BulkIndentRetrivalModel> duplicateItems = List<BulkIndentRetrivalModel>();
   List<BulkIndentRetrivalModel> items = List<BulkIndentRetrivalModel>();
 
   @override
@@ -53,12 +52,10 @@ class BulkIndentView extends State<BulkIndentRetrival> {
   final subject = new PublishSubject<String>();
   bool _isLoading = false;
   Future _textChanged(String text) async {
-    List<BulkIndentRetrivalModel> dummySearchList =
-        List<BulkIndentRetrivalModel>();
+    List<BulkIndentRetrivalModel> dummySearchList = List<BulkIndentRetrivalModel>();
     dummySearchList.addAll(duplicateItems);
     if (text.isNotEmpty) {
-      List<BulkIndentRetrivalModel> dummyListData =
-          List<BulkIndentRetrivalModel>();
+      List<BulkIndentRetrivalModel> dummyListData = List<BulkIndentRetrivalModel>();
       dummySearchList.forEach((item) {
         if (item.itemName.toLowerCase().contains(text.toLowerCase())) {
           dummyListData.add(item);
@@ -122,9 +119,7 @@ class BulkIndentView extends State<BulkIndentRetrival> {
                               //  autofocus: true,
                               controller: controller,
                               cursorColor: Colors.black,
-                              decoration: new InputDecoration(
-                                  hintText: GlobalConstant.SearchHint,
-                                  border: InputBorder.none),
+                              decoration: new InputDecoration(hintText: GlobalConstant.SearchHint, border: InputBorder.none),
                               onChanged: (value) {
                                 subject.add(value);
                               },
@@ -214,10 +209,7 @@ class BulkIndentView extends State<BulkIndentRetrival> {
           ),
           InkWell(
             onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => TrnDOCActivity(widget.secId)));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => TrnDOCActivity(widget.secId)));
             },
             child: Expanded(
               flex: 3,
@@ -244,12 +236,9 @@ class BulkIndentView extends State<BulkIndentRetrival> {
   Future<void> UpdateData() async {
     duplicateItems = new List();
     items = new List();
-    String COCO_ID =
-        (await Utility.getStringPreference(GlobalConstant.COCO_ID));
-    var data =
-        GlobalConstant.GetMapBulkIndentRetrival(COCO_ID, 2, widget.secId);
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String COCO_ID = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
+    var data = GlobalConstant.GetMapBulkIndentRetrival(COCO_ID, 2, widget.secId);
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
     userID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
     Map<String, dynamic> map2() => {
           'dbPassword': userPass,
@@ -267,8 +256,7 @@ class BulkIndentView extends State<BulkIndentRetrival> {
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
       try {
-        var data = await apiController.postsNew(
-            GlobalConstant.SignUp, json.encode(map2()));
+        var data = await apiController.postsNew(GlobalConstant.SignUp, json.encode(map2()));
         Dialogs.hideProgressDialog(context);
 
         var data1 = json.decode(data.body);
@@ -283,20 +271,17 @@ class BulkIndentView extends State<BulkIndentRetrival> {
           initDropdown();
         } else {
           if (data1['msg'].toString() == "Login failed for user") {
-            GlobalWidget.showMyDialog(context, "Error",
-                "Invalid id or password.Please enter correct id psw or contact HR/IT");
+            GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
           } else {
-            GlobalWidget.showMyDialog(
-                context, "Error", data1['msg'].toString());
+            GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
           }
         }
       } catch (e) {
         Dialogs.hideProgressDialog(context);
-        GlobalWidget.showMyDialog(
-            context, "", GlobalConstant.interNetException(e.toString()));
+        GlobalWidget.showMyDialog(context, "", GlobalConstant.interNetException(e.toString()));
       }
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 
@@ -304,11 +289,7 @@ class BulkIndentView extends State<BulkIndentRetrival> {
     var img = book["ImgPath"];
     var showImage = "";
     try {
-      showImage = GlobalConstant.PhotoUrl +
-          img
-              .toString()
-              .substring(img.lastIndexOf('\\') + 1, img.lastIndexOf('.')) +
-          "-100x100.jpg";
+      showImage = GlobalConstant.PhotoUrl + img.toString().substring(img.lastIndexOf('\\') + 1, img.lastIndexOf('.')) + "-100x100.jpg";
     } catch (e) {}
 
     setState(() {
@@ -408,8 +389,7 @@ class BulkIndentView extends State<BulkIndentRetrival> {
                           new Row(
                             children: [
                               Expanded(
-                                child:
-                                    Text("PackSz : " + items[index].packSize),
+                                child: Text("PackSz : " + items[index].packSize),
                               ),
                               Expanded(
                                 child: Text(
@@ -437,9 +417,7 @@ class BulkIndentView extends State<BulkIndentRetrival> {
                           SizedBox(
                             width: 10,
                           ),
-                          Icon(items[index].done_flag == false
-                              ? Icons.check_box_outline_blank
-                              : Icons.check_box),
+                          Icon(items[index].done_flag == false ? Icons.check_box_outline_blank : Icons.check_box),
                           SizedBox(
                             width: 10,
                           ),
@@ -450,8 +428,7 @@ class BulkIndentView extends State<BulkIndentRetrival> {
                         ],
                       ),
                     ),
-                    Text(items[index].tCoco,
-                        style: TextStyle(color: greenColor)),
+                    Text(items[index].tCoco, style: TextStyle(color: greenColor)),
                     Text("RT"),
                     Text("NF"),
                     Padding(
@@ -461,18 +438,11 @@ class BulkIndentView extends State<BulkIndentRetrival> {
                         color: GlobalWidget.getDisableColor(),
                         textColor: GlobalWidget.getBtnTextColor(),
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      DistributeActivity(items[index].data)));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => DistributeActivity(items[index].data)));
                         },
                         child: Text(
                           'Distribute',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.bold),
                         ),
                       ),
                     )

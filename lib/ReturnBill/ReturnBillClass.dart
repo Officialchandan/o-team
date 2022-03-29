@@ -161,10 +161,8 @@ class ReturnView extends State<ReturnBillData> {
           'rowsList': a1,
         };
 
-    String userPass =
-        (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
-    String USER_ID =
-        (await Utility.getStringPreference(GlobalConstant.USER_ID));
+    String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
+    String USER_ID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
     Map<String, dynamic> map_submit() => {
           'dbPassword': userPass,
           'dbUser': USER_ID.toString(),
@@ -183,25 +181,21 @@ class ReturnView extends State<ReturnBillData> {
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
 
-      apiController
-          .postsNew(GlobalConstant.SignUp, json.encode(map_submit()))
-          .then((value) {
+      apiController.postsNew(GlobalConstant.SignUp, json.encode(map_submit())).then((value) {
         try {
           Dialogs.hideProgressDialog(context);
           var data = value;
           var data1 = json.decode(data.body);
           Utility.log(TAG, data1);
           if (data1['status'] == 0) {
-            GlobalWidget.GetToast(context, "Saved successfully");
+            GlobalWidget.showToast(context, "Saved successfully");
 
             Navigator.of(context).pop();
           } else {
             if (data1['msg'].toString() == "Login failed for user") {
-              GlobalWidget.showMyDialog(context, "Error",
-                  "Invalid id or password.Please enter correct id psw or contact HR/IT");
+              GlobalWidget.showMyDialog(context, "Error", "Invalid id or password.Please enter correct id psw or contact HR/IT");
             } else {
-              GlobalWidget.showMyDialog(
-                  context, "Error", data1['msg'].toString());
+              GlobalWidget.showMyDialog(context, "Error", data1['msg'].toString());
             }
           }
         } catch (e) {
@@ -209,7 +203,7 @@ class ReturnView extends State<ReturnBillData> {
         }
       });
     } else {
-      GlobalWidget.GetToast(context, "No Internet Connection");
+      GlobalWidget.showToast(context, "No Internet Connection");
     }
   }
 }
