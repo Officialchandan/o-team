@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'dart:developer' as dev;
 import 'dart:io';
 
@@ -67,8 +68,7 @@ class Utility {
     return prefs.setString(key, value);
   }
 
-  static Future<bool> setStringListPreference(
-      String key, List<String> value) async {
+  static Future<bool> setStringListPreference(String key, List<String> value) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.setStringList(key, value);
   }
@@ -98,6 +98,14 @@ class Utility {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
 
     return prefs.setBool(key, value);
+  }
+
+  static Map<String, dynamic> getColumnMap(String name, dynamic value) {
+    Map<String, dynamic> cols = <String, dynamic>{"pname": name, "value": value};
+
+    Map<String, dynamic> data = HashMap<String, dynamic>();
+    data["cols"] = cols;
+    return data;
   }
 
 //  static appBar(String title) {

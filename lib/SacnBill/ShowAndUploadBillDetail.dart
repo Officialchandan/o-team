@@ -243,7 +243,7 @@ class ShowData extends State<ShowBillDetails> {
 
   Future<bool> uploadImage(String image, int index) async {
     bool upload = false;
-    debugPrint("image-->$image");
+    // debugPrint("image-->$image");
     String userPass = await Utility.getStringPreference(GlobalConstant.USER_PASSWORD);
     String userId = await Utility.getStringPreference(GlobalConstant.USER_ID);
     String url = GlobalConstant.BASE_URL + "data/savePGIImg2";
@@ -257,10 +257,11 @@ class ShowData extends State<ShowBillDetails> {
     input["key"] = "${GlobalConstant.key}";
 
     if (image.isNotEmpty) {
-      debugPrint("image_path-->$image");
+      // debugPrint("image_path-->$image");
       input["fileUpload"] = MultipartFile.fromFileSync(image, filename: pathas.basename(image));
     }
 
+    // debugPrint("input-->$input");
     Map<String, dynamic> res = await ApiController.getInstance().postMultipart(url: url, input: input);
 
     if (res['status'].toString() == "0") {

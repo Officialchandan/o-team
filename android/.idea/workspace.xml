@@ -10,64 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="089e1f58-2f42-4f3b-ab60-b4e03e25c757" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Dart_SDK.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/Attendence/AttendanceClass.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/Attendence/AttendanceClass.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/BulkIndent/BulkIndentRetrival.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/BulkIndent/BulkIndentRetrival.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/BulkIndent/DistributeIndentDetailClass.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/BulkIndent/DistributeIndentDetailClass.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/BulkIndent/TrnDoc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/BulkIndent/TrnDoc.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/CounterPackage/CounterActivity.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/CounterPackage/CounterActivity.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/DashBoard/DashBoard.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/DashBoard/DashBoard.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/DatabaseHelper/data_sync.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/DatabaseHelper/data_sync.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/release/O_Team_v3.5.apk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/release/O_Team_v3.6.apk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/release/app-release.apk" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../lib/GRC_Inward/AddNewGrc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/GRC_Inward/AddNewGrc.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/GRC_Inward/Grc_InwardClass.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/GRC_Inward/Grc_InwardClass.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/GlobalData/ApiController.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/GlobalData/ApiController.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/GlobalData/GlobalConstant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/GlobalData/GlobalConstant.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/GlobalData/GlobalFile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/GlobalData/GlobalFile.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/GlobalData/GlobalWidget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/GlobalData/GlobalWidget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/GlobalData/ReportExample/ReportExampleNew.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/GlobalData/ReportExample/ReportExampleNew.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/GlobalData/SearchCityAutoComplete/GlobalSearchCity.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/GlobalData/SearchCityAutoComplete/GlobalSearchCity.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/GlobalData/SearchCity_StoreAutoComplete/GlobalSearchCityStore.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/GlobalData/SearchCity_StoreAutoComplete/GlobalSearchCityStore.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/GlobalData/SearchStoreAutoComplete/GlobalSearchStore.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/GlobalData/SearchStoreAutoComplete/GlobalSearchStore.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/GlobalData/SearchStoreAutoComplete/GlobalSearchStoreAudit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/GlobalData/SearchStoreAutoComplete/GlobalSearchStoreAudit.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/ItemDespose/ItemDesposeClass.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/ItemDespose/ItemDesposeClass.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/ItemInfo/ItemInfoClass.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/ItemInfo/ItemInfoClass.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/ListBasedStockAudit/ListBasedStockAuditClass.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/ListBasedStockAudit/ListBasedStockAuditClass.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/ListBasedStockAudit/StockAuditClass.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/ListBasedStockAudit/StockAuditClass.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/MarketSurvey/MarketSurveyActivity.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/MarketSurvey/MarketSurveyActivity.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/OrderRetrival/OrderRetrival.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/OrderRetrival/OrderRetrival.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/POReciving/PORecivingClass.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/POReciving/PORecivingClass.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/Report/HoulyReportClass.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/Report/HoulyReportClass.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/Report/ReportClass.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/Report/ReportClass.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/Report/ReportIndCocoTransferClass.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/Report/ReportIndCocoTransferClass.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/Report/Report_SaleOverall_Class.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/Report/Report_SaleOverall_Class.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/Report/VehicleNotOutDetail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/Report/VehicleNotOutDetail.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/ReturnBill/ReturnBillClass.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/ReturnBill/ReturnBillClass.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/ReviewAudit/DetailEntryActivity.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/ReviewAudit/DetailEntryActivity.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/ReviewAudit/ReviewAuditActivity.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/ReviewAudit/ReviewAuditActivity.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/SacnBill/ImageModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/SacnBill/ImageModel.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/SacnBill/ScanBillClass.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/SacnBill/ScanBillClass.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/GlobalData/Utility.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/GlobalData/Utility.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lib/SacnBill/ShowAndUploadBillDetail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/SacnBill/ShowAndUploadBillDetail.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/SacnBill/UpdatePgiNumber.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/SacnBill/UpdatePgiNumber.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/SearchModel/SearchCity.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/SearchModel/SearchCity.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/SearchModel/SearchCityWiseLocation.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/SearchModel/SearchCityWiseLocation.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/SearchModel/SearchCityWiseStore.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/SearchModel/SearchCityWiseStore.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/SearchModel/SearchItem.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/SearchModel/SearchItem.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/SearchModel/SearchStore.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/SearchModel/SearchStore.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/SendBillToHo/SendBillToHoActivity.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/SendBillToHo/SendBillToHoActivity.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/SentBillHistory/SentBillHistoryActivity.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/SentBillHistory/SentBillHistoryActivity.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/Splash.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/Splash.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/StoreAudit/StoreAuditClass.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/StoreAudit/StoreAuditClass.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/StoreAudit/Store_Ambiance_Audit_Class.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/StoreAudit/Store_Ambiance_Audit_Class.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/StoreAuditHistory/StoreAuditHistoryActivity.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/StoreAuditHistory/StoreAuditHistoryActivity.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/VegInwardPackage/AddNewVegGrc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/VegInwardPackage/AddNewVegGrc.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/VegInwardPackage/VegInwardClass.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/VegInwardPackage/VegInwardClass.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/api/api_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/api/api_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/indent_retrieval/IndentDetailClass.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/indent_retrieval/IndentDetailClass.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/indent_retrieval/IndentRetrivalClass.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/indent_retrieval/IndentRetrivalClass.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/indent_retrieval/new_indent_class.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/indent_retrieval/new_indent_class.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/transfer_validation/transfer_validation_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/transfer_validation/transfer_validation_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/ui/create_profile/create_profile_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/ui/create_profile/create_profile_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/ui/login/login_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/ui/login/login_screen.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +27,7 @@
   <component name="CompilerWorkspaceConfiguration">
     <option name="PARALLEL_COMPILATION" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/mac/.android/avd/New_Device_API_29.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[J8AAGF059911G56]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />

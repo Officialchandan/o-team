@@ -36,6 +36,7 @@ class AddNewGrcActivity extends StatefulWidget {
 }
 
 class ViewAddGrc extends State<AddNewGrcActivity> {
+  String TAG = "AddNewGrc";
   final FocusNode _FMRPFocus = FocusNode();
   final FocusNode _FQTYFocus = FocusNode();
   final FocusNode _FFQTYFocus = FocusNode();
@@ -44,34 +45,154 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
   final FocusNode _FGRemarkFocus = FocusNode();
   final FocusNode _FDateFocus = FocusNode();
 
-  @override
-  void dispose() {
-    super.dispose();
-    _FMRPFocus.unfocus();
-    _FQTYFocus.unfocus();
-    _FFQTYFocus.unfocus();
-    _FSRemarkFocus.unfocus();
-    _FBestFocus.unfocus();
-    _FGRemarkFocus.unfocus();
-    _FDateFocus.unfocus();
-  }
-
+  TextEditingController dateController = TextEditingController();
+  TextEditingController inwDayMonthController = TextEditingController();
+  TextEditingController mrpController = TextEditingController();
+  TextEditingController qtyController = TextEditingController();
+  TextEditingController freeQTYController = TextEditingController();
+  TextEditingController schemeRemarkController = TextEditingController();
+  TextEditingController generalRemarkController = TextEditingController();
+  String price = "0.0";
+  String itemName = "";
+  String POQTY = "Pqty";
+  String invoiceDate = "";
+  String dropdownValue = 'Months';
   String userID = "14";
-  // var Item_IdController = TextEditingController();
-  var StockIdController = TextEditingController();
-  String SelectedListId = "";
-
-  bool Schemeflg = false;
-  String ImageStatus = "Not Changed";
+  String selectedListId = "";
+  String imageStatus = "Not Changed";
   String schemeStatus = "Not Changed";
   String PrdSch = "";
-  final picker = ImagePicker();
+
+  bool loading = true;
+  bool expanseEnable = true;
+  bool schemeFlg = false;
+  bool onlyFreeQtyValue = false;
+  bool barCodeValue = false;
+
+  int dateType = 0;
+
+  var data1;
   var result;
+  var mfgDate;
+
+  static List<ModelSearchItem> searchItems = [];
+  List<String> spinnerItems = [
+    'Months',
+    'Days',
+  ];
+
+  final _formKey = GlobalKey<FormState>();
+  final dateFormat = DateFormat("yyyy-MM-dd");
+  final picker = ImagePicker();
+  DateTime currentDate = DateTime.now();
+  DateTime selectedDate = DateTime.now();
 
   GlobalKey<AutoCompleteTextFieldState<ModelSearchItem>> key = new GlobalKey();
   AutoCompleteTextField searchTextField;
-  static List<ModelSearchItem> SearchItems = new List<ModelSearchItem>();
-  bool loading = true;
+
+  @override
+  void initState() {
+    getSearchItems();
+    getUserId();
+    mfgDate = dateFormat.format(currentDate);
+    Utility.log("tagdate", mfgDate.toString());
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+          appBar: GlobalWidget.getAppbar("ADD GRC INWARD"),
+          body: Form(
+            key: _formKey,
+            child: new ListView(
+              padding: EdgeInsets.all(10.0),
+              children: [
+                new Row(
+                  children: [
+                    Expanded(
+                      flex: 8,
+                      child: itemNameField(),
+                    ),
+                    SizedBox(width: 20.0),
+                    Expanded(
+                      flex: 2,
+                      child: getImagePickerBtn(),
+                    ),
+                  ],
+                ),
+                itemName == ""
+                    ? new Container()
+                    : InkWell(
+                        child: GlobalWidget.showItemName(itemName),
+                        onTap: () {
+                          GlobalConstant.OpenZoomImage(data1, context);
+                        },
+                      ),
+                SizedBox(
+                  height: 10,
+                ),
+                expanseEnable == true
+                    ? new Column(
+                        children: [
+                          getDateRow(),
+                          dateType == 1 ? getBestBefore() : new Container(),
+                        ],
+                      )
+                    : new Container(),
+                new Row(
+                  children: [
+                    Expanded(
+                      flex: 2,
+                      child: Text(
+                        POQTY,
+                        style: TextStyle(color: Colors.green, fontSize: 20),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      flex: 8,
+                      child: mrpField(),
+                    ),
+                  ],
+                ),
+                new Row(
+                  children: [
+                    Expanded(
+                      child: qtyField(),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: freeQTYField(),
+                    ),
+                  ],
+                ),
+                schemeRemarkField(),
+                generalRemarkField(),
+                new Row(
+                  children: [
+                    Expanded(
+                      child: getItemBarcode(),
+                    ),
+                    Expanded(
+                      child: getItemOnlyFreeQty(),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 60,
+                ),
+                getAddBtn(),
+              ],
+            ),
+          )),
+    );
+  }
 
   void getSearchItems() async {
     List l1 = await DatabaseHelper.db.getAllPendingProducts1();
@@ -79,7 +200,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
       GlobalWidget.showToast(context, "Please wait untill data is sync");
     } else {
       //SearchItems = loadSearchItems(l1);
-      SearchItems = GlobalSearchItem.loadSearchItems(l1.toString());
+      searchItems = GlobalSearchItem.loadSearchItems(l1.toString());
       // print('SearchItems: ${SearchItems[0].name}');
       setState(() {
         loading = false;
@@ -100,8 +221,8 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
       log("itemDetail-->$itemDetail");
 
       itemDetail = json.decode(itemDetail);
-      SelectedListId = itemDetail["ItId"].toString();
-      Item_name = itemDetail["ItId"].toString() + "  " + itemDetail["ItName"].toString();
+      selectedListId = itemDetail["ItId"].toString();
+      itemName = itemDetail["ItId"].toString() + "  " + itemDetail["ItName"].toString();
       for (int i = 0; i < widget.product_qty_list.length; i++) {
         var colm = widget.product_qty_list[i]["cols"];
         if (colm["ItId"].toString() == itemDetail["ItId"].toString()) {
@@ -109,9 +230,9 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
           setState(() {});
           try {
             if (colm["ExpEnable"].toString() == "0") {
-              expanse_enable = false;
+              expanseEnable = false;
             } else {
-              expanse_enable = true;
+              expanseEnable = true;
             }
           } catch (e) {}
           break;
@@ -127,7 +248,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
       PrdSch = Datap["PrdSch"].toString().trim();
       PrdSch = GlobalWidget.getstringValue1(PrdSch);
       if (PrdSch != "") {
-        Schemeflg = true;
+        schemeFlg = true;
         Navigator.of(context)
             .push(
           new MaterialPageRoute(
@@ -136,9 +257,9 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
             .then((val) {
           if (val != null) {
             var data = val;
-            ImageStatus = "${data['ImageStatus']}";
+            imageStatus = "${data['ImageStatus']}";
             schemeStatus = "${data['schemeStatus']}";
-            SchemeRemarkController.text = "${data['remark']}";
+            schemeRemarkController.text = "${data['remark']}";
             setState(() {});
           }
         });
@@ -148,7 +269,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
       setState(() {
         searchTextField.textField.controller.text = "";
       });
-      GlobalWidget.getItemDetail(context, SelectedListId, getData);
+      GlobalWidget.getItemDetail(context, selectedListId, getData);
     } on PlatformException catch (ex) {
       result = "Unknown Error $ex";
     } on FormatException {
@@ -164,7 +285,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
     setState(() {});
   }
 
-  GetImagePickerBtn() {
+  getImagePickerBtn() {
     return new Container(
       height: 25.0,
       child: RaisedButton(
@@ -185,312 +306,88 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
     );
   }
 
-  var MfgDate;
-  String TAG = "AddNewGrc";
-  Future<void> AddItemDetail() async {
-    if (SelectedListId == "") {
+  Future<void> addItemDetail() async {
+    if (selectedListId == "") {
       GlobalWidget.showToast(context, GlobalConstant.ItemError);
       return;
     }
 
-    String COCO_ID = (await Utility.getStringPreference(GlobalConstant.COCO_ID));
-    List a1 = new List();
-    //a1.add(mapobj());
+    String expDate1 = "";
+    List<Map<String, dynamic>> dataRow = [];
+    if (dateType == 1) {
+      if (dropdownValue == "Months") {
+        DateTime newDate =
+            new DateTime(selectedDate.year, selectedDate.month + int.parse(inwDayMonthController.text.toString()), selectedDate.day);
 
-    Map<String, dynamic> map3() => {
-          'pname': 'Confirm',
-          'value': false,
-        };
-
-    var dmap3 = map3();
-    Map<String, dynamic> mapobj3() => {
-          'cols': dmap3,
-        };
-
-    a1.add(mapobj3());
-
-    Map<String, dynamic> map4() => {
-          'pname': 'IWID',
-          'value': widget.InwardId.toString(),
-        };
-
-    var dmap4 = map4();
-    Map<String, dynamic> mapobj4() => {
-          'cols': dmap4,
-        };
-
-    a1.add(mapobj4());
-
-    Map<String, dynamic> map04() => {
-          'pname': 'IWTID',
-          'value': "0",
-        };
-
-    var dmap04 = map04();
-    Map<String, dynamic> mapobj04() => {
-          'cols': dmap04,
-        };
-
-    a1.add(mapobj04());
-    Map<String, dynamic> map5() => {
-          'pname': 'ItId',
-          'value': SelectedListId,
-        };
-
-    var dmap5 = map5();
-    Map<String, dynamic> mapobj5() => {
-          'cols': dmap5,
-        };
-    a1.add(mapobj5());
-
-    Map<String, dynamic> map6() => {
-          'pname': 'Qty',
-          'value': QTYController.text.toString(),
-        };
-
-    var dmap6 = map6();
-    Map<String, dynamic> mapobj6() => {
-          'cols': dmap6,
-        };
-    a1.add(mapobj6());
-    Map<String, dynamic> map7() => {
-          'pname': 'MRP',
-          'value': MRPController.text.toString(),
-        };
-
-    var dmap7 = map7();
-    Map<String, dynamic> mapobj7() => {
-          'cols': dmap7,
-        };
-
-    a1.add(mapobj7());
-
-    Map<String, dynamic> map8() => {
-          'pname': 'FreeQty',
-          'value': FreeQTYController.text.toString(),
-        };
-
-    var dmap8 = map8();
-    Map<String, dynamic> mapobj8() => {
-          'cols': dmap8,
-        };
-    a1.add(mapobj8());
-
-    if (onlyFreeQtyValue == true) {
-      Map<String, dynamic> map08() => {
-            'pname': 'ExclFree',
-            'value': "1",
-          };
-      var dmap08 = map08();
-      Map<String, dynamic> mapobj08() => {
-            'cols': dmap08,
-          };
-      a1.add(mapobj08());
-    }
-    var mfdate_val;
-    try {
-      if (date_val == 1) {
-        if (dropdownValue == "Months") {
-          try {
-            var newDate = new DateTime(MfgDate.year, MfgDate.month + int.parse(InwDayMonthController.text.toString()), MfgDate.day);
-            Utility.log("tag", dateFormat.format(newDate));
-            mfdate_val = dateFormat.format(newDate);
-          } catch (e) {
-            Utility.log("tag", e);
-          }
-        } else {
-          try {
-            var date = MfgDate.add(Duration(days: int.parse(InwDayMonthController.text.toString())));
-            Utility.log("tag", dateFormat.format(date));
-            mfdate_val = dateFormat.format(date);
-          } catch (e) {}
-        }
+        expDate1 = dateFormat.format(newDate);
+        Utility.log("tag", expDate1);
       } else {
-        mfdate_val = "";
+        DateTime mDate = selectedDate;
+        DateTime newDate = mDate.add(Duration(days: int.parse(inwDayMonthController.text.toString())));
+
+        expDate1 = dateFormat.format(newDate);
+        Utility.log("tag", dateFormat.format(newDate));
       }
-    } catch (e) {
-      mfdate_val = "";
-    }
-    Map<String, dynamic> map9() => {
-          'pname': 'ExpDate',
-          'value': _frdate == null ? "" : _frdate,
-        };
 
-    var dmap9 = map9();
-    Map<String, dynamic> mapobj9() => {
-          'cols': dmap9,
-        };
-    a1.add(mapobj9());
-    if (date_val == 1) {
-      Map<String, dynamic> map0009() => {
-            'pname': 'BestBfrPrd',
-            'value': dropdownValue.toString(),
-          };
-
-      var dmap0009 = map0009();
-      Map<String, dynamic> mapobj0009() => {
-            'cols': dmap0009,
-          };
-      a1.add(mapobj0009());
-
-      Map<String, dynamic> map009() => {
-            'pname': 'BestBfr',
-            'value': InwDayMonthController.text.toString(),
-          };
-
-      var dmap009 = map009();
-      Map<String, dynamic> mapobj009() => {
-            'cols': dmap009,
-          };
-      a1.add(mapobj009());
-      Map<String, dynamic> map09() => {
-            'pname': 'MnfDt',
-            'value': _frdate == null ? "" : _frdate,
-          };
-
-      var dmap09 = map09();
-      Map<String, dynamic> mapobj09() => {
-            'cols': dmap09,
-          };
-      a1.add(mapobj09());
+      dataRow.add(Utility.getColumnMap('MnfDt', invoiceDate));
+      dataRow.add(Utility.getColumnMap('BestBfrPrd', dropdownValue));
+      dataRow.add(Utility.getColumnMap('BestBfr', inwDayMonthController.text));
+    } else {
+      expDate1 = invoiceDate;
     }
 
-    Map<String, dynamic> map10() => {
-          'pname': 'Scheme',
-          'value': Schemeflg,
-        };
+    List<Map<String, dynamic>> a1 = [];
 
-    var dmap10 = map10();
-    Map<String, dynamic> mapobj10() => {
-          'cols': dmap10,
-        };
-    a1.add(mapobj10());
+    //a1.add(mapobj());
+    dataRow.add(Utility.getColumnMap('Confirm', false));
+    dataRow.add(Utility.getColumnMap('IWID', widget.InwardId.toString()));
+    dataRow.add(Utility.getColumnMap('IWTID', "0"));
+    dataRow.add(Utility.getColumnMap('ItId', selectedListId));
+    dataRow.add(Utility.getColumnMap('Qty', qtyController.text));
+    dataRow.add(Utility.getColumnMap('MRP', mrpController.text));
+    dataRow.add(Utility.getColumnMap('FreeQty', freeQTYController.text));
+    dataRow.add(Utility.getColumnMap('ExclFree', "1"));
+    dataRow.add(Utility.getColumnMap('ExpDate', expDate1));
 
-    Map<String, dynamic> map11() => {
-          'pname': 'PrdSch',
-          'value': PrdSch.toString(),
-        };
+    dataRow.add(Utility.getColumnMap('Scheme', schemeFlg));
+    dataRow.add(Utility.getColumnMap('PrdSch', PrdSch));
+    dataRow.add(Utility.getColumnMap('InwSchemeRemark', schemeRemarkController.text));
+    dataRow.add(Utility.getColumnMap('NoBarcode', barCodeValue));
+    dataRow.add(Utility.getColumnMap('Remark', generalRemarkController.text));
+    dataRow.add(Utility.getColumnMap('InwSchStatus', schemeStatus));
+    dataRow.add(Utility.getColumnMap('MobApp', "1"));
+    dataRow.add(Utility.getColumnMap('InwImgStatus', imageStatus));
+    dataRow.add(Utility.getColumnMap('FrcWith', 0));
+    dataRow.add(Utility.getColumnMap('FrcQty', 0.0));
 
-    var dmap11 = map11();
-    Map<String, dynamic> mapobj11() => {
-          'cols': dmap11,
-        };
-    a1.add(mapobj11());
-
-    Map<String, dynamic> map12() => {
-          'pname': 'InwSchemeRemark',
-          'value': SchemeRemarkController.text.toString(),
-        };
-
-    var dmap12 = map12();
-    Map<String, dynamic> mapobj12() => {
-          'cols': dmap12,
-        };
-    a1.add(mapobj12());
-/*
-    Map<String, dynamic> map13() => {
-      'pname': 'InwSchemeRemark',
-      'value': SchemeRemarkController.text.toString(),
+    Map<String, dynamic> param = {
+      'header': [],
+      'name': 'param',
+      'rowsList': dataRow,
     };
-
-    var dmap13=map13();
-    Map<String, dynamic> mapobj13() => {
-      'cols': dmap13,
-    };
-
-    a1.add(mapobj13());
-*/
-    Map<String, dynamic> map14() => {
-          'pname': 'NoBarcode',
-          'value': barCodeValue.toString(),
-        };
-
-    var dmap14 = map14();
-    Map<String, dynamic> mapobj14() => {
-          'cols': dmap14,
-        };
-
-    a1.add(mapobj14());
-
-    Map<String, dynamic> map15() => {
-          'pname': 'Remark',
-          'value': GenralRemarkController.text.toString(),
-        };
-    var dmap15 = map15();
-    Map<String, dynamic> mapobj15() => {
-          'cols': dmap15,
-        };
-
-    a1.add(mapobj15());
-
-    Map<String, dynamic> map16() => {
-          'pname': 'InwSchStatus',
-          'value': schemeStatus,
-        };
-
-    var dmap16 = map16();
-    Map<String, dynamic> mapobj16() => {
-          'cols': dmap16,
-        };
-
-    a1.add(mapobj16());
-
-    Map<String, dynamic> map17() => {
-          'pname': 'MobApp',
-          'value': "1",
-        };
-
-    var dmap17 = map17();
-    Map<String, dynamic> mapobj17() => {
-          'cols': dmap17,
-        };
-
-    a1.add(mapobj17());
-
-    /*   dt.addRow(dt.NewRow().add(new Object[]{"InwSchStatus", schemeStatus}));
-    dt.addRow(dt.NewRow().add(new Object[]{"InwImgStatus", ImageStatus}));
- */
-
-    Map<String, dynamic> map18() => {
-          'pname': 'InwImgStatus',
-          'value': ImageStatus,
-        };
-
-    var dmap18 = map18();
-    Map<String, dynamic> mapobj18() => {
-          'cols': dmap18,
-        };
-
-    a1.add(mapobj18());
-    Map<String, dynamic> map1() => {
-          'header': [],
-          'name': 'param',
-          'rowsList': a1,
-        };
-
-    var data = map1();
 
     String userPass = (await Utility.getStringPreference(GlobalConstant.USER_PASSWORD));
     String USER_ID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
 
-    Map<String, dynamic> map2() => {
-          'dbPassword': userPass,
-          'dbUser': USER_ID,
-          'host': GlobalConstant.host,
-          'key': GlobalConstant.key,
-          'os': GlobalConstant.OS,
-          'procName': GlobalConstant.Inward_Save,
-          'rid': '',
-          'srvId': GlobalConstant.SrvID,
-          'timeout': GlobalConstant.TimeOut,
-          'param': data,
-        };
+    Map<String, dynamic> input = {
+      'dbPassword': userPass,
+      'dbUser': USER_ID,
+      'host': GlobalConstant.host,
+      'key': GlobalConstant.key,
+      'os': GlobalConstant.OS,
+      'procName': GlobalConstant.Inward_Save,
+      'rid': '',
+      'srvId': GlobalConstant.SrvID,
+      'timeout': GlobalConstant.TimeOut,
+      'param': param,
+    };
+    log("input--->$input");
 
     ApiController apiController = new ApiController.internal();
     if (await NetworkCheck.check()) {
       Dialogs.showProgressDialog(context);
       try {
-        var value = await apiController.postsNew(GlobalConstant.SignUp, json.encode(map2()));
+        var value = await apiController.postsNew(GlobalConstant.SignUp, json.encode(input));
         Dialogs.hideProgressDialog(context);
         var data = value;
         var data1 = json.decode(data.body);
@@ -514,24 +411,11 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
     }
   }
 
-  bool expanse_enable = true;
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: GlobalWidget.getAppbar("ADD GRC INWARD"),
-        body: getInsertForm(),
-      ),
-    );
-  }
-
-  String price = "0.0";
-
   Future<void> onSelectItem(ModelSearchItem item) async {
-    SelectedListId = item.id;
-    Item_name = item.id + "  " + item.name;
-    var itemDetail = await DatabaseHelper.db.getSingleItemDetail(SelectedListId);
-    Utility.log("tag", item.id + "  " + Item_name);
+    selectedListId = item.id;
+    itemName = item.id + "  " + item.name;
+    var itemDetail = await DatabaseHelper.db.getSingleItemDetail(selectedListId);
+    Utility.log("tag", item.id + "  " + itemName);
     Utility.log("tag", itemDetail);
 
     var Datap = json.decode(itemDetail);
@@ -540,9 +424,9 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
       if (colm["ItId"].toString() == Datap["ItId"].toString()) {
         POQTY = colm["PoQty"].toString();
         if (colm["ExpEnable"].toString() == "0") {
-          expanse_enable = false;
+          expanseEnable = false;
         } else {
-          expanse_enable = true;
+          expanseEnable = true;
         }
         break;
       }
@@ -552,16 +436,16 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
     PrdSch = Datap["PrdSch"].toString();
     PrdSch = GlobalWidget.getstringValue1(PrdSch.toString());
     if (PrdSch != "") {
-      Schemeflg = true;
+      schemeFlg = true;
       Navigator.of(context)
           .push(new MaterialPageRoute(
               builder: (_) => new ItemSchemeActivity(PrdSch.toString(), Datap["ItId"].toString(), Datap["ItName"].toString())))
           .then((val) {
         if (val != null) {
           var data = val;
-          ImageStatus = "${data['ImageStatus']}";
+          imageStatus = "${data['ImageStatus']}";
           schemeStatus = "${data['schemeStatus']}";
-          SchemeRemarkController.text = "${data['remark']}";
+          schemeRemarkController.text = "${data['remark']}";
           setState(() {});
         }
       });
@@ -570,13 +454,10 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
     setState(() {
       searchTextField.textField.controller.text = "";
     });
-    GlobalWidget.getItemDetail(context, SelectedListId, getData);
+    GlobalWidget.getItemDetail(context, selectedListId, getData);
   }
 
-  String Item_name = "";
-
-  var MRPController = TextEditingController();
-  MRPFeild() {
+  mrpField() {
     return new Container(
       margin: EdgeInsets.only(top: 10),
       child: TextFormField(
@@ -599,7 +480,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
           });
         },
 
-        controller: MRPController,
+        controller: mrpController,
         decoration: GlobalWidget.TextFeildDecoration2("MRP", "MRP"),
         validator: (value) {
           if (value.isEmpty) {
@@ -611,8 +492,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
     );
   }
 
-  var QTYController = TextEditingController();
-  QTYFeild() {
+  qtyField() {
     return new Container(
       margin: EdgeInsets.only(top: 10),
       child: TextFormField(
@@ -625,7 +505,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
         onFieldSubmitted: (value) {
           GlobalWidget.fieldFocusChange(context, _FQTYFocus, _FFQTYFocus);
         },
-        controller: QTYController,
+        controller: qtyController,
         decoration: GlobalWidget.TextFeildDecoration2("Quantity", "Quantity"),
         validator: (value) {
           if (value.isEmpty) {
@@ -637,8 +517,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
     );
   }
 
-  var FreeQTYController = TextEditingController();
-  FreeQTYFeild() {
+  freeQTYField() {
     return new Container(
       margin: EdgeInsets.only(top: 10),
       child: TextFormField(
@@ -652,7 +531,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
         onFieldSubmitted: (value) {
           GlobalWidget.fieldFocusChange(context, _FFQTYFocus, _FSRemarkFocus);
         },
-        controller: FreeQTYController,
+        controller: freeQTYController,
         decoration: GlobalWidget.TextFeildDecoration2("Free Quantity", "Free Quantity "),
         validator: (value) {
           /*if (value.isEmpty)
@@ -665,15 +544,13 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
     );
   }
 
-  ItemNameFeild() {
+  itemNameField() {
     return loading
         ? new Container()
-        : searchTextField = GlobalSearchItem.getAutoSelectionField(key, SearchItems, searchTextField, onSelectItem);
+        : searchTextField = GlobalSearchItem.getAutoSelectionField(key, searchItems, searchTextField, onSelectItem);
   }
 
-  var SchemeRemarkController = TextEditingController();
-
-  SchemeRemarkFeild() {
+  schemeRemarkField() {
     return new Container(
       margin: EdgeInsets.only(top: 10),
       child: TextFormField(
@@ -683,7 +560,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
         onFieldSubmitted: (value) {
           GlobalWidget.fieldFocusChange(context, _FSRemarkFocus, _FGRemarkFocus);
         },
-        controller: SchemeRemarkController,
+        controller: schemeRemarkController,
         decoration: GlobalWidget.TextFeildDecoration2("Scheme Remark", "SchemeRemark"),
         /* validator: (value)
           {
@@ -698,9 +575,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
     );
   }
 
-  var GenralRemarkController = TextEditingController();
-
-  GenralRemarkFeild() {
+  generalRemarkField() {
     return new Container(
       margin: EdgeInsets.only(top: 10),
       child: TextFormField(
@@ -710,7 +585,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
         onFieldSubmitted: (value) {
           GlobalWidget.fieldFocusChangeOnlyUnfouc(context, _FGRemarkFocus);
         },
-        controller: GenralRemarkController,
+        controller: generalRemarkController,
         decoration: GlobalWidget.TextFeildDecoration2("General Remark", "General Remark"),
         /*    validator: (value)
           {
@@ -724,8 +599,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
     );
   }
 
-  bool onlyFreeQtyValue = false;
-  GetItemonlyFreeQty() {
+  getItemOnlyFreeQty() {
     return CheckboxListTile(
       //contentPadding: EdgeInsets.only(left: 0.0,right: 0.0),
       contentPadding: EdgeInsets.all(0.0),
@@ -736,7 +610,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
       value: onlyFreeQtyValue,
       onChanged: (newValue) {
         if (newValue == true) {
-          QTYController.text = "0";
+          qtyController.text = "0";
         }
         setState(() {
           onlyFreeQtyValue = newValue;
@@ -752,23 +626,28 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
       color: GlobalWidget.getBtncolor(),
       textColor: GlobalWidget.getBtnTextColor(),
       onPressed: () {
+        if (dateController.text.trim().isEmpty || invoiceDate.isEmpty) {
+          GlobalWidget.showToast(context, "Please select date");
+          return;
+        }
+
         if (_formKey.currentState.validate()) {
           if (onlyFreeQtyValue) {
             try {
-              double fqty = double.parse(FreeQTYController.text.toString());
-              double qty = double.parse(QTYController.text.toString());
+              double fqty = double.parse(freeQTYController.text.toString());
+              double qty = double.parse(qtyController.text.toString());
               if (fqty <= 0) {
                 GlobalWidget.showToast(context, "Enter valid value for Free Qty");
               } else if (fqty + qty <= 0) {
                 GlobalWidget.showToast(context, "Qty and Free Qty both can't be 0.Please enter correct Qty.");
               } else {
-                AddItemDetail();
+                addItemDetail();
               }
             } catch (e) {
               GlobalWidget.showToast(context, "Qty and Free Qty both can't be 0.Please enter correct Qty.");
             }
           } else {
-            AddItemDetail();
+            addItemDetail();
           }
         }
         /*  if(MRPController.text.toString().length<0)
@@ -789,8 +668,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
     );
   }
 
-  bool barCodeValue = false;
-  GetItemBarcode() {
+  getItemBarcode() {
     return CheckboxListTile(
       contentPadding: EdgeInsets.all(0.0),
       title: Text(
@@ -807,116 +685,20 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
     );
   }
 
-  String POQTY = "Pqty";
-  final _formKey = GlobalKey<FormState>();
-  getInsertForm() {
-    return Form(
-      key: _formKey,
-      child: new ListView(
-        padding: EdgeInsets.all(10.0),
-        children: [
-          new Row(
-            children: [
-              Expanded(
-                flex: 8,
-                child: ItemNameFeild(),
-              ),
-              SizedBox(width: 20.0),
-              Expanded(
-                flex: 2,
-                child: GetImagePickerBtn(),
-              ),
-            ],
-          ),
-          Item_name == ""
-              ? new Container()
-              : InkWell(
-                  child: GlobalWidget.showItemName(Item_name),
-                  onTap: () {
-                    GlobalConstant.OpenZoomImage(data1, context);
-                  },
-                ),
-          SizedBox(
-            height: 10,
-          ),
-          expanse_enable == true
-              ? new Column(
-                  children: [
-                    getDateRow(),
-                    date_val == 1 ? getBestBefore() : new Container(),
-                  ],
-                )
-              : new Container(),
-          new Row(
-            children: [
-              Expanded(
-                flex: 2,
-                child: Text(
-                  POQTY,
-                  style: TextStyle(color: Colors.green, fontSize: 20),
-                ),
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Expanded(
-                flex: 8,
-                child: MRPFeild(),
-              ),
-            ],
-          ),
-          new Row(
-            children: [
-              Expanded(
-                child: QTYFeild(),
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Expanded(
-                child: FreeQTYFeild(),
-              ),
-            ],
-          ),
-          SchemeRemarkFeild(),
-          GenralRemarkFeild(),
-          new Row(
-            children: [
-              Expanded(
-                child: GetItemBarcode(),
-              ),
-              Expanded(
-                child: GetItemonlyFreeQty(),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 60,
-          ),
-          getAddBtn(),
-        ],
-      ),
-    );
-  }
-
-  var data1;
   getData(var data) {
     data1 = data;
   }
 
-  String _frdate = "";
-  final dateFormat = DateFormat("yyyy-MM-dd");
-  //final dateFormat = DateFormat("dd/MM/yyyy");
-  DateTime selectedDateTime = DateTime.now();
-  var ExpDtController = TextEditingController();
-
-  InvoiceDtFeild() {
+  invoiceDateField() {
     return Container(
       height: 50,
       child: DateTimeField(
-        controller: ExpDtController,
+        controller: dateController,
         focusNode: _FDateFocus,
         onFieldSubmitted: (value) {
+          selectedDate = value;
+          invoiceDate = dateFormat.format(value);
+
           GlobalWidget.fieldFocusChangeOnlyUnfouc(context, _FDateFocus);
         },
         decoration: new InputDecoration(hintText: "Select Date", fillColor: Colors.white),
@@ -924,8 +706,8 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
           return showDatePicker(
             context: context,
             initialDate: DateTime.now(),
-            firstDate: selectedDateTime.subtract(new Duration(days: 365 * 20)),
-            lastDate: selectedDateTime.add(new Duration(days: 365 * 10)),
+            firstDate: currentDate.subtract(new Duration(days: 365 * 20)),
+            lastDate: currentDate.add(new Duration(days: 365 * 10)),
             builder: (BuildContext context, Widget child) {
               return Theme(
                 data: ThemeData.light(),
@@ -937,27 +719,18 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
         // decoration: InputDecoration(labelText: 'Date'),
         format: dateFormat,
         onChanged: (val) {
-          _frdate = dateFormat.format(val);
-          MfgDate = val;
+          selectedDate = val;
+          invoiceDate = dateFormat.format(val);
+          mfgDate = val;
           // Utility.setStringPreference(GlobalConstant.FROM_DATE_Report, _frdate);
         },
       ),
     );
   }
 
-  @override
-  void initState() {
-    getSearchItems();
-    getUserId();
-    MfgDate = dateFormat.format(selectedDateTime);
-    Utility.log("tagdate", MfgDate.toString());
-  }
-
   Future<void> getUserId() async {
     userID = (await Utility.getStringPreference(GlobalConstant.USER_ID));
   }
-
-  int date_val = 0;
 
   getDateRow() {
     return new Row(
@@ -967,12 +740,12 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
             children: [
               InkWell(
                 onTap: () {
-                  date_val = 0;
+                  dateType = 0;
                   setState(() {});
                 },
                 child: new Row(
                   children: [
-                    Icon(date_val == 0 ? Icons.check_box : Icons.check_box_outline_blank),
+                    Icon(dateType == 0 ? Icons.check_box : Icons.check_box_outline_blank),
                     Text("Exp Dt."),
                   ],
                 ),
@@ -982,12 +755,12 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
               ),
               InkWell(
                 onTap: () {
-                  date_val = 1;
+                  dateType = 1;
                   setState(() {});
                 },
                 child: new Row(
                   children: [
-                    Icon(date_val == 1 ? Icons.check_box : Icons.check_box_outline_blank),
+                    Icon(dateType == 1 ? Icons.check_box : Icons.check_box_outline_blank),
                     Text("Mfg Dt."),
                   ],
                 ),
@@ -996,7 +769,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
           ),
         ),
         Expanded(
-          child: InvoiceDtFeild(),
+          child: invoiceDateField(),
         )
       ],
     );
@@ -1014,7 +787,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
               child: Text("Best Before"),
             ),
             Expanded(
-              child: InwQtyFeild(),
+              child: inwQtyField(),
             ),
             SizedBox(
               width: 20,
@@ -1027,13 +800,6 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
       ],
     );
   }
-
-  String dropdownValue = 'Months';
-
-  List<String> spinnerItems = [
-    'Months',
-    'Days',
-  ];
 
   getDurationInt() {
     return new Theme(
@@ -1066,8 +832,7 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
     );
   }
 
-  var InwDayMonthController = TextEditingController();
-  InwQtyFeild() {
+  inwQtyField() {
     return Container(
       height: 30,
       child: TextFormField(
@@ -1080,12 +845,24 @@ class ViewAddGrc extends State<AddNewGrcActivity> {
         onFieldSubmitted: (value) {
           GlobalWidget.fieldFocusChangeOnlyUnfouc(context, _FBestFocus);
         },
-        controller: InwDayMonthController,
+        controller: inwDayMonthController,
         decoration: GlobalWidget.TextFeildDecoration1(""),
         validator: (value) {
           return null;
         },
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _FMRPFocus.unfocus();
+    _FQTYFocus.unfocus();
+    _FFQTYFocus.unfocus();
+    _FSRemarkFocus.unfocus();
+    _FBestFocus.unfocus();
+    _FGRemarkFocus.unfocus();
+    _FDateFocus.unfocus();
   }
 }
